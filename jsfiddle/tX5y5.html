@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>Pure JS Form Validation by justinae</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+
+function validateFormOnSubmit(contact) {
+    reason = "";
+    reason += validateEmpty(contact.name);
+    reason += validateEmail(contact.email);
+    reason += validatePhone(contact.phone);
+
+    console.log(reason);
+    if (reason.length > 0) {
+
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// validate required fields
+function validateEmpty(name) {
+    var error = "";
+
+    if (name.value.length == 0) {
+        name.style.background = 'Yellow';
+        document.getElementById('name-error').innerHTML = "The required field has not been filled in";
+        var error = "1";
+    } else {
+        name.style.background = 'White';
+        document.getElementById('name-error').innerHTML = '';
+    }
+    return error;
+}
+
+
+// validate email as required field and format
+function trim(s) {
+    return s.replace(/^\s+|\s+$/, '');
+}
+
+function validateEmail(email) {
+    var error = "";
+    var temail = trim(email.value); // value of field with whitespace trimmed off
+    var emailFilter = /^[^@]+@[^@.]+\.[^@]*\w\w$/;
+    var illegalChars = /[\(\)\<\>\,\;\:\\\"\[\]]/;
+
+    if (email.value == "") {
+        email.style.background = 'Yellow';
+        document.getElementById('email-error').innerHTML = "Please enter an email address.";
+        var error = "2";
+    } else if (!emailFilter.test(temail)) { //test email for illegal characters
+        email.style.background = 'Yellow';
+        document.getElementById('email-error').innerHTML = "Please enter a valid email address.";
+        var error = "3";
+    } else if (email.value.match(illegalChars)) {
+        email.style.background = 'Yellow';
+        var error = "4";
+        document.getElementById('email-error').innerHTML = "Email contains invalid characters.";
+    } else {
+        email.style.background = 'White';
+        document.getElementById('email-error').innerHTML = '';
+    }
+    return error;
+}
+
+// validate phone for required and format
+function validatePhone(phone) {
+    var error = "";
+    var stripped = phone.value.replace(/[\(\)\.\-\ ]/g, '');
+
+    if (phone.value == "") {
+        document.getElementById('test').innerHTML = "Please enter a phone number";
+        phone.style.background = 'Yellow';
+        var error = '6';
+    } else if (isNaN(parseInt(stripped))) {
+        var error = "5";
+        document.getElementById('test').innerHTML = "The phone number contains illegal characters.";
+        phone.style.background = 'Yellow';
+    } else if (stripped.length < 10) {
+        var error = "6";
+        document.getElementById('test').innerHTML = "The phone number is too short.";
+        phone.style.background = 'Yellow';
+    } else {
+        phone.style.background = 'White';
+        document.getElementById('test').innerHTML = '';
+    }
+    return error;
+}
+//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <form id="contact" name="contact" onsubmit="return validateFormOnSubmit(this)" action="about:blank" method="post">
+    	<h2>Contact Me</h2>
+
+    <div id="main-error"></div>
+    <div>
+        <label>Name</label>
+        <input placeholder="First Name" type="text" name="name" id="name" tabindex="1" autofocus>
+        <div id="name-error"></div>
+    </div>
+    <div>
+        <label>Email</label>
+        <input placeholder="Email" type="email" name="email" id="email" tabindex="3" autofocus>
+        <div id="email-error"></div>
+    </div>
+    <div>
+        <label>Phone</label>
+        <input placeholder="Phone" type="text" name="phone" id="phone" tabindex="4" autofocus>
+        <div id="test"></div>
+    </div>
+    <div>
+        <button type="submit" name="submit" id="submit" tabindex="5">Send</button>
+    </div>
+</form>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "tX5y5"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

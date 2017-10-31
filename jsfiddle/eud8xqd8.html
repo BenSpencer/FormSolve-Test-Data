@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
+    
+  
+
+  <style type="text/css">
+    body {
+  margin: 20px;
+}
+
+  </style>
+
+  <title>form validation multiple select by kmd1970</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+$('.ui .dropdown').dropdown({
+  allowAdditions: true,
+  hideAdditions: false,
+  filterRemoteData: true,
+  showNoResults: true,
+  apiSettings: {
+    url: 'fake',
+    response: function(response) {
+      var
+        response = {
+          "success": true,
+          "results": [{
+            "name": "bad@",
+            "value": "bad@"
+          }, {
+            "name": "email@gmail.com",
+            "value": "email@gmail.com"
+          }, {
+            "name": "email@hotmail.com",
+            "value": "email@hotmail.com"
+          }, {
+            "name": "bad@email",
+            "value": "bad@email"
+          }]
+        };
+      return response;
+    }
+  },
+  message: {
+    addResult: '{term}',
+  },
+  templates: {
+    message: function(m) {
+      console.log('templates.message', m);
+      return 'hello world' + m;
+    },
+    addition: function(search) {
+
+      var output = search + ' <i class="green checkmark icon" style="margin:0;"></i><span style="color:green;">Add</span>';
+
+      //console.log(search);
+
+      if (!$.fn.form.settings.regExp.email.test(search)) {
+
+        output = search + ' <i class="red remove icon" style="margin:0;"></i><span style="color:red;">Invalid Email</span>';
+      }
+
+      return output;
+    }
+  },
+
+  onLabelCreate: function(value, text) {
+    if (!$.fn.form.settings.regExp.email.test(value)) {
+      window.setTimeout(function() {
+        $('.ui .dropdown').dropdown('remove selected', value)
+      }, 0);
+    }
+    console.log($(this));
+    return $(this);
+  },
+  onLabelSelect: function($selectedLabels) {
+    console.log('onLabelSelect', $selectedLabels);
+  }
+});
+$('.ui.form')
+  .form({
+    onInvalid: function() {
+      console.log('onInvalid', $(this));
+    },
+    onFailure: function(formErrors, fields) {
+      if (!$('.ui.form').form('is valid', 'email')) {
+        var emails = $('.ui.form').form('get value', 'email');
+        console.log(emails);
+        $.each(emails.split(','), function(i, v) {
+          console.log(i, v, $.fn.form.settings.regExp.email.test(v));
+        });
+      }
+    },
+    onSuccess: function() {
+        window.location = "about:blank";
+    },
+    fields: {
+      email: {
+        identifier: 'email',
+        rules: [{
+          type: 'empty',
+          prompt: 'An email is required'
+        }, {
+          type: 'email',
+          prompt: 'One or more emails are bad {badValue}. Please enter a valid e-mail '
+        }]
+      },
+      other: {
+        identifier: 'other',
+        rules: [{
+          type: 'empty',
+          prompt: 'An other email is required'
+        }, {
+          type: 'email',
+          prompt: 'Please enter a valid other e-mail '
+        }]
+      }
+    }
+  });
+
+$('.ui.button.go').on('click', function() {
+
+  $('.ui .dropdown').dropdown('set selected', 'bad@email');
+  $('.ui .dropdown').dropdown('scrollPage', 'down');
+
+});
+
+
+//console.log($.fn.dropdown.settings);
+
+}//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <div class="ui form">
+  <div class="ui button go">
+    Go
+  </div>
+  <p>
+
+  </p>
+  <div class="field">
+    <input type="text" name="other" value="" placeholder="Other email">
+  </div>
+  <div class="field">
+    <div class="ui multiple search selection dropdown">
+      <input type="hidden" name="email">
+      <i class="dropdown icon"></i>
+      <div class="default text">Email</div>
+      <div class="menu">
+
+      </div>
+    </div>
+  </div>
+  <div class="ui error message"></div>
+  <div class="ui submit button">Submit</div>
+</div>
+
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "eud8xqd8"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

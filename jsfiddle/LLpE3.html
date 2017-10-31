@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    #error {
+    color: red;
+    border: 1px solid red;
+    padding: 5px;
+    display: none;
+}
+
+#result {
+    padding: 20px;
+}
+
+p {
+    display: block;
+    text-align: right;
+}
+
+input, select {
+    width: 100px;
+}
+  </style>
+
+  <title>Form validation by swiftcoder</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+$(window).load(function(){
+function Validate() {
+    // first we clear any left over error messages
+    $('#error p').remove();
+    
+    // store the error div, to save typing
+    var error = $('#error');
+    
+    // we start by assuming everything is correct
+    // if it later turns out not to be, we just set
+    // this to false
+    var correct = true;
+
+    // we can't tell much about valid names, so we
+    // just make sure the field isn't empty
+    if ($('#first').val() == '') {
+        error.append('<p>No first name provided</p>');
+        correct = false;
+    }
+
+    // ditto for last name
+    if ($('#last').val() == '') {
+        error.append('<p>No last name provided</p>');
+        correct = false;
+    }
+
+    // emails we can guess more about, so grab a copy
+    var email = $('#email').val();
+    // first we check if the email field is empty
+    if (email == '') {
+        error.append('<p>No email provided</p>');
+        correct = false;
+    }
+    // if it isn't empty, we check for an @ sign
+    else if (email.indexOf('@') == -1) {
+        error.append('<p>Email does not contain @ symbol</p>');
+        correct = false;
+    }
+    // if it has an @ sign, we need to check for a dot
+    // after the @ sign
+    //else if (email.lastIndexOf('.') < email.indexOf('@')) {
+    //    error.append('<p>Email does not contain a . (full stop)</p>');
+    //    correct = false;
+    //}
+
+    // zip codes we know have to be 5 digits, so check the length
+    if ($('#zip').val().length != 5) {
+        error.append('<p>Zip code must be 5 digits</p>');
+        correct = false;
+    }
+
+    // if we haven't found an error, we hide the error message
+    if (correct) {
+        error.css('display', 'none');
+
+        // clear the result div
+        $('#result').empty();
+        // and put together a result message
+        $('#result').append('<p>Hello, ' + $('#title').val() + ' ' + $('#last').val() + '!</p>');
+        
+        window.location = "about:blank";
+    }
+    // otherwise, we show the error
+    else {
+        error.css('display', 'block');
+    }
+
+    return false;
+}
+
+$('#contact').submit(Validate);
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <div id="error">Error! Please check your information.</div>
+
+<form id="contact">
+    <p>Title:
+        <select id="title">
+            <option value="Mr.">Mr.</option>
+            <option value="Mrs.">Mrs.</option>
+            <option value="Miss.">Miss.</option>
+        </select>
+    </p>
+    <p>First name: <input id="first" type="text"> </p>
+    <p>Last name: <input id="last" type="text"> </p>
+    <p>Email: <input id="email" type="text"> </p>
+    <p>Zip: <input id="zip" type="text"> </p>
+    <p>Phone: <input id="phone" type="text"> </p>
+    <p> <input type="submit" value="Submit"> </p>
+</form>
+
+<div id="result"> </div>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "LLpE3"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

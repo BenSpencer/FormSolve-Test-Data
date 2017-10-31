@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    #status { color: red; font-weight: bold; }
+input[type=button] { background-color: #000; border: 0px; color: #fff; padding: 5px; border-radius: 5px; }
+  </style>
+
+  <title>Generic Form Validation by francescov</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+$(function(){
+/***
+ *	Generic Form Validation
+ *	
+ **/
+
+window.processForm = function () {
+	var element_list = new Array();
+		element_list[0] = ['element1','missing first name'];
+		element_list[1] = ['element2','missing last name'];
+		element_list[2] = ['element3','missing email address'];
+		element_list[3] = ['element4','missing phone'];
+    
+	$('#status').html('');
+	for (i=0;i<element_list.length;i++) {
+        if ($('#'+element_list[i][0]).val()=='') {
+            $('#status').append('<br />&bull; ' + element_list[i][1]);
+            proceed=false;
+        } else {
+         	proceed=true;   
+        }
+	}
+    
+    if ($('#status').html()!='') { proceed=false; }
+    if (proceed) {
+     	$('#status').html('');
+        //alert('Form Submission here.');
+        document.getElementById('testform').submit();
+    } else {
+     	$('#status').prepend('Error(s) on form submission:');   
+    }
+
+}
+
+window.resetForm = function() {
+	document.getElementById('testform').reset();
+}
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <div id="status"></div>
+<form name="testform" id="testform" method="post" action="about:blank">
+    <p><label for="element1">first name: * <input type="text" name="element1" id="element1" value="" required="true"></label></p>
+    <p><label for="element2">last name: * <input type="text" name="element2" id="element2" value="" required="true"></label></p>
+    <p><label for="element3">email address: * <input type="text" name="element3" id="element3" value="" required="true"></label></p>
+    <p><label for="element4">phone number: * <input type="text" name="element4" id="element4" value="" required="true"></label></p>
+    <input type="button" value="Submit Form" onclick="processForm();"> <a href="javascript:;" onclick="resetForm();">Reset</a>
+</form>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "s39vdsLv"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

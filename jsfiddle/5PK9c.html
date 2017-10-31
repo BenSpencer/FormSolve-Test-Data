@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+      p {
+    margin: 0;
+    color: blue;
+  }
+  div,p {
+    margin-left: 10px;
+  }
+  span {
+    color: red;
+  }
+  </style>
+
+  <title>Simple jQuery onSubmit() form validation by flak</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+$( "form" ).submit(function( event ) {
+  if ( $( "input:first" ).val() === "correct" ) {
+    $( "span" ).text( "Validated..." ).show();
+    return;
+  }
+ 
+  $( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
+  event.preventDefault();
+});
+}//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+ 
+<p>Type &apos;correct&apos; to validate.</p>
+<form action="about:blank">
+  <div>
+    <input type="text">
+    <input type="submit">
+  </div>
+</form>
+<span></span>
+
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "5PK9c"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

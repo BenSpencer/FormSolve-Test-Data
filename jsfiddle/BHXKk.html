@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="http://code.angularjs.org/angular-1.0.1.js"></script>
+    
+  
+
+  <style type="text/css">
+    pre { background-color: #ddd; margin-bottom: 15px;}
+label { font-weight: bold; width: 100px; display: inline-block;}
+.error { background-color: #fdd;}
+input { margin-bottom: 10px;}
+  </style>
+
+  <title>Angular: Custom Form Validation by plainkeyman</title>
+
+  
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="MyCtrl" ng-form="contactForm">
+    <div ng-show="contactForm.$invalid">
+        <label>error:</label>
+        <pre class="error">{{contactForm.$error|json}}</pre>
+    </div>
+  
+    <label>first</label>    
+    <input type="text" ng-model="user.first" name="first" ng-required="true"> <br>
+    
+    <label>last</label>    
+    <input type="text" ng-model="user.last" name="last" ng-required="true"> <br>
+    
+    <label>email</label>    
+    <input type="text" ng-model="user.email" name="email" ng-required="true"> <br>
+    
+    <label>verify email</label>    
+    <input type="text" ng-model="verify" name="verify" equals="user.email" ng-required="true"> 
+    <span class="error" ng-show="contactForm.verify.$error.equals">Must Match!</span><br>
+    
+        
+    <a ng-click="save()">Save User</a><br><br>
+    
+    <label>user:</label>
+    <pre>{{user|json}}</pre>
+</div>
+
+  
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+
+var myApp = angular.module('myApp',[]);
+
+myApp.directive('myDirective', function() {
+
+});
+
+myApp.directive('equals', function () {
+    return {
+        require: 'ngModel',
+        scope: {},
+        link: function (scope, elem, attrs, ctrl) {
+            var otherValue;
+            
+            scope.$parent.$watch(attrs.equals, function(value){
+                otherValue = value;
+                equals(elem.val());
+            });
+                         
+            function equals(value){
+                if (otherValue === value) {
+                    ctrl.$setValidity('equals', true);
+                    
+                    return value;
+                } else {
+                    ctrl.$setValidity('equals', false);
+                    
+                    return undefined;
+                }
+            }
+            
+            ctrl.$parsers.unshift(equals);
+            ctrl.$formatters.unshift(equals);
+        }
+    };
+});
+myApp.factory('userService', function() {
+    return {
+        save: function(user){
+            console.log('saving your user...');
+        }
+    }
+});
+
+function MyCtrl($scope, userService) {
+    $scope.user = {
+        email: 'pre@popula.ted'
+    };
+    
+    $scope.save = function(){
+        if ($scope.contactForm.$valid){
+            //userService.save($scope.user);
+            window.location = "about:blank";
+        }else{
+            alert('fix your errors first!');
+        }
+    }
+}
+//]]> 
+
+</script>
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "BHXKk"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

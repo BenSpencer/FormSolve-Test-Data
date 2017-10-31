@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    input {
+    border:1px solid #ccc;
+    width:200px;
+    padding:10px;
+    margin:5px 15px;
+    border-radius:5px;
+}
+
+  </style>
+
+  <title>Form Validation by davidchase03</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+$(window).load(function(){
+jQuery('document').ready(function($) {
+    $('.required').keyup(function() {
+
+        var empty = false;
+        $('.required').each(function() {
+            if ($(this).val() === '') {
+                empty = true;
+            }
+        });
+
+        if (empty) {
+            $('.send').prop('disabled', true);
+            $('.send').css('background-color', '#ccc');
+        } else {
+            $('.send').prop('disabled', false);
+            $('.send').css({
+                'background-color': '#21759b',
+                'color': '#fff'
+            });
+        }
+    });
+});
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <form action="about:blank">
+    <input type="text" class="required" placeholder="First Name (required)"><br>
+   
+    <input type="text" class="required" placeholder="Last Name (required)"><br>
+   
+    <input type="text" class="required" placeholder="E-mail (required)"><br>
+ 
+    <input type="text" placeholder="Phone"><br>  
+    
+    <input type="submit" class="send" value="Send Me Info" disabled="disabled">
+</form>
+
+
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "6mwB8"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

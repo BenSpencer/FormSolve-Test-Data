@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    
+  
+    
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.js"></script>
+    
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>jQuery Validation by KyleMit</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+$("form").validate({
+    showErrors: function(errorMap, errorList) {
+        var form = this.errorContext[0];
+        form.errorCount = this.numberOfInvalids();
+        this.defaultShowErrors();
+    }
+});
+
+// show message on invalid submission
+$("form").on("invalid-form.validate", function (event, validator) {
+    var errors = validator.numberOfInvalids();
+    if (errors) {
+        alert('There is a problem with ' + errors + ' fields.');
+    }
+});
+
+// prevent double click form submission
+$('form').submit(function () {
+    if (this.errorCount === 0) {
+        $(':submit', this).attr('disabled', 'disabled');
+    }
+    
+    // return false in fiddle so we don't actually post back
+    //return false;
+});
+}//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <form action="about:blank">
+    <input type="text" name="Name" required><br>
+    <input type="text" name="Email" required><br>
+    <input type="submit" value="Submit">
+</form>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "o5yjLeba"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

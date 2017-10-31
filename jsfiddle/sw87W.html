@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.2.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    
+  
+    
+      <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
+    
+  
+
+  <style type="text/css">
+    body {
+    padding: 20px;
+}
+
+label {
+    display: block;
+}
+
+input.error {
+    border: 1px solid red;
+}
+
+label.error {
+    font-weight: normal;
+    color: red;
+}
+
+button {
+    display: block;
+    margin-top: 20px;
+}
+  </style>
+
+  <title>jQuery-validate Example by amwmedia</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+$(window).load(function(){
+$(document).ready(function () {
+    $("#form").validate({
+        rules: {
+            "name": {
+                required: true,
+                minlength: 5
+            },
+            "email": {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please, enter a name"
+            },
+            "email": {
+                required: "Please, enter an email",
+                email: "Email is invalid"
+            }
+        },
+        //submitHandler: function (form) { // for demo
+        //    alert('valid form submitted'); // for demo
+        //    return false; // for demo
+        //}
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+});
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <form id="form" method="post" action="about:blank">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email">
+    <button type="submit">Submit</button>
+</form>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "sw87W"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

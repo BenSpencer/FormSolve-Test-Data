@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
+    
+  
+    
+      <script type="text/javascript" src="https://rawgit.com/fergaldoyle/vue-form/master/dist/vue-form.min.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    
+  
+
+  <style type="text/css">
+    .required-field > label::after {
+  content: '*';
+  color: red;
+  margin-left: 0.25rem;
+}
+  </style>
+
+  <title>vue-form example 2 by fergal_doyle</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+Vue.use(VueForm, {
+	inputClasses: {
+  	valid: 'form-control-success',
+    invalid: 'form-control-danger'
+  },
+  validators: {
+  	matches: function (value, attrValue) {
+      if(!attrValue) {
+      	return true;
+      }
+      return value === attrValue;
+    },
+    'password-strength': function (value) {
+    	return /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value);
+    }
+  }
+});
+
+new Vue({
+  el: '#app',
+  data: {
+    formstate: {},
+    model: {
+      name: '',
+      password: '',
+      confirmPassword: '',
+    }
+  },
+  methods: {
+    fieldClassName: function (field) {
+    	// for bootstrap classes
+      if(!field) {
+        return '';
+      }
+      if((field.$touched || field.$submitted) && field.$valid) {
+        return 'has-success';
+      }
+      if((field.$touched || field.$submitted) && field.$invalid) {
+        return 'has-danger';
+      }
+    },
+    onSubmit: function() {
+      console.log(this.formstate.$valid);
+      if (this.formstate.$valid) {
+        window.location = "about:blank";
+      }
+    }
+  }
+});
+}//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+    <div id="app" class="container py-5">
+
+    <p>Example showing vue-form usage with Bootstrap styles, validation messages are shown on field touched or form submission</p>
+
+    <vue-form :state="formstate" @submit.prevent="onSubmit">
+
+      <validate auto-label="" class="form-group required-field" :class="fieldClassName(formstate.name)">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" required v-model.lazy="model.name">
+
+        <field-messages name="name" show="$touched || $submitted" class="form-control-feedback">
+          <div>Success!</div>
+          <div slot="required">Name is a required field</div>
+        </field-messages>
+
+      </validate>
+
+      <validate auto-label="" class="form-group required-field" :class="fieldClassName(formstate.password)">
+        <label>Password</label>
+        <input type="text" password-strength="" name="password" class="form-control" required v-model.lazy="model.password">
+
+        <field-messages auto-label="" name="password" show="$touched || $submitted" class="form-control-feedback">
+          <div>Success!</div>
+          <div slot="required">Password is a required field</div>
+          <div slot="password-strength">Password requires UpperCase, LowerCase, Number/SpecialChar and min 8 Chars</div>
+        </field-messages>
+
+      </validate>
+
+      <validate auto-label="" class="form-group required-field" :class="fieldClassName(formstate.confirmPassword)">
+        <label>Confirm Password</label>
+        <input type="text" :matches="model.password" name="confirmPassword" class="form-control" required v-model.lazy="model.confirmPassword">
+
+        <field-messages auto-label="" name="confirmPassword" show="$touched || $submitted" class="form-control-feedback">
+          <div>Success!</div>
+          <div slot="required">Confirm password is a required field</div>
+          <div slot="matches">Passwords do not match</div>
+        </field-messages>
+
+      </validate>
+
+      <div class="py-2 text-center">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </vue-form>
+
+    <pre>{{formstate}}</pre>
+
+  </div>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "9rn5kLkw"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  
+
+  
+
+  
+    
+      <script type="text/javascript" src="/js/lib/bootstrap-2.0.2.js"></script>
+    
+    
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <link rel="stylesheet" type="text/css" href="http://www.rangde.org/includes/vrf5947/style.css">
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="http://www.rangde.org/css/vrf5929/bootstrap.css">
+    
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>Form Validation by sureshpattu</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+$(window).load(function(){
+    //auto-hide-placeholder-text-upon-focus
+		$("input,textarea").each(function(){			
+			if($(this).val()=="" && $(this).attr("placeholder")!=""){				
+				$(this).val($(this).attr("placeholder"));				
+				$(this).focus(function(){		
+					if($(this).val()==$(this).attr("placeholder")) 
+					{
+						$(this).val("");
+					}					
+				});				
+				$(this).focusout(function(){		
+					if($(this).val()=="") 
+					{
+						$(this).val($(this).attr("placeholder"));						
+					}					
+				});			
+			}
+		});
+
+$('#ss-submit').on('click', function(){
+			formValidation('#ss-form');
+	});
+		function formValidation(formId){
+			var status=true;
+			$(formId+' .required').each(function(){
+				var element=$(this);
+				var elementVal=element.val();
+				var elementPlaceholderVal=element.attr('placeholder');
+				var errorMsgId=element.attr('data-errorMsg');
+				if(elementVal=='' || elementVal==elementPlaceholderVal){
+					$('.'+errorMsgId).show();
+					element.addClass('errorField');
+					status=false;
+					event.preventDefault();
+				}
+				else{
+					$('.'+errorMsgId).hide();
+					element.removeClass('errorField');
+					}
+			});
+			return status;
+		}
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <form action="about:blank" method="POST" id="ss-form" target="_self" onsubmit="" class="form push-down-30 push-left-30">					
+						<div class="control-group">
+							<p class="error hide nameErrorMsg">Please enter your name</p>
+						    <div class="controls">
+						    	<input type="text" name="entry.895045069" value="" class="ss-q-short required" id="entry_895045069" dir="auto" aria-required="true" placeholder="Name" data-errormsg="nameErrorMsg">
+						    </div>
+					 	</div>				 	
+					 	<div class="control-group">
+					 		<p class="error hide emailErrorMsg">Please enter your email-Id</p>
+						    <div class="controls">
+						    	<input type="text" name="entry.174997601" value="" class="ss-q-short required" id="entry_174997601" dir="auto" aria-required="true" placeholder="Email address" data-errormsg="emailErrorMsg">
+						    </div>
+					 	</div>	
+					 	<div class="control-group">
+					 		<p class="error hide companyNameErrorMsg">Please enter name of the organization</p>
+						    <div class="controls">
+						    	<input type="text" name="entry.1469395402" value="" class="ss-q-short required" id="entry_1469395402" dir="auto" aria-required="true" placeholder="Company" data-errormsg="companyNameErrorMsg">
+						    </div>
+					 	</div>			 	
+					 	<div class="control-group">
+						    <div class="controls">
+						    	<textarea name="entry.1129470864" rows="4" cols="0" class="ss-q-long" id="entry_1129470864" dir="auto" aria-required="true" placeholder="Message"></textarea>
+						    </div>
+					 	</div>				 	
+					 	<div class="control-group clearfix">
+						    <div class="controls">
+						    	<input type="hidden" name="draftResponse" value="[]">
+								<input type="hidden" name="pageHistory" value="0">
+						    	<input type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-success btn-large ss-q-short">
+						    	<br><br>
+						    </div>
+					 	</div>													
+						</form>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "27Agf"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

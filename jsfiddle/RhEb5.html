@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-compat-git.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/sunny/jquery-ui.css">
+    
+  
+
+  <style type="text/css">
+    body {
+    font-size: 0.7em;
+}
+
+label {
+    display: inline-block;
+    width: 5em;
+}
+
+fieldset {   
+    border: none;
+}
+
+fieldset div {
+    margin-bottom: 2em;
+}
+
+fieldset .help {
+    display: inline-block;
+}
+
+input {
+    outline: none;
+}
+
+input:not([type=submit]).ui-state-focus {
+    font-weight: normal;
+}
+
+/* Corner radius */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+	border-top-left-radius: 2px;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+	border-top-right-radius: 2px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+	border-bottom-left-radius: 2px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+	border-bottom-right-radius: 2px;
+}
+
+  </style>
+
+  <title>Using Tooltips With Form Validation by adamboduch</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+
+function error( $input ) {
+    return $input
+        .tooltip( 'option', {
+            tooltipClass: 'ui-state-error'
+        }).addClass( 'ui-state-error' );
+}
+
+$(function () {
+    $( '[title]' ).tooltip().on({
+        focusin: function( e ) {
+            $( e.currentTarget )
+                .addClass( 'ui-state-focus' );
+        },
+        focusout: function( e ) {
+            $( e.currentTarget )
+                .removeClass( 'ui-state-focus' );
+        }
+    });
+    $( '[type="submit"]' ).button();
+    $( 'form' ).on( 'submit', function( e ) {
+        //e.preventDefault();
+        var params = $( e.currentTarget )
+            .serializeArray()
+            .reduce( function( result, i ) {
+                result[ i.name ] = i.value;
+                return result;
+            }, {});
+        if ( !params.firstname ) {
+            error( $( '[name="firstname"]' ) );
+            e.preventDefault();
+        }
+        if ( !params.lastname ) {
+            error( $( '[name="lastname"]' ) );    
+            e.preventDefault();
+        }
+        if ( !params.address ) {
+            error( $( '[name="address"]' ) );   
+            e.preventDefault();
+        }
+    });
+});
+//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <form class="ui-widget" action="about:blank">
+    <fieldset>
+        <div>
+            <label for="firstname">Firstname</label>
+            <input id="firstname" name="firstname" title="Please provide your firstname." class="ui-corner-all ui-widget-content" type="text">
+        </div>
+        <div>
+            <label for="lastname">Lastname</label>
+            <input id="lastname" name="lastname" title="Please provide also your lastname." class="ui-corner-all ui-widget-content" type="text">
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <input id="address" name="address" title="Your home or work address." class="ui-corner-all ui-widget-content" type="text">
+        </div>
+    </fieldset>
+    <input type="submit">
+</form>
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "RhEb5"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+
