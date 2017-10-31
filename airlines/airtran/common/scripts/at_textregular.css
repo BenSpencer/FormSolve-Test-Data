@@ -1,0 +1,329 @@
+/* --------------------
+   content styles
+   -------------------- */
+
+#content p.note,#content .note p {
+	font-style: italic;
+}
+
+
+
+#content p.smallnote,#content .smallnote p {
+	font-weight: normal;
+	font-size: 10px;
+	margin-top: .5em;
+	line-height: 1em;
+}
+
+#content p.error,#content .error p {
+	font-size: 12px;
+	font-weight: bold;
+	color: #c00;
+}
+
+#content p.legal,#content .legal p {
+	font-size: 11px;
+	line-height: 12px;
+}
+
+
+#content #formbox {
+	border: 1px solid #055B8E;
+	padding: 10px 10px 10px 10px;
+	background-color: #E4E5E5;
+	position: relative;
+	
+}
+
+#content #formbox table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+#content #formbox table td {
+	padding: 2px 0px;
+	margin: 0;
+	
+}
+
+#content #formbox td.label {
+	font-weight: bold;
+	text-align: right;
+	padding-right: 5px;
+}
+
+
+#content #formbox h3 {
+	color: #055A8D;
+	margin-top: 0;
+	margin-bottom: 8px;
+	font-size: 17px;
+	text-transform: lowercase;
+}
+
+
+#content #formbox.center h3 {
+	text-align: center;
+}
+
+#content #formbox .vertmid {
+	vertical-align: middle;
+	padding-right: 6px;
+}
+
+/*judd 8/20 */
+#content #formbox	img.box_icon	{
+margin-right: 10px; 
+position: absolute;
+left:5px;
+
+
+}
+
+#content #formbox div.msg		{
+position: relative;
+margin-left: 30px;
+top: 0px;
+}
+
+#content #formbox div.msg	h4	{
+margin-top:0px;
+}
+
+#content #formbox div.msg	p	{
+margin-bottom:0px;
+}
+
+#content #formbox.webcast	{
+width: 350px; 
+padding: 12px 10px;
+
+}
+
+
+
+#content #formbox.quicklinks ul	{
+margin-top: 15px;
+}
+
+
+
+#content #formbox ul	{
+list-style-type: none;
+margin-left: 0px;
+padding-left: 0em;
+padding-bottom: 0px;
+margin:0;
+
+}
+
+#content #formbox ul ul	{
+margin-left: 10px;
+margin-bottom: 0px; 
+margin-top: 0px !IMPORTANT;
+
+}
+
+#content #formbox ul li, #content #formbox.quicklinks li	{
+padding: 0;
+font-size: 12px;
+padding-bottom: .5em;
+}
+
+#content #formbox ul	a {
+font-size: 12px;
+text-decoration: underline;
+}
+
+#content #formbox ul	a.current {
+font-size: 12px;
+text-decoration: none;
+}
+
+#content #formbox ul.bullets	{
+list-style: disc inside;
+margin-left: 0px;
+padding-left: 0em;
+padding-bottom: 0px;
+margin:0;
+
+
+}
+
+
+#content #formbox ul.bullets li	{
+padding: 0;
+font-size: 12px;
+padding-bottom: .5em;
+
+}
+
+#content #formbox #rightcol ul {
+	margin: 0 0 18px 12px; 
+	padding: 0;
+}
+
+#content #formbox #rightcol li  {
+	margin: 0; 
+	padding: 0 0 1px;
+	display: block;
+	list-style: none;
+}
+
+#content #formbox #rightcol ul	a {
+
+font: bold 14px Arial, Helvetica, sans-serif;
+	color: #1B91BE;
+	text-decoration: none;
+}
+
+#formbox #rightcol li a, #formbox #rightcol h4  {
+	font: bold 14px Arial, Helvetica, sans-serif;
+	color: #1B91BE;
+	text-decoration: none;
+}
+
+#formbox #rightcol li a:hover	{
+	text-decoration: underline;
+}
+
+#content #formbox ul  a:hover	{
+text-decoration: none;
+}
+
+
+
+
+#content div.floatRight {
+
+float: right;
+margin-bottom: 12px;
+margin-left: 20px;
+width: 196px;
+padding:0 0 0 0;
+
+}
+
+
+#content div.align_h3	{
+margin-top: 20px;
+}
+
+#content div.autowidth {
+width: auto;
+
+}
+
+
+#content.spacer	{
+clear: both;
+}
+
+
+/* --------------------
+   font sizing
+   -------------------- */
+
+body {
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+td,th {
+	font-size: 12px;
+}
+
+h1,h2,h3,h4 {
+	font-size: 12px;
+}
+
+#content,#content p,#content td,#content th {
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#content p.first {
+	font: 12px/15px Arial, Helvetica, sans-serif;
+}
+
+#content h1 {
+	font: bold 14px/14px Arial, Helvetica, sans-serif;
+}
+
+#content h2 {
+	font: bold 22px/22px Arial, Helvetica, sans-serif;
+}
+
+#content h3 {
+	font: bold 14px/16px Arial, Helvetica, sans-serif;
+}
+
+#content h4 {
+	font: bold 12px/15px Arial, Helvetica, sans-serif;
+}
+
+#content li {
+	font-size: 12px;
+	line-height: 15px;
+}
+
+#subnav h4 {
+	font-size: 14px;
+}
+
+#subnav ul a {
+	font-size: 12px;
+}
+
+#subnav ul ul a {
+	font-size: 11px;
+}
+
+#mainnav li a {
+	font-size: 14px;
+}
+
+#mininav li {
+	font-size: 11px;
+}
+
+#mininav #search #searchfield {
+	font-size: 10px;
+}
+
+#footer a {
+	font-size: 12px;
+}
+
+#right .tools h4 {
+	font-size: 12px;
+}
+
+#right .tools a {
+	font: bold 10px/10px Arial, Helvetica, sans-serif;
+}
+
+#legal {
+	font-size: 11px;
+	line-height: 10px;
+}
+
+#content #sitemap.faq ul li	{
+padding-bottom: .25em;
+}
+
+#content #sitemap.faq ul li a	{
+font-size: 11px;
+text-transform: none;
+}
+
+h3.spacer	{
+border-bottom:0px !IMPORTANT
+}
+
+#tablist table, #tabcontentcontainer div	{
+width: 560px;
+	voice-family: "\"}\""; 
+	voice-family:inherit;
+	width: 530px;
+	}

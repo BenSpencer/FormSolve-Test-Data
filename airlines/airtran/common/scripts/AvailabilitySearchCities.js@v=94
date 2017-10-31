@@ -1,0 +1,432 @@
+
+	var airlineATArrayValues = "CAK,ATL,AUS,BWI,BOS,BUF,SJD,CUN,CLT,MDW,CMH,DAY,DEN,DTW,FNT,FLL,RSW,BDL,HOU,IND,JAX,MCI,LAS,LAX,SDF,MEM,MKE,MSP,MBJ,NAS,MSY,LGA,ORF,OKC,SNA,MCO,PNS,PHL,PHX,PIT,PWM,RDU,RIC,ROC,SAT,SFO,STL,SEA,TPA,DCA,PBI,ICT,AUA,BKG,DSM,GRR,MEX,PUJ,SJU";
+	var airlineF9ArrayValues = "";
+	var airlineGLArrayValues = "";
+	var airlineSWArrayValues = "CAK,ABQ,AMA,ATL,AUS,BWI,BHM,BOI,BOS,BUF,BUR,CHS,MDW,CLE,CMH,DAL,DEN,DTW,ELP,FLL,RSW,GSP,BDL,HOU,IND,JAX,MCI,LAS,LIT,LAX,SDF,MSP,BNA,MSY,LGA,EWR,ORF,OKC,OMA,MCO,PHL,PHX,PIT,PDX,RDU,RNO,SMF,SLC,SAT,SAN,SFO,SJC,STL,SEA,GEG,TPA,TUS,TUL,IAD,DCA,PBI,ALB,CRP,HRL,EYW,ISP,LBB,MHT,MAF,OAK,ONT,ECP,PVD";
+
+         	//
+         	var theForm = document.forms['SkySales'];
+         	if (!theForm) {
+         		theForm = document.SkySales;
+         	}
+         	function __doPostBack(eventTarget, eventArgument) {
+         		if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+         			theForm.__EVENTTARGET.value = eventTarget;
+         			theForm.__EVENTARGUMENT.value = eventArgument;
+         			theForm.submit();
+         		}
+         	}
+         	//
+
+				<!--
+         	var MacsArray = new Array();
+         	MacsArray["CHI"] = new Array("MDW", "MKE");
+         	MacsArray["DTT"] = new Array("DTW", "FNT");
+         	MacsArray["FMW"] = new Array("FLL", "MIA", "PBI");
+         	MacsArray["NYC"] = new Array("HPN", "LGA");
+         	MacsArray["TWR"] = new Array("PHF", "RIC");
+         	MacsArray["WAS"] = new Array("BWI", "DCA", "IAD");
+         	MacsArray["WFL"] = new Array("RSW", "SRQ", "TPA");
+         	MacsArray["WNY"] = new Array("BUF", "ROC");
+
+         	var SortedStations = new Array(
+			"ABR", "ACA", "CAK", "ALS", "ABQ", "AIA", "AMA", "ANC", "ATL", "ACY", "AUS", "BWI", "BTR", "BIL", "BHM", "BMI", "BOI", "BOS", "BKX", "BUF", "BUR", "SJD", "YYC", "CUN", "CDR", "CHS", "CLT", "CHA", "CYS", "MDW", "CVG", "CLE", "CVN", "COU", "CMH", "CEZ", "CZM", "DAL", "DFW", "DAY", "DAB", "DEN", "DTW", "DIK", "DDC", "ELP", "FMN", "FYV", "XNA", "FNT", "FLL", "RSW", "FAT", "GNV", "GCK", "GCC", "FPO", "GRI", "GJT", "GSO", "GSP", "GDL", "GPT", "BDL", "HYS", "IAH", "HOU", "HTS", "HON", "IND", "ZIH", "JAN", "JAX", "MCI", "EAR", "IGM", "TYS", "LAF", "LAR", "LAS", "LEX", "LBL", "LNK", "LIT", "LAX", "SDF", "MZT", "MCK", "MEM", "MIA", "MKE", "MSP", "MLI", "MBJ", "MYR", "BNA", "NAS", "MSY", "LGA", "EWR", "SWF", "PHF", "ORF", "LBF", "NPL", "OKC", "OMA", "SNA", "MCO", "PGA", "PNS", "PHL", "PHX", "PIR", "PIT", "PNC", "PWM", "PDX", "PRC", "PUB", "PVR", "RDU", "RNO", "RIC", "RIW", "ROC", "RKS", "SMF", "SLC", "SAT", "SAN", "SFO", "SJC", "SFB", "SAF", "SRQ", "SAV", "BFF", "STL", "SEA", "SHR", "SOW", "SHV", "SVC", "MQY", "SBN", "GEG", "STT", "TLH", "TPA", "TEX", "TOL", "TUS", "TUL", "TUP", "TCL", "YVR", "IAD", "DCA", "PBI", "HPN", "ICT", "ISN", "WRL", "ABY", "ALB", "ABE", "AUA", "AVL", "ASE", "BGR", "PAH", "BUS", "BED", "BDA", "BMG", "BFI", "BMH", "BWG", "BZN", "BKG", "BTV", "LGU", "CID", "CMI", "CRW", "CHO", "CHM", "CKB", "CLL", "COS", "CAE", "CSG", "GTR", "JQF", "CRP", "DSM", "DET", "DLH", "DRO", "ELY", "EUG", "FAR", "FAY", "ZFT", "AFW", "GUP", "GRR", "GBD", "PIA", "GRB", "GLH", "PGV", "HGA", "HRL", "MDT", "PIB", "ORL", "HUG", "HUF", "HSV", "ITH", "JAC", "MKC", "EYW", "GRK", "LCH", "LAN", "LWT", "ISP", "LHB", "LBB", "MSN", "MHT", "MHK", "MTH", "MEX", "MAF", "EPL", "MSO", "CNY", "MLU", "MGM", "MTJ", "OAK", "OCF", "ONT", "OSH", "FMY", "ECP", "PVD", "PVU", "PUJ", "RAP", "LCK", "ROA", "SLN", "SJO", "SJU", "SBA", "MSL", "SDY", "SUX", "STJ", "HDN", "SWO", "SYR", "FOE", "TTN", "MBS", "UTM", "TYR", "VLD", "VEL", "ACT", "SPS", "AVP", "YIP", "ILG", "INT"
+				);
+
+         	var Stations = new Array();
+         	Stations["CUN"] = new Station("CUN", "", "Cancun, Mexico", true, true, new Array("COS", "CYS", "DAL", "DAY", "DCA", "DDC", "DEN", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ELP", "EWR", "FAR", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PUB", "PVD", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TEX", "TPA", "TUL", "TUS", "WRL", "BOS", "BUR", "FAT", "FLL", "FMN", "FNT", "GCC", "GCK", "GEG", "GJT", "GRR", "GSP", "HDN", "HOU", "HPN", "HRL", "HSV", "HYS", "IAD", "ICT", "IND", "ISN", "ISP", "JAC", "JAN", "JAX", "LAR", "LAS", "LAX", "LBB", "LBF", "LGA", "LIT", "MAF", "MCI", "MCO", "MDW", "MEM", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "MYR", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "ATL", "BNA", "BTV", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHS", "CLE", "CLT", "CMH", "AUS", "BDL", "BFF", "BHM", "BKG", "BMI", "BOI", "ACY", "AIA", "ALB", "ALS", "AMA", "ASE", "ANC", "ABQ"));
+         	Stations["DAY"] = new Station("DAY", "", "Dayton, OH", true, true, new Array("COS", "CUN", "CYS", "DAB", "DAL", "DCA", "DDC", "DEN", "DFW", "DIK", "DRO", "DSM", "EAR", "ECP", "MIA", "MKE", "MLI", "MSP", "MSY", "MZT", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PNS", "PRC", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDY", "SEA", "SFO", "SHR", "SJD", "SJU", "SLC", "SLN", "SMF", "SNA", "SRQ", "STL", "SWF", "TEX", "TLH", "TPA", "BOS", "BUR", "ATL", "BNA", "BTV", "BUF", "BWI", "CDR", "CEZ", "CHS", "CLT", "AUS", "BDA", "BDL", "BHM", "BKG", "BMI", "BOI", "ABR", "ACY", "AIA", "ALB", "ALS", "AMA", "AUA", "TUL", "TUS", "UTM", "WRL", "YVR", "YYC", "ZIH", "ANC", "ELP", "ELY", "EYW", "FAR", "FAT", "FLL", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GJT", "GPT", "GSP", "GTR", "GUP", "HDN", "HON", "HOU", "HPN", "HRL", "HSV", "HYS", "ICT", "ISN", "ISP", "JAC", "JAN", "JAX", "LAR", "LAS", "LAX", "LBB", "LBF", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCK", "MCO", "MEM", "MEX", "MGM", "MHK", "MHT", "ABQ", "CRP"));
+         	Stations["DCA"] = new Station("DCA", "WAS", "Washington, DC - Reagan", true, true, new Array("COS", "CUN", "CYS", "DAB", "DAL", "DAY", "MAF", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ONT", "PBI", "PDX", "PHX", "PIR", "PNS", "PUB", "PUJ", "RDU", "RIW", "RKS", "RNO", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SJD", "SJU", "SMF", "SNA", "SRQ", "STL", "TEX", "TPA", "TUL", "TUS", "UTM", "WRL", "YYC", "BOS", "BUR", "ATL", "BNA", "CAK", "CDR", "CEZ", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BMH", "BMI", "BOI", "ABR", "AIA", "ALS", "AUA", "DDC", "DEN", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ELP", "ELY", "EYW", "FAR", "FAT", "FLL", "FMN", "FNT", "FPO", "GCC", "GCK", "GJT", "GPT", "GRR", "GSP", "HDN", "HON", "HOU", "HRL", "HYS", "IAH", "ICT", "IND", "ISN", "JAC", "JAN", "JAX", "LAR", "LAS", "LAX", "LBB", "LBF", "LWT", "ANC", "ABQ", "CRP"));
+         	Stations["DEN"] = new Station("DEN", "", "Denver, CO", true, true, new Array("COS", "CUN", "CZM", "DAB", "DAY", "DFW", "DRO", "DSM", "DTW", "ELP", "EWR", "FAR", "FAT", "FLL", "FNT", "FPO", "GDL", "GEG", "GPT", "GRR", "GUP", "HDN", "HPN", "IAD", "IAH", "IND", "ISP", "JAC", "JAN", "JAX", "LAN", "LAS", "LAX", "LBB", "LGA", "LWT", "MAF", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MHT", "MIA", "MKE", "MLI", "MSO", "MSP", "MSY", "MZT", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PRC", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SBN", "SDF", "SDY", "SEA", "SFO", "SJC", "SJD", "SJO", "SJU", "BOS", "BUR", "ATL", "BNA", "BTV", "BUF", "BWI", "BZN", "CAK", "CLT", "CMH", "AUS", "BDA", "BDL", "BED", "BKG", "BMI", "BOI", "BTR", "ACY", "AMA", "ASE", "AUA", "DCA", "ANC", "ABQ", "CRP", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TPA", "TUL", "TUS", "UTM", "YVR", "YYC", "ZIH"));
+         	Stations["DTW"] = new Station("DTW", "DTT", "Detroit, MI", true, true, new Array("COS", "CUN", "CYS", "DAB", "DAL", "DDC", "DEN", "BOS", "BUR", "ATL", "BNA", "BTV", "BWI", "CDR", "CEZ", "CLT", "AUS", "BDA", "BDL", "BHM", "BKG", "BOI", "ABR", "ACY", "AIA", "ALB", "ALS", "AUA", "DCA", "ANC", "ABQ", "CRP", "DFW", "DIK", "DRO", "DSM", "EAR", "ECP", "ELP", "ELY", "EYW", "FAR", "FAT", "FLL", "FMN", "FPO", "GCC", "GCK", "GDL", "GPT", "GSP", "GUP", "HDN", "HON", "HOU", "HPN", "HRL", "HYS", "IAD", "ICT", "IND", "ISN", "ISP", "JAC", "JAN", "JAX", "LAR", "LAS", "LAX", "LBB", "LBF", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHK", "MIA", "MSY", "MZT", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PHF", "PHL", "PHX", "PIR", "PNS", "PRC", "PUJ", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SJD", "SJO", "SJU", "SLN", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "TUL", "UTM", "WRL", "YVR", "YYC", "ZIH"));
+         	Stations["ELP"] = new Station("ELP", "", "El Paso, TX", true, true, new Array("COS", "CUN", "CYS", "CZM", "DAL", "DDC", "DEN", "BOS", "GRR", "HDN", "HON", "HOU", "HRL", "HYS", "IAD", "IAH", "ICT", "IND", "JAC", "JAX", "LAR", "LAS", "LAX", "LBF", "LBL", "LGA", "LWT", "MAF", "MCO", "MEM", "MEX", "MHK", "NYC", "ONT", "PBI", "PHL", "PHX", "PIR", "PIT", "PNS", "PUB", "RDU", "RIC", "RIW", "RKS", "ROC", "RSW", "SAF", "SAN", "SAT", "BNA", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHM", "CLE", "CMH", "AUS", "BHM", "BTR", "ABR", "AIA", "ALS", "ATL", "DCA", "ANC", "DAY", "ABQ", "DFW", "DIK", "DRO", "DTW", "EAR", "ECP", "ELY", "EWR", "FAR", "FAT", "FLL", "FMN", "GCC", "GCK", "GJT", "SDY", "SFB", "SHR", "SJD", "SJO", "SJU", "SLN", "SNA", "TEX", "TPA", "WRL", "YYC", "ZIH"));
+         	Stations["FLL"] = new Station("FLL", "FMW", "Fort Lauderdale, FL", true, true, new Array("COS", "DAL", "DEN", "EWR", "BUR", "CUN", "BNA", "BTV", "BUF", "BWI", "CHS", "CKB", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BIL", "BKG", "BMI", "BOI", "BOS", "ACY", "ALB", "ATL", "AUA", "CAK", "DCA", "ANC", "DAY", "ABE", "ABQ", "GRR", "GSP", "GUP", "HDN", "HOU", "HPN", "HRL", "HSV", "IAD", "ICT", "IND", "ISP", "JAC", "JAN", "JAX", "LAS", "LAX", "LBB", "LEX", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHK", "MHT", "MKE", "MLI", "MSP", "MSY", "OAK", "OKC", "OMA", "ONT", "ORF", "PDX", "PHF", "PHL", "PHX", "PIA", "CRP", "PIT", "PNS", "PRC", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SJD", "SJU", "SLC", "SLN", "SMF", "SNA", "STL", "SWF", "TPA", "TUL", "TUS", "UTM", "DFW", "DRO", "DSM", "DTW", "ECP", "ELP", "ELY", "FAR", "FAT", "FNT", "GEG", "GJT", "GPT"));
+         	Stations["GEG"] = new Station("GEG", "", "Spokane, WA", true, true, new Array("COS", "CYS", "CZM", "DDC", "DEN", "CUN", "BNA", "CDR", "CEZ", "CHS", "BOI", "BOS", "BTR", "ABR", "AIA", "ALS", "ATL", "AUA", "FMN", "GCC", "GCK", "GDL", "GJT", "GUP", "HDN", "HON", "HYS", "IAD", "IAH", "ISN", "JAC", "LAR", "LAS", "LBF", "LBL", "LGA", "LWT", "MBJ", "MCO", "MEM", "MHK", "OAK", "PDX", "PHX", "PIR", "PIT", "PRC", "PUB", "PVR", "RIC", "RIW", "RKS", "SAF", "SDY", "SHR", "SJD", "SJU", "SLN", "SNA", "TEX", "TYR", "WAS", "WRL", "DFW", "DIK", "DRO", "EAR", "ELY", "FAR", "FAT", "FLL"));
+         	Stations["ICT"] = new Station("ICT", "", "Wichita, KS", true, true, new Array("COS", "CVN", "CYS", "DAB", "DAL", "DDC", "EWR", "BUR", "CUN", "ELP", "BTV", "BUF", "BWI", "CDR", "CEZ", "CLT", "CMH", "AUS", "BDA", "BFF", "BKX", "BMI", "BOS", "ABR", "ACY", "AIA", "ALB", "ALS", "ATL", "AUA", "CAK", "DCA", "GUP", "HDN", "DAY", "IAD", "IGM", "IND", "ISN", "JAC", "JAX", "LAR", "LAS", "LAX", "LBF", "LBL", "LGA", "LIT", "LWT", "MBJ", "MCO", "MDW", "MEM", "MEX", "MHK", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "ORF", "PBI", "PGA", "PHF", "PHL", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PWM", "RDU", "RIC", "RIW", "RKS", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SJO", "SJU", "SLN", "SNA", "SOW", "SRQ", "STL", "SVC", "SWF", "TEX", "TPA", "UTM", "WRL", "FLL", "HYS", "FMN", "FNT", "FPO", "GCC", "GCK", "GJT", "GPT", "GRR", "HON", "HOU", "HPN", "DIK", "DRO", "DSM", "DTW", "EAR", "ELY", "FAR"));
+         	Stations["IND"] = new Station("IND", "", "Indianapolis, IN", true, true, new Array("COS", "CYS", "DAB", "DAL", "DDC", "DEN", "BUR", "CUN", "ELP", "BTV", "BUF", "BWI", "CDR", "CEZ", "CHS", "CLE", "CLT", "AUS", "BDA", "BDL", "BHM", "BKG", "BOI", "BOS", "ABQ", "ABR", "ACY", "AIA", "ALB", "AMA", "ATL", "AUA", "CAK", "DCA", "IAH", "ANC", "GUP", "HDN", "IAD", "ICT", "ISN", "ISP", "JAC", "JAN", "JAX", "LAR", "LAS", "LAX", "LBB", "LBF", "LBL", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MGM", "MHK", "MHT", "MIA", "MKE", "MSP", "MSY", "MZT", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDY", "SEA", "SFO", "SHR", "SJD", "SJO", "SJU", "SLN", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "TUL", "UTM", "WRL", "YVR", "YYC", "ZIH", "FLL", "HSV", "HYS", "CRP", "FMN", "FPO", "GCC", "GCK", "GDL", "GJT", "GPT", "GSP", "HON", "HOU", "HPN", "HRL", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ECP", "ELY", "EYW", "FAR", "FAT"));
+         	Stations["LAS"] = new Station("LAS", "", "Las Vegas, NV", true, true, new Array("COS", "CRP", "CYS", "CZM", "DAB", "DAL", "DDC", "DEN", "BOI", "BUR", "CUN", "ELP", "JAN", "JAX", "BNA", "BTV", "BUF", "BWI", "CDR", "CEZ", "CHS", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BMI", "BOS", "BTR", "ABQ", "ABR", "ACY", "AIA", "ALB", "AMA", "ATL", "AUA", "CAK", "DCA", "IAH", "ANC", "HDN", "DAY", "ABE", "IAD", "ICT", "IND", "ISN", "ISP", "JAC", "JQF", "LAR", "LAX", "LBB", "LBF", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MHK", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PUB", "PUJ", "PVD", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SJC", "SJD", "SJO", "SJU", "SLC", "SLN", "SMF", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "TUL", "TUS", "UTM", "WRL", "YVR", "YYC", "FLL", "HYS", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GEG", "GJT", "GPT", "GRR", "GSP", "HON", "HOU", "HPN", "HRL", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ECP", "ELY", "FAR"));
+         	Stations["LAX"] = new Station("LAX", "", "Los Angeles, CA", true, true, new Array("COS", "CRP", "CYS", "CZM", "DAB", "DAL", "DDC", "DEN", "CUN", "ELP", "JAN", "JAX", "BNA", "BTV", "BUF", "BWI", "CDR", "CEZ", "CHO", "CLE", "CLT", "CMH", "CMI", "AUS", "BDA", "BDL", "BKG", "BMI", "BOS", "BTR", "ABQ", "ABR", "ACY", "AIA", "ALB", "AMA", "ATL", "AUA", "CAK", "DCA", "IAH", "ANC", "HDN", "DAY", "IAD", "ICT", "IND", "ISN", "ISP", "LAR", "LAS", "LBB", "LBF", "LBL", "LGA", "LWT", "MAF", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MGM", "MHK", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ORF", "OSH", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PUB", "PUJ", "PVD", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAT", "SAV", "SDF", "SDY", "SFO", "SHR", "SJC", "SJD", "SJO", "SJU", "SLC", "SLN", "SMF", "SRQ", "STL", "SWF", "TEX", "TOL", "TPA", "TUS", "UTM", "WRL", "YVR", "YYC", "FLL", "HSV", "HYS", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GJT", "GPT", "GRR", "HON", "HOU", "HPN", "HRL", "DFW", "DIK", "DRO", "DSM", "DTT", "DTW", "EAR", "ELY", "FAR"));
+         	Stations["LGA"] = new Station("LGA", "NYC", "New York, NY - LaGuardia", true, true, new Array("COS", "CRP", "CYS", "DAB", "DAL", "DDC", "DEN", "BOI", "BUR", "CUN", "ELP", "JAN", "JAX", "BWI", "CDR", "CEZ", "CLT", "CMH", "AUS", "BDA", "BHM", "BKG", "BMI", "ABQ", "ABR", "AIA", "AMA", "ATL", "AUA", "CAK", "ANC", "HDN", "LBF", "LBL", "DAY", "IAD", "ICT", "IND", "ISN", "JAC", "LAR", "LAS", "LAX", "LBB", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MHK", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PDX", "PHF", "PIR", "PNC", "PNS", "PRC", "PUB", "PUJ", "RDU", "RIC", "RIW", "RKS", "RNO", "RSW", "SAF", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SJC", "SJD", "SJO", "SJU", "SLC", "SMF", "SRQ", "STL", "TEX", "TPA", "TUL", "UTM", "WRL", "YYC", "FLL", "HYS", "FMN", "FNT", "FPO", "GCC", "GCK", "GEG", "GJT", "GPT", "HON", "HOU", "HPN", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ECP", "ELY", "EYW", "FAR", "FAT"));
+         	Stations["LIT"] = new Station("LIT", "", "Little Rock, AR", true, true, new Array("COS", "CYS", "DAL", "DDC", "EWR", "BUR", "CUN", "JAX", "BWI", "CDR", "CEZ", "CLE", "AUS", "BHM", "BKG", "BOS", "ABR", "AIA", "AMA", "ATL", "CAK", "GTR", "GUP", "LBF", "LBL", "DAY", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEX", "MHK", "MSY", "MZT", "NAS", "OKC", "ONT", "PBI", "PHL", "PHX", "PIR", "PIT", "PVR", "RDU", "RIC", "RIW", "RKS", "RSW", "SAF", "SAT", "SHR", "SJU", "STL", "TEX", "TPA", "TUL", "WRL", "YVR", "YYC", "ZIH", "ICT", "IND", "ISN", "JAC", "LAR", "LAS", "LBB", "LGA", "MAF", "FLL", "HYS", "FMN", "FYV", "GCC", "GCK", "GDL", "GJT", "GRR", "GSP", "HON", "HOU", "DIK", "DRO", "DTW", "EAR", "EYW", "FAR", "FAT", "FAY"));
+         	Stations["MCI"] = new Station("MCI", "", "Kansas City, MO", true, true, new Array("COS", "CRP", "CYS", "CZM", "DAB", "DAL", "DCA", "DDC", "DEN", "CUN", "JAN", "JAX", "MAF", "MBJ", "BNA", "BTV", "BUF", "BWI", "CDR", "CEZ", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BMI", "BOS", "ABQ", "ABR", "ACY", "AIA", "ALB", "AMA", "ATL", "AUA", "CAK", "IAH", "ANC", "GUP", "HDN", "LBF", "LBL", "DAY", "LIT", "LWT", "MCK", "MCO", "MDW", "MEM", "MEX", "MHK", "MHT", "MIA", "MKE", "MSL", "MSP", "MSY", "MZT", "NAS", "OAK", "OKC", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SJC", "SJD", "SJO", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "TUL", "TUS", "UTM", "WRL", "YYC", "ZIH", "IAD", "IND", "ISN", "ISP", "JAC", "JQF", "LAR", "LAS", "LAX", "LBB", "LGA", "FLL", "HYS", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GJT", "GPT", "GRR", "GSP", "HON", "HOU", "HPN", "HRL", "DIK", "DRO", "DTW", "EAR", "ECP", "ELY", "EYW", "FAR", "FAT"));
+         	Stations["MCO"] = new Station("MCO", "", "Orlando, FL", true, true, new Array("COS", "CRP", "CRW", "DAL", "DCA", "DEN", "EWR", "BOI", "BUR", "CUN", "ELP", "JAN", "MAF", "MBJ", "BNA", "BTR", "BTV", "BUF", "BWI", "CHS", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BIL", "BKG", "BMI", "BOS", "ABQ", "ACY", "ALB", "AMA", "ATL", "AUA", "CAK", "ANC", "HDN", "AVL", "DAY", "LIT", "LWT", "MCI", "MDT", "MDW", "MEM", "MEX", "MHK", "MHT", "MKE", "MLI", "MSN", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PRC", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SNA", "STL", "SWF", "TUL", "TUS", "TYS", "UTM", "YYC", "ABE", "IAD", "ICT", "IND", "ISP", "JAC", "LAN", "LAS", "LAX", "LBB", "LEX", "LGA", "FLL", "HSV", "FNT", "GEG", "GJT", "GPT", "GRR", "GSP", "HOU", "HPN", "HRL", "DFW", "DRO", "DSM", "DTW", "ECP", "ELY", "EYW", "FAR", "FAT"));
+         	Stations["MDW"] = new Station("MDW", "CHI", "Chicago, IL - Midway", true, true, new Array("COS", "CRP", "CYS", "DAB", "DAL", "DCA", "DDC", "DEN", "EWR", "BUR", "CUN", "JAN", "MAF", "MBJ", "BNA", "BTR", "BTV", "BUF", "BWI", "CDR", "CEZ", "CHS", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BOS", "ABQ", "ABR", "ACY", "AIA", "ALB", "AMA", "ATL", "AUA", "CAK", "IAH", "ANC", "HDN", "LBF", "LBL", "LIT", "LWT", "MCI", "MCO", "MEM", "MEX", "MHT", "MIA", "MSO", "MSP", "MSY", "MZT", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PAH", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SJC", "SJD", "SJO", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TEX", "TLH", "TPA", "TUS", "UTM", "WRL", "YVR", "YYC", "ZIH", "IAD", "ICT", "IND", "ISN", "ISP", "JAC", "JAX", "LAR", "LAS", "LAX", "LBB", "LGA", "FLL", "HYS", "FMN", "FPO", "GCC", "GCK", "GDL", "GJT", "GPT", "GSP", "HON", "HOU", "HPN", "HRL", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ELY", "FAR", "FAT"));
+         	Stations["MSP"] = new Station("MSP", "", "Minneapolis/St. Paul, MN", true, true, new Array("COS", "CRP", "CYS", "DAB", "DAL", "DAY", "DCA", "DDC", "DEN", "CUN", "JAN", "MAF", "MBJ", "BNA", "BTR", "BTV", "BUF", "BWI", "CDR", "CEZ", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BOS", "ABR", "ACY", "AIA", "ALB", "AMA", "AUA", "CAK", "IAH", "ANC", "HDN", "LBF", "LBL", "GJT", "LWT", "MCI", "MCO", "MDW", "MEM", "MEX", "MHK", "MKE", "MSN", "MSY", "MZT", "NAS", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "ROC", "RSW", "SAF", "SAT", "SAV", "SBN", "SDF", "SDY", "SEA", "SFO", "SHR", "SJD", "SJO", "SJU", "SRQ", "STL", "SWF", "TEX", "TPA", "UTM", "VLD", "WRL", "YVR", "YYC", "ZIH", "IAD", "ICT", "IND", "ISN", "ISP", "JAC", "JAX", "LAN", "LAR", "LAS", "LAX", "LGA", "MHT", "MIA", "FLL", "HRL", "HYS", "ATL", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GPT", "GRI", "GRR", "GSP", "HON", "HOU", "HPN", "DFW", "DIK", "DRO", "DSM", "EAR", "ELY", "FAT"));
+         	Stations["CRP"] = new Station("CRP", "", "Corpus Christi, TX", true, true, new Array("JAX", "LAS", "LAX", "LGA", "MAF", "MCI", "MCO", "MDW", "MEM", "MKC", "MKE", "MSP", "MSY", "NYC", "OAK", "OKC", "PBI", "PHL", "PHX", "PIT", "PNS", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SDF", "SFO", "SJU", "STL", "TPA", "TUL", "BOS", "ATL", "BNA", "BUF", "BWI", "CAK", "CHS", "CMH", "AUS", "BKG", "ABQ", "DAY", "DCA", "DEN", "DTT", "DTW", "EWR", "FLL", "HOU", "HRL", "IAD", "IND"));
+         	Stations["JAX"] = new Station("JAX", "", "Jacksonville, FL", true, true, new Array("CRP", "DAL", "DEN", "EWR", "BUR", "CUN", "ELP", "LAS", "LAX", "LBB", "LGA", "LIT", "MBJ", "MCI", "BNA", "BTV", "BUF", "BWI", "CKB", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BMI", "BOI", "BOS", "ACY", "ALB", "ATL", "AUA", "CAK", "DCA", "GTR", "DAY", "IAD", "ICT", "IND", "ISP", "MDW", "MEM", "MEX", "MHT", "MKE", "MLI", "MSN", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "STL", "SWF", "TPA", "TUL", "TUS", "UTM", "FLL", "HSV", "FNT", "FPO", "GPT", "GRR", "HOU", "HPN", "HRL", "DFW", "DSM", "DTW", "ECP"));
+         	Stations["MAF"] = new Station("MAF", "", "Midland/Odessa, TX", true, true, new Array("CRP", "DAL", "DCA", "DEN", "EWR", "BUR", "CUN", "ELP", "MCI", "MCO", "MDW", "MKE", "MSP", "MSY", "OKC", "PBI", "PDX", "PHL", "PHX", "PIT", "RDU", "RIC", "ROC", "RSW", "SAT", "SDF", "SFO", "SJC", "SJD", "SJU", "SNA", "STL", "TPA", "TUL", "WAS", "BNA", "BWI", "CMH", "AUS", "BDA", "BOS", "AMA", "ATL", "CAK", "HGA", "DAY", "IAD", "IND", "LAS", "LAX", "LGA", "LIT", "FLL", "HOU", "HRL", "DTW", "ECP"));
+         	Stations["MEM"] = new Station("MEM", "", "Memphis, TN", true, true, new Array("CRP", "DAB", "DAL", "DCA", "DEN", "EWR", "BOI", "BUR", "CUN", "ELP", "MBJ", "BTV", "BUF", "BWI", "CHS", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BKG", "BMI", "BOS", "ABQ", "ACY", "ALB", "AMA", "ATL", "AUA", "CAK", "DAY", "MCI", "MCO", "MDW", "MEX", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFB", "SFO", "SJC", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TPA", "TUS", "IAD", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LBB", "LGA", "FLL", "FNT", "FPO", "GEG", "GPT", "GRR", "GSP", "HOU", "HPN", "HRL", "DFW", "DSM", "DTW", "ECP", "EYW"));
+         	Stations["MKE"] = new Station("MKE", "CHI", "Milwaukee, WI", true, true, new Array("CRP", "CZM", "DAB", "DAL", "DAY", "DCA", "DEN", "BOI", "CUN", "JAN", "MAF", "MBJ", "BNA", "BTV", "BUF", "BWI", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BOS", "ABQ", "ACY", "AUA", "CAK", "MCI", "MCO", "MEM", "MEX", "MSP", "MSY", "NAS", "OKC", "ORF", "PBI", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SAV", "SBA", "SDF", "SEA", "SFB", "SFO", "SJD", "SJU", "SNA", "SRQ", "STL", "SWF", "TPA", "TUL", "UTM", "ZIH", "IAD", "ICT", "IND", "JAX", "LAS", "LAX", "LBB", "LGA", "MHT", "MIA", "FLL", "HRL", "HSV", "ATL", "FPO", "GPT", "GSP", "HOU", "HPN", "DFW", "DSM", "EYW"));
+         	Stations["MSY"] = new Station("MSY", "", "New Orleans, LA", true, true, new Array("CRP", "DAB", "DAL", "DAY", "DCA", "DEN", "BOI", "BUR", "BUS", "CUN", "JAN", "MAF", "BNA", "BTV", "BUF", "BWI", "CHS", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BMI", "BOS", "ABQ", "ACY", "ALB", "AMA", "AUA", "CAK", "GTR", "GNV", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PUJ", "PVD", "PVU", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFB", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TPA", "TUL", "TUP", "TUS", "UTM", "IAD", "ICT", "IND", "INT", "ISP", "JAX", "LAS", "LAX", "LBB", "LCK", "LEX", "LGA", "MHT", "MIA", "FLL", "ATL", "FNT", "FPO", "GRR", "GSP", "HOU", "HPN", "DSM", "DTW", "ECP", "EYW"));
+         	Stations["NYC"] = new Station("NYC", "NYC", "New York City Area", true, true, new Array("CRP", "DAL", "BUR", "ELP", "BHM", "ABQ", "PHX", "SAN", "LBB"));
+         	Stations["OAK"] = new Station("OAK", "", "Oakland, CA", true, true, new Array("CRP", "DAL", "DAY", "DCA", "DEN", "EWR", "BOI", "BUR", "CUN", "BNA", "BUF", "BWI", "CLT", "AUS", "BOS", "ABQ", "CAK", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MSY", "OKC", "ONT", "PBI", "PDX", "PHL", "PHX", "PIT", "PNS", "RIC", "RNO", "RSW", "SAN", "SEA", "SJD", "SJU", "SLC", "SNA", "STL", "TPA", "TTN", "IAD", "IND", "ISP", "JAX", "LAN", "LAS", "LAX", "LGA", "FLL", "ATL", "GEG", "GRR", "HOU", "DTW"));
+         	Stations["OKC"] = new Station("OKC", "", "Oklahoma City, OK", true, true, new Array("CRP", "CYS", "DAL", "DAY", "DCA", "DDC", "DEN", "CUN", "JAN", "LWT", "MAF", "BNA", "BUF", "BWI", "CDR", "CEZ", "CHI", "CHO", "CMH", "BDA", "BDL", "BHM", "BOS", "ABR", "AIA", "AUA", "STL", "TEX", "TPA", "WRL", "YVR", "YYC", "ZIH", "CAK", "ANC", "HDN", "LBF", "LBL", "AUS", "GJT", "GNV", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHK", "MKE", "MSY", "MZT", "NAS", "OAK", "ORF", "PBI", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUJ", "PVR", "RDU", "RIC", "RIW", "RKS", "RSW", "SAF", "SAT", "SDF", "SDY", "SFO", "SHR", "SJD", "SJO", "SJU", "SLC", "SNA", "IAD", "IND", "ISN", "JAC", "JAX", "LAF", "LAR", "LAS", "LAX", "LBB", "LGA", "FLL", "HRL", "HYS", "COS", "ATL", "FMN", "GCC", "GCK", "GDL", "GRR", "HON", "HOU", "DIK", "DRO", "DTW", "EAR", "ELY", "FAR", "FAT"));
+         	Stations["PBI"] = new Station("PBI", "FMW", "West Palm Beach, FL", true, true, new Array("CRP", "DAL", "DAY", "DCA", "DEN", "EWR", "BOI", "BUR", "CUN", "ELP", "MAF", "BNA", "BTV", "BUF", "BWI", "CLE", "CLT", "CMH", "BDA", "BDL", "BKG", "BMI", "BOS", "ABQ", "ACY", "AUA", "OMA", "SJU", "SMF", "SNA", "STL", "SWF", "TPA", "TUL", "TUS", "UTM", "CAK", "AUS", "LIT", "MCI", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "MSY", "OAK", "OKC", "IAD", "ICT", "IND", "ISP", "JAC", "JAX", "LAS", "LAX", "LBB", "LGA", "MHT", "HRL", "HSV", "ORF", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "ATL", "FNT", "GPT", "GRR", "HOU", "HPN", "DFW", "DSM", "DTW"));
+         	Stations["PHL"] = new Station("PHL", "", "Philadelphia, PA", true, true, new Array("CRP", "CUN", "CYS", "DAB", "DAL", "DAY", "DDC", "DEN", "BOI", "BUR", "ELP", "JAN", "LWT", "MAF", "BNA", "CDR", "CEZ", "CLL", "CLT", "CMH", "BDA", "BHM", "BKG", "BMH", "BMI", "BOS", "ABQ", "ABR", "AIA", "AUA", "OMA", "PHX", "PIR", "PNS", "PRC", "PUB", "PUJ", "PVR", "PVU", "RDU", "RIW", "RKS", "RNO", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SJD", "SJU", "SRQ", "STL", "TEX", "TLH", "TPA", "TUL", "UTM", "WRL", "YYC", "CAK", "HDN", "LBF", "AUS", "GJT", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHK", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "IAD", "ICT", "IND", "ISN", "JAC", "JAX", "LAR", "LAS", "LAX", "LBB", "LBL", "MIA", "FLL", "HRL", "HYS", "ONT", "PBI", "COS", "ATL", "FMN", "FNT", "FPO", "GCC", "GCK", "GPT", "GSP", "HON", "HOU", "DFW", "DIK", "DRO", "DTW", "EAR", "ELY", "EYW", "FAR", "FAT"));
+         	Stations["PHX"] = new Station("PHX", "", "Phoenix, AZ", true, true, new Array("CRP", "CUN", "CYS", "CZM", "DAB", "DAY", "DCA", "DDC", "DEN", "EWR", "BOI", "BUR", "ELP", "LWT", "MAF", "BNA", "BTR", "BTV", "BUF", "BWG", "BWI", "CAK", "CDR", "CEZ", "CHI", "CMH", "BDA", "BMI", "BOS", "ABQ", "ABR", "ACY", "AIA", "AUA", "OMA", "PDX", "PHF", "PHL", "PIR", "PIT", "PNS", "PUB", "PUJ", "RDU", "RIC", "RIW", "RKS", "RNO", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJO", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "TUL", "TUP", "UTM", "WRL", "YVR", "YYC", "IAH", "ANC", "HDN", "LBF", "AUS", "GJT", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MGM", "MKE", "MLI", "MSP", "MSY", "NAS", "NYC", "OAK", "OKC", "HYS", "IAD", "IND", "ISN", "JAC", "JAX", "JQF", "LAR", "LAS", "LAX", "LBL", "LCK", "MHK", "MIA", "FLL", "HRL", "ONT", "PBI", "COS", "COU", "ATL", "FMN", "FPO", "GCC", "GCK", "GDL", "GEG", "GPT", "GRR", "HON", "HOU", "HPN", "DFW", "DIK", "DRO", "DTW", "EAR", "ELY", "FAR", "FAT"));
+         	Stations["PIT"] = new Station("PIT", "", "Pittsburgh, PA", true, true, new Array("CRP", "CUN", "DAB", "DAL", "DEN", "EWR", "BOI", "BUR", "ELP", "JAN", "MAF", "BNA", "BTR", "BWI", "CLT", "BDA", "BDL", "BHM", "BKG", "BMH", "BMI", "BOS", "ABQ", "AMA", "AUA", "PDX", "PHF", "PHX", "PNS", "PUJ", "RDU", "RIC", "RNO", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SYR", "TPA", "TUL", "TUS", "UTM", "VLD", "GTR", "AUS", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MQY", "MSP", "MSY", "NAS", "OAK", "OKC", "IAD", "ICT", "IND", "JAX", "LAS", "LAX", "LBB", "LEX", "MIA", "HRL", "ONT", "ORF", "PBI", "ATL", "FLL", "FPO", "GEG", "GPT", "GRR", "GSP", "HOU", "DFW", "DSM", "EYW"));
+         	Stations["PNS"] = new Station("PNS", "", "Pensacola/Gulf Coast, FL", true, true, new Array("CRP", "CUN", "DAB", "DAL", "DAY", "DCA", "DEN", "EWR", "BOI", "BUR", "ELP", "BNA", "BTV", "BUF", "BWI", "CAK", "CHS", "CLT", "CMH", "BDA", "BDL", "BKG", "BMI", "BOS", "ABQ", "ACY", "AUA", "OMA", "PDX", "PHF", "PHL", "PHX", "PIT", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TPA", "UTM", "LBB", "AUS", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "NAS", "OAK", "OKC", "IAD", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LGA", "MHT", "MIA", "ONT", "ORF", "PBI", "ATL", "FLL", "FNT", "FPO", "GRR", "HOU", "HPN", "DFW", "DSM", "DTW"));
+         	Stations["RDU"] = new Station("RDU", "", "Raleigh/Durham, NC", true, true, new Array("CRP", "CUN", "DAB", "DAL", "DAY", "DCA", "DEN", "EWR", "BOI", "BUR", "ELP", "JAN", "MAF", "BTR", "BTV", "BUF", "BWI", "CAK", "CHS", "CLE", "CMH", "BDA", "BDL", "BHM", "BKG", "BMG", "BMH", "BMI", "BNA", "BOS", "ABQ", "ACY", "ALB", "AUA", "OMA", "PDX", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SBN", "SDF", "SEA", "SFB", "SFO", "SHV", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TPA", "TUL", "TUS", "UTM", "XNA", "IAD", "LBB", "AUS", "GJT", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "MSY", "NAS", "OKC", "ICT", "IND", "JAX", "LAS", "LAX", "LGA", "MHT", "MIA", "HRL", "ONT", "ORF", "PBI", "ATL", "FLL", "FNT", "FPO", "GPT", "GRK", "GRR", "GSP", "HOU", "HPN", "DFW", "DSM", "DTW", "EYW"));
+         	Stations["RIC"] = new Station("RIC", "TWR", "Richmond, VA", true, true, new Array("CRP", "CUN", "DAB", "DAL", "DAY", "DEN", "BOI", "BUR", "ELP", "JAN", "MAF", "BUF", "CAK", "CLE", "CLT", "CMH", "BDA", "BDL", "BHM", "BKG", "BMH", "BMI", "BNA", "BOS", "ABQ", "ALB", "AUA", "OMA", "PDX", "PHX", "PIT", "PNS", "PUJ", "PVD", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "IAD", "LBB", "STL", "SWF", "TPA", "TUL", "TUS", "UTM", "AUS", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LGA", "MHT", "MIA", "HRL", "ONT", "PBI", "ATL", "FLL", "FNT", "FPO", "GEG", "GPT", "GRR", "GSP", "HOU", "HPN", "DFW", "DSM", "DTW", "ECP", "EYW"));
+         	Stations["ROC"] = new Station("ROC", "WNY", "Rochester, NY", true, true, new Array("CRP", "CUN", "DAB", "DAY", "DEN", "ELP", "MAF", "BTV", "BWI", "CHI", "CLT", "BDA", "BKG", "BMI", "BOS", "ALB", "AMA", "AUA", "PHF", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RSW", "SAT", "SAV", "SDF", "SEA", "SFO", "SJU", "SNA", "SRQ", "STL", "TPA", "TUL", "UTM", "IAD", "LBB", "AUS", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "MSY", "NAS", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "MHT", "MIA", "HSV", "ORF", "PBI", "ATL", "FLL", "FPO", "GPT", "GRR", "HOU", "DFW", "DSM", "DTW"));
+         	Stations["RSW"] = new Station("RSW", "WFL", "Fort Myers, FL", true, true, new Array("CRP", "CUN", "DAL", "DAY", "DCA", "DEN", "EWR", "BOI", "BUR", "ELP", "MAF", "BTV", "BUF", "BWI", "CAK", "CHS", "CLE", "CLT", "CMH", "BDA", "BDL", "BHM", "BKG", "BMI", "BNA", "BOS", "ABQ", "ACY", "ALB", "AMA", "AUA", "OMA", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "ROC", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SLN", "SMF", "SNA", "STL", "SWF", "TLH", "TUL", "TUS", "UTM", "YYC", "IAD", "GUP", "LBB", "RNO", "AUS", "GJT", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "MSY", "OAK", "OKC", "ICT", "IND", "ISP", "JAC", "JAX", "LAS", "LAX", "LGA", "MHK", "MHT", "HRL", "HSV", "ONT", "ORF", "COS", "ATL", "FNT", "GPT", "GRR", "GSP", "HOU", "HPN", "DFW", "DRO", "DSM", "DTW", "FAR", "FAT"));
+         	Stations["SAN"] = new Station("SAN", "", "San Diego, CA", true, true, new Array("CRP", "CUN", "CYS", "CZM", "DAB", "DAY", "DCA", "DDC", "DEN", "ELP", "JAC", "LWT", "BTR", "BTV", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHI", "CMH", "BDA", "BHM", "BKG", "BMI", "BNA", "BOS", "ABQ", "ABR", "ACY", "AIA", "ANC", "AUA", "PHL", "PHX", "PIR", "PIT", "PNS", "PUB", "PUJ", "RDU", "RIC", "RSW", "SAF", "SAT", "SAV", "SFO", "SJC", "SJD", "SJO", "SJU", "SMF", "SWF", "TEX", "TPA", "TUL", "TUS", "UTM", "WRL", "YVR", "IAD", "IAH", "HDN", "LBF", "RIW", "RKS", "RNO", "AUS", "GJT", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MKE", "MLI", "MSY", "NYC", "OAK", "HYS", "ICT", "IND", "ISN", "JAX", "LAR", "LAS", "LBL", "MHK", "MIA", "PBI", "COS", "ATL", "FLL", "FMN", "GCC", "GCK", "GDL", "GPT", "GRR", "HON", "HOU", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ELY", "FAR"));
+         	Stations["SAT"] = new Station("SAT", "", "San Antonio, TX", true, true, new Array("CRP", "CUN", "CYS", "DAB", "DAL", "DAY", "DCA", "DDC", "DEN", "BOI", "BUR", "ELP", "JAC", "JAN", "LWT", "MAF", "BTV", "BUF", "BWI", "CAK", "CDR", "CEZ", "CLE", "CLT", "CMH", "BDA", "BDL", "BHM", "BKG", "BMI", "BNA", "BOS", "ABR", "ACY", "AIA", "ALB", "AMA", "ANC", "AUA", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "ROC", "RSW", "SAF", "SAN", "SAV", "SDF", "SEA", "SJD", "SJO", "SJU", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "TUL", "UTM", "WRL", "YYC", "ZIH", "IAD", "HDN", "LBB", "LBF", "RIW", "RKS", "GJT", "LIT", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MKE", "MLI", "MSP", "MSY", "MZT", "NAS", "OKC", "HYS", "ICT", "IND", "ISN", "ISP", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "MHT", "MIA", "HRL", "HSV", "ORF", "PBI", "COS", "ATL", "FLL", "FMN", "FNT", "GCC", "GCK", "GDL", "GRR", "HON", "HOU", "HPN", "DIK", "DRO", "DSM", "DTW", "EAR", "ECP", "ELY", "FAR", "FAT"));
+         	Stations["SDF"] = new Station("SDF", "", "Louisville, KY", true, true, new Array("CRP", "CUN", "CYS", "DAL", "DCA", "DDC", "DEN", "JAC", "LWT", "MAF", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHI", "CLT", "CMH", "BDA", "BDL", "BFF", "BIL", "BKX", "BOS", "ABR", "ACA", "AIA", "ALS", "AUA", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVR", "RDU", "RIC", "ROC", "RSW", "SAF", "SAT", "SFO", "SHR", "SJO", "SJU", "STL", "TEX", "TPA", "WRL", "YVR", "YYC", "ZIH", "IAD", "LBF", "RIW", "RKS", "AUS", "GJT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MKE", "MSP", "MSY", "MZT", "NAS", "OKC", "HYS", "ICT", "ISN", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "MHT", "ORF", "PBI", "COS", "ATL", "FLL", "FMN", "GCC", "GCK", "GDL", "GRR", "HON", "HOU", "DIK", "DRO", "DSM", "DTW", "EAR", "ELY", "FAR", "FAT"));
+         	Stations["SFO"] = new Station("SFO", "", "San Francisco, CA", true, true, new Array("CRP", "CUN", "CYS", "CZM", "DAB", "DAL", "DAY", "DCA", "DDC", "DEN", "BUR", "JAC", "LWT", "MAF", "BTR", "BTV", "BUF", "BWI", "CAK", "CDR", "CEZ", "CLT", "CMH", "BDA", "BDL", "BKG", "BMI", "BNA", "BOS", "ABR", "ACY", "AIA", "AMA", "ANC", "AUA", "PDX", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "ROC", "RSW", "SAF", "SAN", "SAV", "SDF", "SDY", "SJD", "SJO", "SJU", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "UTM", "WRL", "YYC", "IAD", "HDN", "LBF", "RIW", "RKS", "AUS", "GJT", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OKC", "HYS", "IAH", "ICT", "IND", "ISN", "ISP", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "MHT", "HSV", "ONT", "ORF", "PBI", "COS", "ATL", "FLL", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GPT", "GRR", "HON", "HOU", "HPN", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ELY", "FAR"));
+         	Stations["SJU"] = new Station("SJU", "", "San Juan, PR", true, true, new Array("CRP", "CRW", "CUN", "DAB", "DAL", "DAY", "DCA", "DEN", "EWR", "BOI", "BUR", "JAN", "MAF", "TUL", "TUS", "TYS", "BTV", "BUF", "BWI", "CAK", "CHS", "CLE", "CLT", "CMH", "BDA", "BDL", "BHM", "BKG", "BMH", "BMI", "BNA", "BOS", "ABQ", "ACY", "ALB", "AMA", "AUA", "OMA", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TPA", "IAD", "LBB", "RNO", "AUS", "AVL", "LIT", "MBJ", "MCI", "MCO", "MDT", "MDW", "MEM", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ABE", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LEX", "LGA", "MHT", "HRL", "HSV", "ONT", "ORF", "ATL", "FLL", "FNT", "GEG", "GRR", "GSP", "HOU", "HPN", "DFW", "DSM", "DTW", "ECP", "ELP"));
+         	Stations["STL"] = new Station("STL", "", "St. Louis, MO", true, true, new Array("CRP", "CUN", "CYS", "DAB", "DAL", "DAY", "DCA", "DDC", "EWR", "BOI", "BUR", "JAC", "JAN", "LWT", "MAF", "BTV", "BUF", "BWI", "CAK", "CDR", "CEZ", "CLT", "CMH", "BDA", "BDL", "BHM", "BMH", "BNA", "BOS", "ABQ", "ABR", "ACY", "AIA", "ALB", "AMA", "ANC", "ATL", "AUA", "OKC", "OMA", "PBI", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "ROC", "RSW", "SAF", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SJD", "SJO", "SJU", "SNA", "SRQ", "SWF", "TPA", "UTM", "ZIH", "IAD", "HDN", "LBB", "LBF", "RIC", "RIW", "RKS", "AUS", "GJT", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MSP", "MSY", "MZT", "NAS", "OAK", "HYS", "ICT", "IND", "ISN", "ISP", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "MHT", "HRL", "ONT", "ORF", "COS", "FLL", "FMN", "FPO", "GCC", "GCK", "GDL", "GPT", "GRR", "GSP", "HON", "HOU", "HPN", "DEN", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ECP", "ELY", "EYW", "FAR", "FAT"));
+         	Stations["TPA"] = new Station("TPA", "WFL", "Tampa, FL", true, true, new Array("CRP", "CUN", "DAL", "DAY", "DCA", "BOI", "BUF", "BUR", "JAC", "JAN", "LWT", "MAF", "BTV", "BWI", "CAK", "CHS", "CKB", "CLE", "CLT", "CMH", "BDA", "BDL", "BHM", "BKG", "BMI", "BNA", "BOS", "ACY", "ALB", "AMA", "ATL", "AUA", "OKC", "OMA", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PRC", "PUJ", "PVD", "PWM", "RDU", "RNO", "ROC", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "STL", "SWF", "TTN", "TUL", "TUS", "UTM", "YYC", "IAD", "GSP", "HDN", "LBB", "RIC", "AUS", "AVL", "GJT", "LIT", "MBJ", "MCI", "MDW", "MEM", "MEX", "MKE", "MLI", "MSN", "MSP", "MSY", "NAS", "OAK", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LGA", "MHT", "HRL", "HSV", "ONT", "ORF", "COS", "FLL", "FNT", "GDL", "GPT", "GRR", "HOU", "HPN", "DEN", "DFW", "DRO", "DSM", "DTW", "ELP", "ELY", "EWR", "EYW", "FAR", "FAT"));
+         	Stations["TUL"] = new Station("TUL", "", "Tulsa, OK", true, true, new Array("CRP", "CUN", "CYS", "DAL", "DCA", "DDC", "BUF", "JAC", "JAN", "MAF", "SJU", "BWI", "CAK", "CDR", "CEZ", "CHS", "CMH", "BHM", "BNA", "BOS", "ABR", "AIA", "AMA", "ANC", "ATL", "PBI", "PHL", "PHX", "PIR", "PIT", "PUJ", "PVR", "RDU", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SFB", "SJD", "SNA", "TEX", "TPA", "WRL", "YYC", "ZIH", "DAY", "IAD", "LBF", "RIC", "RIW", "RKS", "AUS", "GJT", "LIT", "MBJ", "MCI", "MCO", "MEX", "MKE", "MSY", "MZT", "NAS", "HYS", "IND", "ISN", "JAX", "LAF", "LAR", "LAS", "LBL", "LGA", "COS", "FLL", "FMN", "GCC", "GCK", "GDL", "HON", "HOU", "DEN", "DIK", "DRO", "DTW", "EAR", "EWR", "FAR", "FAT"));
+         	Stations["MBJ"] = new Station("MBJ", "", "Montego Bay, Jamaica", true, true, new Array("CRW", "DAL", "DCA", "DEN", "EWR", "BOI", "JAX", "MCI", "MCO", "MDW", "MEM", "MHT", "MIA", "MKE", "MLI", "MSP", "BNA", "BTV", "BUF", "BWI", "CHS", "CLE", "CLT", "CMH", "AUS", "BDL", "BHM", "BKG", "BMI", "BOS", "ABQ", "ACY", "ALB", "ATL", "CAK", "AVL", "DAY", "LIT", "MSY", "OAK", "OKC", "OMA", "ORF", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PVD", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SDF", "SEA", "SFO", "SJC", "SJU", "SLC", "SMF", "SNA", "STL", "TPA", "TUL", "TUS", "TYS", "ABE", "IAD", "ICT", "IND", "ISP", "LAS", "LAX", "LEX", "LGA", "LHB", "FLL", "HSV", "FNT", "GEG", "GRR", "GSP", "HOU", "DFW", "DSM", "DTW", "ECP"));
+         	Stations["NAS"] = new Station("NAS", "", "Nassau, Bahamas", true, true, new Array("CRW", "DAL", "DAY", "DCA", "DEN", "EWR", "JAN", "BNA", "BTV", "BUF", "BWI", "CHS", "CLE", "CLT", "CMH", "AUS", "BDL", "BHM", "BKG", "BMI", "BOS", "ABQ", "ACY", "ALB", "CAK", "AVL", "LIT", "MCI", "MCO", "MDW", "MEM", "MKE", "MLI", "MSP", "MSY", "MTH", "OKC", "OMA", "ORF", "PHF", "PHL", "PHX", "PIT", "PNS", "PVD", "PWM", "RAP", "RDU", "RIC", "ROC", "SAT", "SDF", "SEA", "SFO", "SJU", "STL", "TPA", "TUL", "TYS", "IAD", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LEX", "LGA", "MHT", "HSV", "ATL", "FNT", "GRR", "GSP", "HOU", "HPN", "DFW", "DSM", "DTW"));
+         	Stations["EWR"] = new Station("EWR", "", "Newark, NJ", true, true, new Array("CSG", "CUN", "DAB", "DEN", "FLL", "HOU", "HRL", "ICT", "JAX", "LEX", "LIT", "MAF", "MBJ", "MCO", "MDW", "MEM", "MIA", "MLI", "NAS", "OAK", "ONT", "PBI", "PHF", "PHX", "PIT", "PNS", "PUJ", "RDU", "RSW", "SAV", "SJC", "SJD", "SJU", "SMF", "STL", "BUR", "BWI", "CAK", "BKG", "BMI", "ATL", "ABQ", "CRP", "DFW", "ELP", "TPA", "TUL"));
+         	Stations["DAL"] = new Station("DAL", "", "Dallas Love, TX", true, true, new Array("CUN", "DAY", "DCA", "DTW", "ECP", "ELP", "FLL", "GNV", "GRR", "HOU", "HRL", "IAD", "ICT", "IND", "JAN", "JAX", "LAS", "LAX", "LBB", "LGA", "LIT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MSP", "MSY", "NAS", "NYC", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PHL", "PIT", "PNS", "PUJ", "RDU", "RIC", "RNO", "RSW", "SAT", "SDF", "SFO", "SJC", "SJD", "SJU", "SNA", "STL", "TPA", "TUL", "BOS", "BUR", "ATL", "BUF", "BWI", "CAK", "CHI", "CHS", "CMH", "AUS", "BDA", "BHM", "ALB", "AMA", "AUA", "ABQ"));
+         	Stations["DSM"] = new Station("DSM", "", "Des Moines, IA", true, true, new Array("CUN", "DAY", "DEN", "BOS", "ATL", "BTV", "BWI", "CAK", "CLT", "CMH", "ACY", "AUA", "DCA", "DFW", "DTW", "FLL", "GRB", "HOU", "IAD", "ICT", "IND", "JAX", "LAS", "LAX", "LCH", "LEX", "LGA", "MBJ", "MCO", "MDW", "MEM", "MIA", "MKE", "MSP", "MSY", "NAS", "PBI", "PHF", "PIT", "PNS", "PUJ", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SDF", "SEA", "SFO", "SJU", "SRQ", "STL", "TPA", "UTM"));
+         	Stations["PDX"] = new Station("PDX", "", "Portland, OR", true, true, new Array("CUN", "CYS", "CZM", "DAY", "DCA", "DDC", "DEN", "BOI", "BWG", "LWT", "MAF", "BTR", "BWI", "CDR", "CEZ", "BDA", "BOS", "ABQ", "ABR", "AIA", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PVR", "RDU", "RIC", "RIW", "RKS", "RNO", "RSW", "SAF", "SDY", "SFO", "SJC", "SJD", "SJO", "SJU", "SLC", "SMF", "SNA", "TEX", "TPA", "WRL", "YYC", "ZFT", "IAH", "GTR", "HDN", "LBF", "GJT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MHK", "MSP", "MSY", "OAK", "IAD", "IND", "ISN", "JAC", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "FLL", "HYS", "PBI", "COS", "ATL", "FMN", "GCC", "GCK", "GDL", "GEG", "GRR", "HON", "HOU", "DFW", "DIK", "DRO", "EAR", "ELY", "FAR"));
+         	Stations["PVD"] = new Station("PVD", "", "Providence, RI", true, true, new Array("CUN", "DAY", "DEN", "BWI", "CAK", "CHI", "CLT", "BDA", "AUA", "PNS", "PUJ", "RDU", "RIC", "ROC", "RSW", "SAT", "SFO", "SJD", "SJU", "STL", "TPA", "AUS", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MSP", "MSY", "NAS", "ICT", "IND", "JAX", "LAS", "LAX", "LEX", "PBI", "ATL", "FLL", "GRR", "HOU"));
+         	Stations["PWM"] = new Station("PWM", "", "Portland, ME", true, true, new Array("CUN", "DAB", "DAY", "DEN", "BOI", "BUR", "BWI", "CAK", "CHI", "CLT", "CMH", "BDA", "BKG", "BMI", "AUA", "PNS", "PUJ", "RDU", "ROC", "RSW", "SAT", "SAV", "SEA", "SFO", "SJU", "SRQ", "STL", "TPA", "UTM", "IAD", "IAH", "AUS", "MBJ", "MCI", "MCO", "MDW", "MEM", "MKE", "MLI", "MSP", "MSY", "NAS", "ICT", "IND", "JAX", "LAS", "LAX", "MIA", "HSV", "ONT", "PBI", "ATL", "FLL", "FNT", "GPT", "GRR", "HOU", "DFW", "DSM", "DTW"));
+         	Stations["RNO"] = new Station("RNO", "", "Reno/Tahoe, NV", true, true, new Array("CUN", "CYS", "CZM", "DAL", "DAY", "DCA", "DDC", "DEN", "BTR", "BWI", "CAK", "CDR", "CEZ", "CMH", "BDA", "BOS", "ABR", "AIA", "ANC", "PDX", "PHL", "PHX", "PIR", "PIT", "PNS", "PVR", "RDU", "RIC", "TEX", "TPA", "TUL", "WRL", "IAD", "IAH", "LBF", "RIW", "RKS", "RSW", "SAF", "SAN", "SEA", "SJD", "SJU", "SLC", "SNA", "GJT", "MCO", "MDW", "MEM", "MEX", "MSY", "OAK", "HYS", "IND", "ISN", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "PBI", "ATL", "FLL", "FMN", "GCC", "GCK", "GDL", "GRR", "HON", "HOU", "DFW", "DIK", "DTW", "EAR"));
+         	Stations["SEA"] = new Station("SEA", "", "Seattle/Tacoma, WA", true, true, new Array("CUN", "CVG", "CYS", "CZM", "DAB", "DAY", "DCA", "DDC", "DEN", "BUR", "JAC", "LWT", "BTR", "BTV", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHI", "CLT", "CMH", "BDA", "BKG", "BMI", "BNA", "BOS", "ABQ", "ABR", "ACY", "AIA", "AUA", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVR", "PWM", "RDU", "RIC", "ROC", "RSW", "SAF", "SAT", "SAV", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "SWF", "TEX", "TPA", "UTM", "WRL", "YYC", "IAD", "IAH", "HDN", "LBF", "RIW", "RKS", "RNO", "AUS", "GJT", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "HYS", "ICT", "IND", "ISN", "JAX", "LAR", "LAS", "LBL", "LGA", "MHK", "HSV", "ONT", "PBI", "COS", "ATL", "FLL", "FMN", "FNT", "FPO", "GCC", "GCK", "GDL", "GPT", "GRR", "HON", "HOU", "HPN", "DFW", "DIK", "DRO", "DSM", "DTW", "EAR", "ELY", "FAR"));
+         	Stations["SJC"] = new Station("SJC", "", "San Jose, CA", true, true, new Array("CUN", "CYS", "CZM", "DAL", "DDC", "DEN", "EWR", "BUR", "JAC", "JAN", "LWT", "MAF", "BTR", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHI", "CMH", "BDA", "BHM", "BNA", "BOS", "ABR", "AIA", "ANC", "AUA", "PDX", "PHX", "PIR", "PIT", "PNS", "PUB", "PVR", "RDU", "RIC", "RSW", "SAF", "SAN", "SDY", "SEA", "SJD", "SJU", "TEX", "TPA", "WRL", "IAD", "HDN", "LBF", "RIW", "RKS", "AUS", "GJT", "GNV", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MSY", "HYS", "IAH", "ISN", "ISP", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "HSV", "ONT", "PBI", "COS", "ATL", "FMN", "GCC", "GCK", "HON", "HOU", "DFW", "DIK", "DRO", "EAR", "ELY", "FAR"));
+         	Stations["SLC"] = new Station("SLC", "", "Salt Lake City, UT", true, true, new Array("CUN", "CVG", "CYS", "CZM", "DAY", "DDC", "JAC", "LWT", "BTR", "BWI", "CDR", "CHI", "BDA", "BOS", "ABR", "AIA", "AMA", "ANC", "PDX", "PHX", "PIR", "PIT", "PNS", "PRC", "PUJ", "PVR", "RDU", "RIC", "RSW", "SAF", "SDY", "SEA", "SJD", "SJO", "SJU", "SNA", "SYR", "TEX", "TPA", "WRL", "IAD", "HDN", "LBF", "RIW", "RKS", "RNO", "AUS", "GJT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MSY", "MZT", "OAK", "OKC", "HYS", "IAH", "ISN", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "COS", "ATL", "FLL", "FMN", "GCC", "GCK", "GDL", "GRR", "HON", "HOU", "DEN", "DFW", "DIK", "DRO", "EAR", "ELY", "FAR"));
+         	Stations["SMF"] = new Station("SMF", "", "Sacramento, CA", true, true, new Array("CUN", "CVG", "CYS", "CZM", "DAY", "DCA", "DDC", "EWR", "BUR", "JAC", "JAN", "LWT", "BTR", "BUF", "BWI", "CAK", "CDR", "CEZ", "CMH", "BDA", "BHM", "BOS", "ABR", "AIA", "ANC", "ATL", "PBI", "PDX", "PHX", "PIR", "PIT", "PNS", "PUB", "PVR", "RDU", "RIC", "RSW", "SAF", "SAN", "SDY", "SEA", "SJD", "SJO", "SJU", "SNA", "TPA", "IAD", "HDN", "LBB", "LBF", "RIW", "RKS", "AUS", "GJT", "MBJ", "MCI", "MDW", "MEM", "MEX", "MSY", "HYS", "IAH", "ISN", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHK", "ONT", "COS", "FLL", "FMN", "GCC", "GCK", "GDL", "GRR", "HON", "HOU", "DEN", "DFW", "DIK", "DRO", "EAR", "ELY", "FAR"));
+         	Stations["SNA"] = new Station("SNA", "", "Orange County, CA", true, true, new Array("CUN", "CYS", "CZM", "DAL", "DAY", "DCA", "DDC", "BOI", "JAC", "LWT", "MAF", "BTR", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHI", "CLT", "CMH", "BHM", "BNA", "BOS", "ABQ", "ABR", "AIA", "ALB", "AMA", "ANC", "ATL", "AUA", "OMA", "PBI", "PDX", "PHX", "PIR", "PIT", "PNS", "PUB", "RDU", "RIC", "ROC", "RSW", "SAF", "SAT", "SDY", "SEA", "SFO", "SJD", "SJO", "SJU", "SLC", "SMF", "STL", "TEX", "TPA", "TUL", "TUS", "WRL", "IAD", "HDN", "LBF", "RIW", "RKS", "RNO", "AUS", "GJT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MSY", "OAK", "OKC", "HYS", "IAH", "ICT", "IND", "ISN", "JAX", "LAR", "LAS", "LBL", "MHK", "COS", "FLL", "FMN", "GCC", "GCK", "GDL", "GEG", "GRR", "HON", "HOU", "DEN", "DET", "DFW", "DIK", "DRO", "DTW", "EAR", "ECP", "ELP", "ELY", "FAR"));
+         	Stations["TUS"] = new Station("TUS", "", "Tucson, AZ", true, true, new Array("CUN", "CYS", "DCA", "DDC", "JAC", "LWT", "SJU", "BTR", "BWI", "CAE", "CAK", "CDR", "CEZ", "BOS", "ABQ", "ABR", "AIA", "ANC", "ATL", "PBI", "PIR", "PIT", "PUB", "RDU", "RSW", "SAF", "SAN", "SDY", "SJD", "SJO", "SNA", "TEX", "TPA", "WRL", "YYC", "DAY", "IAD", "HDN", "LBF", "RIC", "RIW", "RKS", "GJT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MSY", "HYS", "IAH", "ISN", "JAX", "LAR", "LAS", "LAX", "LBL", "LGU", "MHK", "COS", "FLL", "FMN", "GCC", "GCK", "GRR", "HON", "HOU", "DEN", "DFW", "DIK", "DRO", "EAR", "ELY", "FAR"));
+         	Stations["IAD"] = new Station("IAD", "WAS", "Washington, DC - Dulles", true, true, new Array("CVG", "DAB", "DAL", "DEN", "BUR", "CUN", "ELP", "BNA", "CMH", "AUS", "BDA", "BHM", "BKG", "BMI", "BOI", "ABQ", "ATL", "AUA", "CAK", "PUJ", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TLH", "TPA", "TUL", "TUS", "ICT", "IND", "JAN", "JAX", "LAS", "LAX", "LBB", "LGA", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "PBI", "PDX", "PHL", "PHX", "PIT", "PNS", "FLL", "COU", "CRP", "FNT", "GEG", "GPT", "GRR", "GSP", "HOU", "HRL", "DFW", "DSM", "DTW", "EYW"));
+         	Stations["SJD"] = new Station("SJD", "", "San Jose Cabo, MX", true, true, new Array("CYS", "DAL", "DAY", "DCA", "DDC", "DEN", "EWR", "BOI", "BUR", "JAC", "JAN", "MAF", "ASE", "BTR", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHI", "BFF", "BIL", "BNA", "BOS", "ABQ", "AIA", "ALS", "AMA", "ANC", "OMA", "PDX", "PHL", "PHX", "PIR", "PIT", "PUB", "PVD", "RDU", "RIC", "RSW", "SAN", "SAT", "SEA", "SFO", "SJC", "SLC", "SMF", "SNA", "STL", "TEX", "TPA", "TUL", "TUS", "WRL", "IAD", "HDN", "LBB", "LBF", "RIW", "RKS", "RNO", "AUS", "GJT", "MCI", "MCO", "MDW", "MKE", "MSP", "MSY", "OAK", "OKC", "HYS", "IND", "ISN", "JAX", "LAR", "LAS", "LAX", "LBL", "LGA", "MHT", "ONT", "ORF", "COS", "ATL", "FLL", "FMN", "GCC", "GCK", "GEG", "GRR", "HOU", "DIK", "DRO", "DTW", "EAR", "ECP", "ELP", "FAR"));
+         	Stations["FNT"] = new Station("FNT", "DTT", "Flint, MI", true, true, new Array("DAB", "DEN", "CUN", "BTV", "BWI", "CHS", "CLT", "AUS", "BDA", "BKG", "BOS", "ACY", "ATL", "AUA", "DCA", "DAY", "FPO", "GPT", "HOU", "HPN", "IAD", "ICT", "JAX", "LAS", "LAX", "LGA", "MBJ", "MCI", "MCO", "MEM", "MEX", "MIA", "MSP", "MSY", "NAS", "PBI", "PHF", "PHL", "PNS", "PUJ", "PWM", "RDU", "RIC", "RSW", "SAT", "SAV", "SEA", "SFO", "SJU", "SRQ", "SWF", "TPA", "UTM", "DFW", "FLL"));
+         	Stations["HOU"] = new Station("HOU", "", "Houston-Hobby, TX", true, true, new Array("DAB", "DAL", "EWR", "BUR", "CUN", "ELP", "BNA", "BTV", "BUF", "BWI", "CHS", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BMI", "BOI", "BOS", "ACY", "ALB", "AMA", "ATL", "AUA", "CAK", "DCA", "GTR", "DAY", "ABQ", "FLL", "CRP", "FNT", "FPO", "GPT", "GRR", "GSP", "HPN", "HRL", "IAD", "ICT", "IND", "ISP", "JAN", "JAX", "LAS", "LAX", "LBB", "LEX", "LGA", "LIT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MGM", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFB", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TPA", "TUL", "TUS", "UTM", "DSM", "DTW", "ECP", "EYW"));
+         	Stations["ECP"] = new Station("ECP", "", "Panama City Beach, FL", true, true, new Array("DAL", "DAY", "BOS", "BNA", "BWI", "CAK", "CMH", "AUS", "BDA", "AUA", "DTW", "ELP", "FLL", "GRR", "HOU", "IND", "JAX", "LAS", "LGA", "MAF", "MBJ", "MCI", "MCO", "MEM", "MSY", "PUJ", "RIC", "SAT", "SJD", "SJU", "SNA", "STL"));
+         	Stations["GRR"] = new Station("GRR", "", "Grand Rapids, MI", true, true, new Array("DAL", "DEN", "BUR", "CUN", "ELP", "BNA", "BUF", "BWI", "CHS", "CLE", "CLT", "CMH", "AUS", "BDA", "BDL", "BHM", "BKG", "BOS", "ALB", "ATL", "AUA", "DCA", "ABQ", "FLL", "GPT", "GSP", "HOU", "HRL", "HSV", "IAD", "ICT", "ISP", "JAN", "JAX", "LAS", "LAX", "LBB", "LIT", "MBJ", "MCI", "MCO", "MEM", "MHT", "MIA", "MSP", "MSY", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PDX", "PHF", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SDF", "SEA", "SFO", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TPA", "TUS", "TYS", "UTM", "DFW", "ECP", "EYW"));
+         	Stations["HRL"] = new Station("HRL", "", "Harlingen, TX", true, true, new Array("DAL", "EWR", "CUN", "ELP", "BNA", "BWI", "AUS", "BOS", "ABQ", "ATL", "CAK", "DCA", "DAY", "FLL", "MEX", "MKE", "MSP", "OKC", "PBI", "PHL", "PHX", "PIT", "RDU", "RIC", "RSW", "SAT", "SJU", "STL", "TPA", "WAS", "CRP", "GRR", "HOU", "IAD", "IND", "JAX", "LAS", "LAX", "MAF", "MCI", "MCO", "MDW", "MEM", "DTW"));
+         	Stations["LBB"] = new Station("LBB", "", "Lubbock, TX", true, true, new Array("DAL", "DEN", "BUR", "CUN", "JAX", "BWI", "CHI", "CMH", "AUS", "BOS", "ACT", "ATL", "CAK", "DCA", "PNS", "RDU", "RIC", "ROC", "RSW", "SAT", "SJD", "SJU", "SMF", "STL", "TPA", "DAY", "IAD", "IND", "LAS", "LAX", "LGA", "LIT", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MSY", "NYC", "OKC", "PBI", "PHL", "PIT", "FLL", "GRR", "HOU", "DTW"));
+         	Stations["MEX"] = new Station("MEX", "", "Mexico City, MX", true, true, new Array("DAL", "DCA", "DEN", "ELP", "JAN", "BNA", "BUF", "BWI", "CHI", "CLE", "CLT", "CMH", "BHM", "BKG", "BOS", "ABQ", "AMA", "ATL", "CAK", "DAY", "LIT", "MCI", "MCO", "MDW", "MEM", "MHT", "MKE", "MSP", "MSY", "OAK", "OKC", "ORF", "PBI", "PHL", "PHX", "PIT", "PNS", "PVD", "RDU", "RIC", "RNO", "ROC", "RSW", "SAT", "SFO", "SJC", "SLC", "SMF", "SNA", "SRQ", "STL", "TPA", "TUL", "TUS", "IAD", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LBB", "LGA", "FLL", "HRL", "FNT", "HOU", "HPN", "DTW"));
+         	Stations["OMA"] = new Station("OMA", "", "Omaha, NE", true, true, new Array("DAL", "DAY", "DEN", "CUN", "BTV", "CHO", "BDA", "BOS", "AUA", "PBI", "PHF", "PHL", "PHX", "PNS", "PUJ", "RDU", "RIC", "RSW", "SJD", "SJU", "SNA", "STL", "TLH", "TPA", "UTM", "CAK", "GNV", "MBJ", "MCO", "MDW", "MEM", "MSY", "NAS", "IAD", "JAX", "LAS", "MIA", "FLL", "ATL", "DFW"));
+         	Stations["ONT"] = new Station("ONT", "", "Ontario, CA", true, true, new Array("DAL", "DAY", "DCA", "DEN", "EWR", "CUN", "ELP", "BUF", "BWI", "BOS", "CAK", "AUS", "LIT", "MCO", "MDW", "MEM", "MSY", "OAK", "IAD", "IND", "ISP", "JAX", "JQF", "LAS", "LGA", "FLL", "PHL", "PHX", "PIT", "PNS", "PWM", "RDU", "RIC", "RSW", "SEA", "SFO", "SJC", "SJD", "SJU", "SMF", "STL", "TPA", "ATL", "GRR", "HOU", "DET", "DTW"));
+         	Stations["ORF"] = new Station("ORF", "", "Norfolk, VA", true, true, new Array("DAL", "DAY", "DEN", "CUN", "BNA", "BUF", "BWI", "CHI", "CLT", "CMH", "BDA", "BDL", "BOS", "AUA", "CAK", "AUS", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKE", "MSP", "MSY", "NAS", "OKC", "ICT", "IND", "JAX", "LAS", "LAX", "LGA", "FLL", "PBI", "PIT", "PNS", "PUJ", "RDU", "ROC", "RSW", "SAT", "SBN", "SDF", "SFO", "SJD", "SJU", "STL", "TPA", "ATL", "FOE", "GRR", "HOU", "DTW"));
+         	Stations["PUJ"] = new Station("PUJ", "", "Punta Cana, DR", true, true, new Array("DAL", "DAY", "DCA", "DEN", "EWR", "BUF", "BWI", "CAK", "CHS", "CLE", "CLT", "CMH", "BDL", "BHM", "BMH", "BMI", "BNA", "BOS", "ABQ", "ACY", "ALB", "OMA", "PHF", "PHL", "PHX", "PIT", "PNS", "PVD", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SDF", "SEA", "SFO", "SJU", "SLC", "SRQ", "STL", "TPA", "TUL", "IAD", "AUS", "MCI", "MCO", "MDW", "MEM", "MKE", "MLI", "MSP", "MSY", "OKC", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LGA", "MHT", "MIA", "ORF", "PBI", "ATL", "FLL", "FNT", "GRR", "GSP", "HOU", "HPN", "DFW", "DSM", "DTW", "ECP"));
+         	Stations["ISP"] = new Station("ISP", "", "Long Island/Islip, NY", true, true, new Array("DEN", "BUR", "CUN", "BWI", "CHI", "CHO", "CLT", "CMH", "AUS", "BDA", "BOS", "ATL", "AUA", "CAK", "DAY", "IND", "JAX", "LAS", "LAX", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MSP", "MSY", "NAS", "OAK", "ONT", "PBI", "PNS", "PUJ", "RIC", "ROC", "RSW", "SAT", "SFO", "SJC", "SJU", "STL", "TPA", "FLL", "GRR", "HOU", "DTW"));
+         	Stations["MHT"] = new Station("MHT", "", "Manchester, NH", true, true, new Array("DEN", "CUN", "MBJ", "BUF", "BWI", "CHI", "CLT", "AUS", "BDA", "AMA", "AUA", "CAK", "DAY", "MCI", "MCO", "MDW", "MEM", "MEX", "IND", "JAX", "JQF", "LAS", "LAX", "MKE", "MSN", "MSP", "MSY", "NAS", "PBI", "PNS", "PUJ", "RDU", "RIC", "ROC", "RSW", "SAT", "SDF", "SFO", "SJD", "SJU", "STL", "TPA", "FLL", "ATL", "GRR", "HOU"));
+         	Stations["BOI"] = new Station("BOI", "", "Boise, ID", true, true, new Array("LAS", "LGA", "LWT", "MBJ", "MCO", "MEM", "MHK", "MKE", "MSN", "MSY", "MZT", "OAK", "PBI", "PDX", "PHL", "PHX", "PIT", "PNS", "PRC", "PVR", "PWM", "RDU", "RIC", "RSW", "SAT", "SDY", "SHR", "SJD", "SJO", "SJU", "SLN", "SNA", "STL", "TPA", "ATL", "BOS", "BTR", "BUF", "BWI", "CAK", "CMH", "COS", "COU", "CUN", "CZM", "DAY", "DCA", "DEN", "DRO", "DTW", "ELY", "FAR", "FLL", "GDL", "GEG", "GJT", "GUP", "HDN", "HOU", "IAD", "IND", "ITH", "JAC", "JAX", "ABR", "AIA", "ALS", "ANC"));
+         	Stations["BOS"] = new Station("BOS", "", "Boston, MA", true, true, new Array("BUF", "BUR", "BWI", "CAK", "CHS", "CLE", "CLT", "CMH", "CRP", "CUN", "DAB", "DAL", "DAY", "DCA", "DEN", "DFW", "DSM", "DTW", "ECP", "ELP", "ATL", "BHM", "BKG", "BMI", "BNA", "BOI", "EYW", "FLL", "FMY", "FNT", "FPO", "GEG", "GPT", "GRR", "GSP", "HOU", "HRL", "HSV", "ICT", "IND", "ISP", "JAN", "JAX", "LAS", "LAX", "LBB", "LIT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PHF", "PHL", "PHX", "PIT", "PNS", "PUJ", "RDU", "RIC", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TPA", "TUL", "TUS", "UTM", "AUA", "AUS", "BDA", "ABQ"));
+         	Stations["BUF"] = new Station("BUF", "WNY", "Buffalo/Niagara, NY", true, true, new Array("BOS", "TPA", "TUL", "UTM", "ATL", "BWI", "CHS", "CLT", "CRP", "CUN", "DAB", "DAL", "DAY", "DEN", "DFW", "ELP", "EYW", "FLL", "FPO", "GPT", "GRR", "GSP", "HOU", "ICT", "IND", "JAN", "JAX", "LAS", "LAX", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PHF", "PHX", "PNS", "PUJ", "RDU", "RIC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SMF", "SNA", "SRQ", "STL", "BHM", "BKG", "BMI", "BNA", "BOI", "AUA", "AUS", "BDA", "ABQ"));
+         	Stations["BUR"] = new Station("BUR", "", "Burbank, CA", true, true, new Array("BOS", "BWI", "CAK", "CMH", "CUN", "DAL", "DAY", "DCA", "DEN", "DET", "DTW", "EWR", "FLL", "GRR", "HOU", "IAD", "ICT", "IND", "ISP", "JAX", "LAS", "LBB", "LGA", "LIT", "MAF", "MCO", "MDW", "MEM", "MSY", "NYC", "OAK", "PBI", "PHL", "PHX", "PIT", "PNS", "PWM", "RDU", "RIC", "RSW", "SAT", "SEA", "SFO", "SJC", "SJD", "SJU", "SMF", "STL", "TPA", "ATL", "BNA", "AMA", "AUS"));
+         	Stations["BWI"] = new Station("BWI", "WAS", "Baltimore/Washington, MD", true, true, new Array("BOS", "BUR", "ATL", "BTV", "BUF", "CAK", "CHS", "CLE", "CLT", "CMH", "CRP", "CUN", "DAB", "DAL", "DAY", "DEN", "DFW", "DSM", "DTW", "ECP", "ELP", "EWR", "EYW", "FLL", "FNT", "FPO", "GPT", "GRR", "GSP", "HOU", "HRL", "HSV", "ICT", "IND", "ISP", "JAN", "JAX", "LAS", "LAX", "LBB", "LGA", "LIT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHT", "MIA", "MKC", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "ONT", "ORF", "PBI", "PDX", "PHX", "PIT", "PNS", "PUJ", "PVD", "PWM", "RDU", "RNO", "ROC", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SLC", "SMF", "SNA", "SRQ", "STL", "TLH", "TPA", "TUL", "TUS", "UTM", "BDL", "BHM", "BKG", "BMI", "BNA", "BOI", "ALB", "AMA", "AUA", "AUS", "BDA", "ABQ"));
+         	Stations["CAK"] = new Station("CAK", "", "Akron/Canton, OH", true, true, new Array("BOS", "BUR", "ATL", "BTV", "BWI", "CHI", "CHS", "CLT", "CRP", "CUN", "DAB", "DAL", "DCA", "DEN", "DFW", "DSM", "ECP", "ELP", "EWR", "EYW", "PHX", "PNS", "PUJ", "PVD", "PWM", "RDU", "RIC", "RNO", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJD", "SJU", "SMF", "SNA", "SRQ", "STL", "TPA", "TUL", "TUS", "UTM", "BDL", "BHM", "BKG", "BMI", "BNA", "BOI", "ACY", "ALB", "AMA", "AUA", "AUS", "FLL", "FMY", "FPO", "GPT", "GSP", "HOU", "HRL", "IAD", "ICT", "IND", "ISP", "JAN", "JAX", "LAS", "LAX", "LBB", "LGA", "LIT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PHF", "PHL", "BDA", "ABQ"));
+         	Stations["CHS"] = new Station("CHS", "", "Charleston, SC", true, true, new Array("BOS", "ATL", "BTV", "BUF", "BWI", "CAK", "CLT", "CRP", "CUN", "DAB", "DAL", "DAY", "DFW", "FLL", "FNT", "FPO", "GEG", "GRR", "HOU", "IND", "LAS", "MBJ", "MCO", "MDW", "MEM", "MIA", "MKC", "MLI", "MSY", "NAS", "PNS", "PUJ", "RDU", "RSW", "SJU", "SWF", "TPA", "TUL", "BDA", "BKG", "BMI", "BNA", "BTR", "ACY", "ALB", "AUA", "AUS", "ABQ"));
+         	Stations["CLE"] = new Station("CLE", "", "Cleveland, OH", true, true, new Array("BOS", "ATL", "BWI", "CUN", "DCA", "ELP", "FLL", "GRR", "HUF", "HUG", "IND", "JAX", "LAS", "LAX", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MKC", "MSY", "NAS", "PBI", "PUJ", "RDU", "RIC", "RSW", "SAT", "SJU", "TPA", "AUS", "BDA", "BNA", "AUA", "ABQ"));
+         	Stations["CLT"] = new Station("CLT", "", "Charlotte, NC", true, true, new Array("BOS", "ATL", "BNA", "BTV", "BUF", "BWI", "CAK", "CHI", "CHS", "CMH", "CUN", "DAB", "DAY", "DCA", "DEN", "DFW", "DSM", "DTW", "FLL", "FNT", "FPO", "GPT", "GRR", "HOU", "HPN", "ICT", "IND", "ISP", "JAN", "JAX", "LAS", "LAX", "LGA", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MHT", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OAK", "ORF", "PBI", "PHF", "PHL", "PIT", "PNS", "PUJ", "PVD", "PWM", "RIC", "ROC", "RSW", "SAT", "SAV", "SDF", "SEA", "SFO", "SJU", "SNA", "SRQ", "STL", "SWF", "TPA", "UTM", "AUS", "BDA", "BFI", "BKG", "BMI", "ACY", "ALB", "AMA", "AUA"));
+         	Stations["CMH"] = new Station("CMH", "", "Columbus, OH", true, true, new Array("BOS", "BUR", "ATL", "BNA", "BTV", "BWI", "CLT", "CRP", "CUN", "DAL", "DCA", "DEN", "DFW", "DSM", "ECP", "ELP", "EYW", "FLL", "GPT", "GRR", "GSP", "HOU", "HPN", "IAD", "ICT", "ISP", "JAN", "JAX", "LAS", "LAX", "LBB", "LGA", "LNK", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "OKC", "ORF", "PBI", "PHF", "PHL", "PHX", "PNS", "PUJ", "PWM", "RDU", "RIC", "RNO", "RSW", "SAN", "SAT", "SAV", "SDF", "SEA", "SFO", "SJC", "SJU", "SMF", "SNA", "SRQ", "STL", "SWF", "TPA", "TUL", "UTM", "AUS", "BDA", "BDL", "BHM", "BKG", "BMI", "BOI", "ACY", "ALB", "AUA", "ABQ"));
+         	Stations["GSP"] = new Station("GSP", "", "Greenville-Spartanburg, SC", true, true, new Array("CUN", "BNA", "BUF", "BWI", "CMH", "AUS", "BDA", "BOS", "AUA", "CAK", "DCA", "TPA", "DAY", "GLH", "FLL", "GRR", "HOU", "IAD", "IND", "LAS", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MKE", "MSP", "MSY", "NAS", "PHL", "PIT", "PUJ", "RDU", "RIC", "RSW", "SJU", "STL", "SWO", "DTW"));
+         	Stations["WAS"] = new Station("WAS", "WAS", "Washington DC Area", true, true, new Array("MAF", "HRL", "GEG"));
+         	Stations["ATL"] = new Station("ATL", "", "Atlanta, GA", true, true, new Array("AUA", "AUS", "BDA", "BDL", "BFF", "BGR", "BIL", "BKG", "BKX", "BMG", "BMI", "BNA", "BOI", "BOS", "BTR", "BTV", "BUF", "BUR", "BWI", "CAK", "CDR", "CEZ", "CHS", "CID", "CKB", "CLE", "CLT", "CMH", "COS", "COU", "CRP", "CUN", "CVG", "CVN", "CYS", "DAB", "DAL", "DAY", "DCA", "DDC", "DEN", "DFW", "DIK", "DRO", "DSM", "DTW", "ABR", "ACT", "ACY", "AIA", "ALB", "ALS", "AMA", "EAR", "ELP", "ELY", "EUG", "EWR", "EYW", "FAR", "FAT", "FLL", "FMN", "FNT", "FPO", "FYV", "GCC", "GCK", "GDL", "GEG", "GJT", "GPT", "GRR", "GTR", "GUP", "HDN", "HON", "HOU", "HPN", "HRL", "HYS", "IAD", "ICT", "IGM", "IND", "ISN", "ISP", "JAC", "JAN", "JAX", "LAR", "LAS", "LAX", "LBB", "LBF", "LBL", "LEX", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MEX", "SLN", "SMF", "SNA", "SOW", "SPS", "SRQ", "STL", "SVC", "SWF", "SWO", "SYR", "TEX", "TPA", "TUL", "TUP", "TUS", "UTM", "WRL", "YVR", "YYC", "ZIH", "ABQ", "MHK", "MHT", "MIA", "MKE", "MLI", "MLU", "MSO", "MSP", "MSY", "MZT", "NAS", "NPL", "OAK", "OKC", "OMA", "ONT", "ORF", "PBI", "PDX", "PGA", "PHF", "PHL", "PHX", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVD", "PVR", "PWM", "RDU", "RIC", "RIW", "RKS", "RNO", "ROC", "RSW", "SAF", "SAN", "SAT", "SAV", "SDF", "SDY", "SEA", "SFO", "SHR", "SHV", "SJC", "SJD", "SJU", "SLC"));
+         	Stations["AUA"] = new Station("AUA", "", "Aruba, Aruba", true, true, new Array("ATL", "ALB", "AUS", "AVL", "BDL", "BHM", "BMI", "BNA", "BOS", "BUF", "BWI", "CAK", "CHS", "CLE", "CLT", "CMH", "CRW", "DAL", "DAY", "DCA", "DEN", "DFW", "DSM", "DTW", "ECP", "FLL", "FNT", "GEG", "GRR", "GSP", "HOU", "HSV", "IAD", "ICT", "IND", "ISP", "JAX", "LAS", "LAX", "LEX", "LGA", "MCI", "MCO", "MDW", "MEM", "MHT", "MKE", "MLI", "MSP", "MSY", "OKC", "OMA", "ORF", "PBI", "PHF", "PHL", "PHX", "PIT", "PNS", "PVD", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SDF", "SEA", "SFO", "SJC", "SJU", "SNA", "STL", "TPA", "TYS", "ABE", "ABQ"));
+         	Stations["AUS"] = new Station("AUS", "", "Austin, TX", true, true, new Array("ATL", "CLE", "CLT", "CMH", "COS", "CRP", "CUN", "DAL", "DAY", "DCA", "DEN", "DRO", "DTW", "ECP", "ELP", "ELY", "EYW", "FAR", "FLL", "FNT", "GJT", "GRR", "GSP", "GUP", "HDN", "HOU", "HRL", "IAD", "ICT", "IND", "ISP", "JAC", "JAN", "JAX", "LAS", "LAX", "LBB", "LGA", "LIT", "LWT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEM", "MHK", "MHT", "MKE", "MSO", "MSP", "MSY", "NAS", "OAK", "ABR", "AIA", "ALB", "ALS", "ANC", "AUA", "BDA", "BHM", "BNA", "BOS", "BUF", "BUR", "BWI", "CAK", "CHS", "OKC", "ONT", "ORF", "PBI", "PHL", "PHX", "PIT", "PNS", "PRC", "PUJ", "PVD", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SDF", "SDY", "SEA", "SFO", "SHR", "SJC", "SJD", "SJU", "SLC", "SLN", "SMF", "SNA", "STL", "TPA", "TUL", "YVR", "YYC", "ABQ"));
+         	Stations["BDL"] = new Station("BDL", "", "Hartford, CT", true, true, new Array("ATL", "BFF", "BKX", "BMI", "BWI", "CAK", "CDR", "CEZ", "CMH", "COS", "CUN", "CVG", "CVN", "CYS", "DAY", "DCA", "DDC", "DEN", "DFW", "DIK", "DRO", "DTW", "EAR", "ELY", "FAR", "FLL", "FMN", "GCC", "GCK", "GJT", "GRR", "GUP", "HON", "HOU", "HYS", "IAH", "IGM", "IND", "INT", "ISN", "JAC", "JAX", "LAF", "LAR", "LAS", "LAX", "LBF", "LBL", "LWT", "MBJ", "MCI", "MCO", "MDW", "MEM", "MHK", "MKE", "MSO", "MSP", "MSY", "MZT", "NAS", "NPL", "OKC", "ORF", "PBI", "PGA", "PIR", "PIT", "PNS", "PRC", "PUB", "PUJ", "PVR", "RDU", "RIC", "RIW", "RKS", "RSW", "SAF", "SAT", "SDF", "SDY", "SFB", "SFO", "SHR", "SJU", "SLN", "SOW", "STL", "SVC", "TEX", "TPA", "WRL", "ABR", "AIA", "ALS", "AUA", "BDA"));
+         	Stations["BKG"] = new Station("BKG", "", "Branson, MO", true, true, new Array("ATL", "BHM", "BMI", "BNA", "BOS", "BTV", "BUF", "BWI", "CAK", "CHS", "CLT", "CMH", "CRP", "CUN", "DAY", "DCA", "DEN", "DFW", "DTW", "EWR", "FLL", "FNT", "GPT", "GRR", "HOU", "HPN", "HSV", "IAD", "IND", "JAX", "LAS", "LAX", "LGA", "LIT", "MBJ", "MCO", "MDW", "MEM", "MEX", "MIA", "MKE", "MLI", "MSP", "MSY", "NAS", "ORL", "PBI", "PHF", "PHL", "PIT", "PNS", "PWM", "RDU", "RIC", "ROC", "RSW", "SAN", "SAT", "SEA", "SFO", "SJU", "SRQ", "SWF", "TPA", "UTM", "ACY", "BDA"));
+         	Stations["BNA"] = new Station("BNA", "", "Nashville, TN", true, true, new Array("ATL", "CLT", "CMH", "COS", "CRP", "CUN", "DAY", "DCA", "DEN", "DRO", "DTW", "ECP", "ELP", "ELY", "EPL", "FAR", "FLL", "GDL", "GEG", "GJT", "GRR", "GSP", "GTR", "GUP", "HDN", "HOU", "HRL", "IAD", "JAC", "JAX", "LAS", "LAX", "LWT", "MAF", "MBJ", "MCI", "MCO", "MDW", "MEX", "MHK", "MKE", "MLU", "MSO", "MSP", "MSY", "MZT", "NAS", "OAK", "OKC", "ORF", "PBI", "PHL", "PHX", "PIT", "PNS", "BHM", "BKG", "BOS", "BTR", "BUF", "BUR", "BWI", "CAK", "CHS", "CLE", "PRC", "PUJ", "PVR", "RDU", "RIC", "RSW", "SAN", "SAT", "SDY", "SEA", "SFO", "SHR", "SJC", "SJD", "SJO", "SJU", "SLN", "SNA", "STL", "TPA", "TUL", "YVR", "YYC", "ZIH", "ABR", "AIA", "ALS", "ANC", "AUA", "AUS", "BDA"));
+         	Stations["EYW"] = new Station("EYW", "", "Key West, FL", true, true, new Array("BUF", "BWI", "CAK", "CHI", "CMH", "AUS", "BOS", "ATL", "DCA", "DAY", "ABQ", "DTW", "GRR", "HOU", "IAD", "IND", "LGA", "LIT", "MCI", "MCO", "MEM", "MKE", "MSY", "PHL", "PIT", "RDU", "RIC", "STL", "TPA"));
+         	Stations["CHI"] = new Station("CHI", "CHI", "Chicago Area", true, true, new Array("CAK", "CLT", "DAL", "EYW", "ISP", "JAN", "LBB", "MEX", "MHK", "MHT", "OKC", "ORF", "PHX", "PVD", "PWM", "ROC", "SAN", "SDF", "SEA", "SJC", "SJD", "SLC", "SLN", "SNA", "BDA"));
+         	Stations["DTT"] = new Station("DTT", "DTT", "Detroit Area", true, true, new Array("BDA", "ALB", "CRP", "LAX"));
+         	Stations["BFI"] = new Station("BFI", "", "Boeing Field International Airport", true, true, new Array("CLT"));
+         	Stations["BHM"] = new Station("BHM", "", "Birmingham, AL", true, true, new Array("BKG", "BNA", "BOS", "BTR", "BUF", "BWI", "CAE", "CAK", "CMH", "CUN", "DAL", "DAY", "DCA", "DTW", "ELP", "FLL", "FYV", "GRR", "GSO", "HOU", "IAD", "IND", "JAN", "JAX", "LAS", "LGA", "LIT", "MBJ", "MCI", "MCO", "MDW", "MEX", "MKE", "MSP", "MSY", "NAS", "NYC", "OKC", "PHL", "PIT", "PUJ", "RDU", "RIC", "RSW", "SAN", "SAT", "SFB", "SJC", "SJU", "SMF", "SNA", "STL", "TPA", "TUL", "XNA", "AUA", "AUS", "BDA", "ABQ"));
+         	Stations["ABQ"] = new Station("ABQ", "", "Albuquerque, NM", true, true, new Array("HRL", "HYS", "IAD", "IND", "ISN", "JAC", "LAS", "LAX", "LGA", "LWT", "MBJ", "MCI", "MCK", "MCO", "MDW", "MEM", "MEX", "MHK", "MKC", "MKE", "MSO", "MSY", "MZT", "NAS", "NYC", "OAK", "PBI", "PDX", "PHL", "PHX", "PIR", "PIT", "PNS", "PUJ", "PVR", "RDU", "RIC", "RIW", "RKS", "RSW", "SAF", "SAN", "SDY", "SEA", "SHR", "SJD", "SJO", "SJU", "SLN", "SNA", "STL", "TUS", "WRL", "YVR", "YYC", "ZIH", "ABR", "ACT", "AIA", "ALS", "AMA", "ANC", "ATL", "AUA", "AUS", "BDA", "BED", "BFF", "BHM", "BIL", "BKX", "BOS", "BTR", "BUF", "BWI", "CAK", "CDR", "CEZ", "CHS", "CLE", "CMH", "COS", "CRP", "CUN", "CYS", "CZM", "DAL", "DAY", "DCA", "DDC", "DEN", "DIK", "DRO", "DTW", "EAR", "ELP", "ELY", "EWR", "EYW", "FAR", "FAT", "FLL", "FMN", "GCC", "GCK", "GDL", "GJT", "GRR", "HDN", "HON", "HOU"));
+         	Stations["ALB"] = new Station("ALB", "", "Albany, NY", true, true, new Array("ATL", "AUA", "AUS", "BDA", "BWI", "CAK", "CHS", "CLT", "CMH", "CUN", "DAL", "DAY", "DTT", "DTW", "FLL", "GRR", "HOU", "ICT", "IND", "JAX", "LAS", "LAX", "MBJ", "MCI", "MCO", "MDW", "MEM", "MSP", "MSY", "NAS", "PUB", "PUJ", "RDU", "RIC", "ROC", "RSW", "SAT", "SJU", "SNA", "STL", "TPA"));
+         	Stations["AMA"] = new Station("AMA", "", "Amarillo, TX", true, true, new Array("ANC", "ATL", "BTR", "BUR", "BWI", "CAK", "CLT", "CUN", "CZM", "DAL", "DAY", "DEN", "HOU", "IND", "LAS", "LAX", "LGA", "LIT", "MAF", "MCI", "MCO", "MDW", "MEM", "MEX", "MHT", "MSP", "MSY", "MZT", "ORL", "PIT", "PVR", "RAP", "ROC", "RSW", "SAT", "SFO", "SJD", "SJU", "SLC", "SNA", "STL", "SUX", "TPA", "TUL", "YVR", "ZIH", "ABQ"));
+         	Stations["AVP"] = new Station("AVP", "", "Wilkes-Barre International Airport", true, true, new Array("JQF"));
+         	Stations["PAH"] = new Station("PAH", "", "Barkley Regional Airport", true, true, new Array("MDW"));
+
+
+         	var showStationCodes = true;
+
+         	function Station(code, macCode, name, validOrig, validDest, mktsArray) {
+         		this.code = code;
+         		this.macCode = macCode;
+         		this.name = name;
+         		this.validOrig = validOrig;
+         		this.validDest = validDest;
+         		this.mkts = mktsArray;
+         	}
+
+				// -->
+				
+				<!--
+
+				         	function changeDest(o, d, dVal) {
+				         		if (!document.images) { return; }
+
+				         		if (!d) { alert("There's no DropDownDest!"); return; }
+
+				         		var dLabel = d.options[0].text;
+				         		var oIx = eval(o.selectedIndex);
+				         		var dIx = 0;
+				         		var name = '';
+
+				         		if (oIx > 0) {
+				         			var oVal = o.options[oIx].value;
+
+				         			// clear and begin new destList
+				         			d.length = 1;
+				         			d.options[0] = new Option(dLabel);
+				         			if (d.requiredempty) {
+				         				d.options[0].value = d.requiredempty;
+				         			}
+
+				         			for (var i = 0; i < SortedStations.length; i++) {
+				         				for (j = 0; j < Stations[oVal].mkts.length; j++) {
+				         					var stnCode = Stations[oVal].mkts[j];
+				         					if ((SortedStations[i] == stnCode) && (Stations[stnCode].validDest == true)) {
+				         						if (stnCode == dVal) { dIx = d.length; }
+
+				         						d.length += 1;
+				         						if (showStationCodes) {
+				         							name = Stations[stnCode].name + ' (' + stnCode + ')';
+				         						}
+				         						else {
+				         							name = Stations[stnCode].name;
+				         						}
+				         						d.options[d.length - 1] = new Option(name);
+				         						d.options[d.length - 1].value = stnCode;
+				         						break;
+				         					}
+				         				}
+
+				         				if (d.length - 1 == Stations[oVal].mkts.length) { break; }
+				         			}
+
+				         			d.selectedIndex = dIx;
+				         		}
+				         		else {
+				         			fillList(d, dVal);
+				         		}
+				         	} // end changeDest
+
+				         	function fillList(d, dVal) {
+				         		if (!d) { alert("There's no DropDownDest!"); return; }
+
+				         		var dLabel = d.options[0].text;
+
+				         		if ((dVal == '') && (d.selectedIndex > -1)) {
+				         			dVal = d.options[d.selectedIndex].value;
+				         		}
+				         		var dIx = 0;
+
+				         		d.length = 1;
+				         		d.options[0] = new Option(dLabel);
+				         		if (d.requiredempty) {
+				         			d.options[0].value = d.requiredempty;
+				         		}
+
+
+				         		var name = '';
+				         		for (var i = 0; i < SortedStations.length; i++) {
+				         			stnCode = SortedStations[i];
+				         			var station = Stations[stnCode];
+				         			if (!station) {
+				         				continue;
+				         			}
+
+				         			if (Stations[stnCode].validDest == true) {
+				         				if (dVal == stnCode) {
+				         					dIx = d.length;
+				         				}
+				         				d.length += 1;
+				         				if (showStationCodes) {
+				         					name = Stations[stnCode].name + ' (' + stnCode + ')';
+				         				}
+				         				else {
+				         					name = Stations[stnCode].name;
+				         				}
+				         				d.options[d.length - 1] = new Option(name);
+				         				d.options[d.length - 1].value = stnCode;
+				         			}
+				         		}
+
+				         		d.selectedIndex = dIx;
+
+				         	} // end fillList
+
+				// -->
+				
+				         	var submitterClicked = false;
+
+				         	function preventDoubleClick() {
+				         		if (!submitterClicked) {
+				         			submitterClicked = true;
+				         			return true;
+				         		}
+
+				         		return false;
+				         	}
+				
+				<!--
+				         	function GetValue(element) {
+				         		if (element) {
+				         			switch (element.type) {
+				         				case 'text':
+				         					return element.value;
+				         				case 'password':
+				         					return element.value;
+				         				case 'select-one':
+				         					return element.options[element.selectedIndex].value;
+				         			}
+				         		}
+				         		return null;
+				         	}
+
+				         	function IsEmpty(element, defaultValue) {
+				         		if (defaultValue == undefined) {
+				         			if (element.requiredempty) {
+				         				defaultValue = element.requiredempty;
+				         			}
+				         			else {
+				         				defaultValue = '';
+				         			}
+				         		}
+
+				         		var val = GetValue(element);
+
+				         		if (val == null) return false;
+				         		while (val.substring(0, 1) == ' ') val = val.substring(1);
+				         		while (val.substring(val.length - 1, val.length) == ' ') val = val.substring(0, val.length - 1);
+				         		if ((val.length == 0) || ((defaultValue != null) && (val == defaultValue))) return true;
+				         		else return false;
+
+				         	}
+				// -->
+				
+				<!--
+				         	function GetSelectedValue(elementName) {
+				         		if (document['SkySales'][elementName])
+				         			return document['SkySales'][elementName].options[document['SkySales'][elementName].selectedIndex].value;
+				         	}
+				// -->
+				
+				<!--
+				         	function GetSelectedText(elementName) {
+				         		if (document['SkySales'][elementName])
+				         			return document['SkySales'][elementName].options[document['SkySales'][elementName].selectedIndex].text;
+				         	}
+				// -->
+				
+				<!--
+				         	function GetCheckedValue(radioGroupName) {
+				         		var ds = document['SkySales'];
+				         		if (ds[radioGroupName]) {
+				         			for (var i = 0; i < ds[radioGroupName].length; i++) {
+				         				if (ds[radioGroupName][i].checked) return ds[radioGroupName][i].value;
+				         			}
+				         		}
+				         	}
+				// -->
+				
+				<!--
+				         	function CheckDaysOfMonth(day, month, year) {
+				         		daysInMonth = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+				         		daysInFeb = (((year % 4 == 0) && ((!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28);
+
+				         		if ((month == 2 && day > daysInFeb) || day > daysInMonth[month - 1]) {
+				         			return false;
+				         		}
+
+				         		return true;
+				         	}
+
+				         	// day - 1-31
+				         	// month = 1-12
+				         	// year = 4 digit year
+				         	// returns true if date is greater than today's date. 
+				         	function IsFutureDate(day, month, year) {
+				         		var today = new Date();
+				         		if (today.getFullYear() < year ||
+							(today.getFullYear() == year && today.getMonth() < (month - 1)) ||
+							(today.getFullYear() == year && today.getMonth() == (month - 1) && today.getDate() <= (day - 1)))
+				         			return false;
+				         		return true;
+				         	}
+
+				         	// returns true if date is less than today's date. 
+				         	function IsPastDate(day, month, year) {
+				         		var today = new Date();
+				         		if (today.getFullYear() < year ||
+							(today.getFullYear() == year && today.getMonth() < (month - 1)) ||
+							(today.getFullYear() == year && today.getMonth() == (month - 1) && today.getDate() < (day - 1)))
+				         			return true;
+				         		return false;
+				         	}
+
+				         	// returns true if birthdate is within a valid age range.
+				         	// set max to < 0 for no maximum age restriction.
+				         	function IsDOBWithinRange(dateString, dob, min, max) {
+				         		var ldArray = dateString.split('|');
+				         		var dobMin = null;
+				         		var dobMax = null;
+				         		if (ldArray[0] < 2000) {
+				         			dobMin = new Date((ldArray[0] - 1900) - min, ldArray[1] - 1, ldArray[2]);
+				         			dobMax = new Date((ldArray[0] - 1900) - max, ldArray[1] - 1, ldArray[2]);
+				         		}
+				         		else {
+				         			dobMin = new Date(ldArray[0] - min, ldArray[1] - 1, ldArray[2]);
+				         			dobMax = new Date(ldArray[0] - max, ldArray[1] - 1, ldArray[2]);
+				         		}
+
+				         		if (max < 0) {
+				         			return (dobMin > dob);
+				         		}
+				         		return ((dobMin > dob) && (dobMax < dob));
+				         	}
+				//  -->
+				
+			<!--				         	HIDE
+
+				         	// Can have values Retain, Cancel, Change, New (create booking only)
+				         	var MarketAction = new Array();
+				         	// Can have values Default, Boarded ... see LiftStatus enum
+				         	// markets MarketLiftStatus != Default will not be eligible for change
+				         	var MarketLiftStatus = new Array();
+				         	var numMarketsToValidate = 2;
+				         	var numDatesToValidate = 2;
+
+				         	function ATAvailabilitySearchInputSearchView_initialize() {
+				         		try {
+				         			if (jsLoaded == null || jsLoaded != true) {
+				         				setTimeout('ATAvailabilitySearchInputSearchView_initialize()', 50);
+
+				         				return;
+				         			}
+				         		}
+				         		catch (e) {
+				         			setTimeout('ATAvailabilitySearchInputSearchView_initialize()', 50);
+				         			return;
+				         		}
+
+				         		var ds = document['SkySales'];
+
+				         		fillList(ds['ATAvailabilitySearchInputSearchView_DropDownListMarketOrigin1'], '');
+				         		changeDest(ds['ATAvailabilitySearchInputSearchView_DropDownListMarketOrigin1'], ds['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination1'], '');
+				         		highlightMoveDays(ds['ATAvailabilitySearchInputSearchView_DropDownListMarketMonth1'], '');
+				         		highlightMoveOriginCities(1, '');
+				         		highlightMoveDestinationCities(1, '');
+
+				         		fillList(ds['ATAvailabilitySearchInputSearchView_DropDownListMarketOrigin2'], '');
+				         		changeDest(ds['ATAvailabilitySearchInputSearchView_DropDownListMarketOrigin2'], ds['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination2'], '');
+				         		highlightMoveDays(ds['ATAvailabilitySearchInputSearchView_DropDownListMarketMonth2'], '');
+				         		highlightMoveOriginCities(2, '');
+				         		highlightMoveDestinationCities(2, '');
+
+				         		ReturnDateDisplay();
+				         	} // end _initialize method
+								
+								// STOP HIDING -->
+								
+				<!--
+								         	function UpdateCalendarDateEventArgs(dateSelected, passedInfo) {
+								         		this.dateSelected = dateSelected;
+								         		this.passedInfo = passedInfo;
+								         	}
+				// -->
+				
+				         	//
+				         	var RegisterFunctionsWithEvents = new Array(register('WindowLoad', 'ATAvailabilitySearchInputSearchView_initialize'), register('UpdateCalendarDate', 'UpdateCalendarDate'), register('UpdateFlightSearch', 'UpdateFlightSearch'), register('Validate', 'ATAvailabilitySearchInputSearchView_Validate'));
+				         	//

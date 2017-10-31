@@ -1,0 +1,853 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Best Deals on Flights, Air Tickets, and Travel Offers | AirTran Airways</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<meta name="description" content="Find great fares and cheap flights for the U.S., Mexico and Caribbean travel on AirTran Airways." />
+<meta name="keywords" content="AirTran, Air Tran, airline, low fare, cheap airfare, tickets, travel, reservations, Atlanta, Baltimore, Boston, Chicago, Philadelphia, Dallas, Florida, Fort Lauderdale, Fort Myers, Orlando, Sarasota, Tampa, New York, Newark, Las Vegas, Los Angeles, Indianapolis, Washington, DC" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="common/scripts/at_low.css" rel="stylesheet" media="screen" type="text/css" />
+<style type="text/css" media="screen,print">@import "common/scripts/at_main.css";</style>
+<link href="common/scripts/at_textregular.css" title="Normal text" rel="stylesheet" media="screen,projection" type="text/css" />
+<link href="http://www.airtran.com/common/scripts/at_textlarge.css" title="Larger text" rel="alternate stylesheet" media="screen,projection" type="text/css" />
+<link href="common/scripts/at_print.css" rel="stylesheet" media="print" type="text/css" />
+<script type="text/javascript" src="common/scripts/at_global.js"></script>
+<script type="text/javascript" src="common/scripts/openWin.js"></script>
+<script type="text/javascript">
+var curPane = 're';
+function switchPanes(newPane) {
+	if (! document.getElementById) return true;
+	if (curPane == newPane) return false;
+	var nav = document.getElementById('tab_' + curPane);
+	var pane = document.getElementById('pane_' + curPane);
+	nav.className = '';
+	pane.style.display = 'none';
+	nav = document.getElementById('tab_' + newPane);
+	pane = document.getElementById('pane_' + newPane);
+	nav.className = 'current';
+	pane.style.display = 'block';
+	curPane = newPane;
+	return false;
+}
+</script>
+<script type="text/javascript" src="common/scripts/AvailabilitySearchCities.js@v=94"></script>
+<script type="text/javascript" src="common/scripts/AvailabilitySearchInput.js@v=15"></script>
+<link rel="stylesheet" type="text/css" media="all" href="common/scripts/skycal.css" />
+<script type="text/javascript" src="common/scripts/skycal.js"></script>
+<script type="text/javascript" src="common/scripts/skycal-conf.js"> </script>
+<script type="text/javascript" src="common/scripts/FLIFO.js"></script>
+<script type="text/javascript" src="common/scripts/checkin.js"></script>
+<script type="text/javascript">
+var frequency = 5;
+var countTimer = null;
+function doRotate() {
+	var d = new Date();
+	var m = d.getMinutes();
+	var mod = m % 2
+	var s = d.getSeconds();
+	var banner = 4
+	//Banner
+	if (banner == 5) {
+		if (s > 0 && s < 12) {
+			//show 1
+			document.getElementById('RightTimer').style.display = "";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "none";
+			document.getElementById('RightTimer5').style.display = "none";
+		} else if (s > 12 && s < 24) {
+			//show 2
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "none";
+			document.getElementById('RightTimer5').style.display = "none";
+		} else if (s > 24 && s < 36) {
+			//show 3
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "";
+			document.getElementById('RightTimer4').style.display = "none";
+			document.getElementById('RightTimer5').style.display = "none";
+		} else if (s > 36 && s < 48) {
+			//show 4
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "";
+			document.getElementById('RightTimer5').style.display = "none";
+		} else {
+			//show 5
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "none";
+			document.getElementById('RightTimer5').style.display = "";
+		}
+	} else if (banner == 4) {
+		if (s > 0 && s < 15) {
+			//show 1
+			document.getElementById('RightTimer').style.display = "";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "none";
+		} else if (s > 15 && s < 30) {
+			//show 2
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "none";
+		} else if (s > 30 && s < 45) {
+			//show 3
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "";
+			document.getElementById('RightTimer4').style.display = "none";
+		} else {
+			//show 4
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "none";
+			document.getElementById('RightTimer4').style.display = "";
+		}
+	} else if (banner == 3) {
+		if (s > 0 && s < 20) {
+			//show 1
+			document.getElementById('RightTimer').style.display = "";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "none";
+		} else if (s > 20 && s < 40) {
+			//show 2
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "";
+			document.getElementById('RightTimer3').style.display = "none";
+		} else {
+			//show 3
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "none";
+			document.getElementById('RightTimer3').style.display = "";
+		}
+	} else if (banner == 2) {
+		if ((s > 0 && s < 15) || (s > 30 && s < 45)) {
+			//show 1
+			document.getElementById('RightTimer').style.display = "";
+			document.getElementById('RightTimer2').style.display = "none";
+		} else {
+			//show 2
+			document.getElementById('RightTimer').style.display = "none";
+			document.getElementById('RightTimer2').style.display = "";
+		}
+	} else {
+		document.getElementById('RightTimer').style.display = "";
+	}
+	resetTimer();
+}
+function resetTimer() {
+// set the time below for length of image display
+// i.e., "4*1000" is 4 seconds
+	if (countTimer != null) clearTimeout(countTimer);
+	countTimer = setTimeout('doRotate()',frequency * 1000);
+}
+</script>
+<script type="text/javascript">
+Event.domReady.add(function() {
+	ATAvailabilitySearchInputSearchView_initialize();
+	doRotate();
+});
+</script>
+<style type="text/css">
+UL.quicklinks LI { text-transform:lowercase; }
+</style>
+</head>
+<body class="home">
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:Homepage -->
+<!-- Web site URL where tag should be placed: http://www.airtran.com -->
+<!-- This tag must be placed within the opening <body> tag, as close to the beginning of it as possible-->
+<!-- Creation Date:12/21/2007 -->
+<script language="JavaScript" type="text/javascript">
+var axel = Math.random()+"";
+var a = axel * 10000000000000;
+document.write('<IMG SRC="http://ad.doubleclick.net/activity;src=1646434;type=airtr661;cat=homep657;ord=1;num='+ a + '?" WIDTH=1 HEIGHT=1 BORDER=0 ALT="" style="position:absolute;">');
+</script>
+<noscript>
+	<img src="http://ad.doubleclick.net/activity;src=1646434;type=airtr661;cat=homep657;ord=1;num=1?" width="1" height="1" border="0" alt="" style="position:absolute;" />
+	<img src="http://ad.doubleclick.net/activity;src=1270268;dcnet=4155;boom=14760;sz=1x1;ord='+ ord +'?" width="1" height="1" border="0" style="position:absolute;" />
+</noscript>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Start of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- Activity Name for this tag is:FL: Homepage 2 -->
+<!-- Web site URL where tag should be placed: http://airtran.com -->
+<!-- This tag must be placed within the opening <body> tag, as close to the beginning of it as possible-->
+<!-- Creation Date:1/21/2009 -->
+<script language="JavaScript">
+var axel = Math.random()+"";
+var a = axel * 10000000000000;
+document.write('<iframe src="http://fls.doubleclick.net/activityi;src=1646434;type=airtr661;cat=flhom128;ord=1;num='+ a + '?" width="1" height="1" frameborder="0" style="position:absolute;"></iframe>');
+</script>
+<noscript>
+	<iframe src="activityi%3Bsrc=1646434%3Btype=airtr661%3Bcat=flhom128%3Bord=1%3Bnum=1@.html" width=1 height=1 frameborder=0 style="position:absolute;"></iframe>
+</noscript>
+<!-- End of DoubleClick Spotlight Tag: Please do not remove-->
+<!-- header =========================================== -->
+<div id="wrapper">
+	
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Sun, 1 May 2004 12:00:00 GMT">
+
+<div id="MyTopNav_div1"><script type="text/javascript" xmlns:CommonFunctions="urn:ResourceManager">
+    
+			function navES()
+			{
+				oh=new Array();				tsd=new Array();
+				tsh='es.airtran.com';
+				oh[0]='www.eventsavers.com';tsd[0]='/enes/deventsavers/';
+				oh[1]='www.aplusrewards.com';tsd[1]='/enes/daplusrewards/'; 
+				oh[2]='www.airtranu.com';tsd[2]='/enes/dairtranu/';
+				oh[3]='www.a2bcorporate.com';tsd[3]='/enes/da2bcorporate/';
+				oh[4]='www.airtranjobs.com';tsd[4]='/enes/dairtranjobs/';
+				oh[5]='www.airtranairways.com';tsd[5]='/enes/dairtranairways/';
+				oh[6]='tickets.airtran.com';tsd[6]='/enes/sdtickets/';
+				oh[7]='ebyepass.airtran.com';tsd[7]='/enes/sdebyepass/';
+				oh[8]='vacations.airtran.com';tsd[8]='/enes/sdvacations/';
+				oh[9]='www.eventfares.com';tsd[9]='/enes/deventfares/';
+				oh[10]='airtran.com';tsd[10]='/enes/';
+				idx=location.href.indexOf(tsh);if(idx==-1){for (i=0;i<oh.length;i++){idx=location.href.indexOf(oh[i]);if(idx>-1) break;}idx=idx+oh [i].length;hname=tsh+tsd[i];}else{for (i=0;i<tsd.length;i++){idx=location.href.indexOf(tsd[i]);if(idx>-1) break;}idx=idx+tsd [i].length;hname=oh[i];}path=location.href.substring(idx);hend=hname.charAt(hname.length-1);pstart=path.charAt(0);if(hend=='/' &&  pstart=='/')path=path.substring(path.indexOf('/')+1);if(hend!='/' && pstart!='/') path='/'+path;this.href=location.protocol+'//'+hname+path;return true;
+			}
+    
+  </script>
+<div id="header" xmlns:CommonFunctions="urn:ResourceManager">
+  <div id="mininav">
+    <ul>
+      <li>
+        <a href="http://www.airtranairways.com/about-us/corporate_info.aspx?nav_id=107">about airtran</a>
+      </li>
+      <li>
+        <a href="http://www.a2bcorporate.com/a2b_corporate_program.aspx?nav_id=113">a2b biz travel</a>
+      </li>
+      <li>
+        <a href="http://www.airtran.com/travel-agents/travel_agents_program_benefits.aspx">travel agents</a>
+      </li>
+      <li>
+        <a href="http://www.airtran.com/help.aspx">help</a>
+      </li>
+      <li>
+        <a mporgnav="" href="http://es.airtran.com/enes/" onclick="return switchLanguage('es');
+      function switchLanguage(lang) {
+      MP.SrcUrl=decodeURIComponent('mp_js_orgin_url');MP.UrlLang='mp_js_current_lang';MP.init();
+	      MP.switchLanguage(MP.UrlLang==lang?'en':lang);
+	      return false;
+      }">español</a>
+      </li>
+      <li>
+        <form id="search" action="http://www.airtran.com/search/search.aspx&#xD;&#xA;					">
+          <input type="hidden" name="cx" value="011814327273610016914:koojq72ua9q">
+          <input type="hidden" name="cof" value="FORID:11;NB:1;">
+          <input type="hidden" name="ie" value="UTF-8">
+          <input type="text" name="q" size="17" style="font-size: 100%;">
+          <input name="sa" value="Go" type="image" src="common/images/btn_go.gif" style="color: #FFFFFF; background-color: transparent none;">
+        </form>
+        <script type="text/javascript" src="common/scripts/gcs.js">
+        </script>
+        <link rel="stylesheet" href="Common/scripts/at_cse.css" type="text/css">
+      </li>
+    </ul>
+  </div>
+  <div id="headbar">
+    <img src="common/images/header.gif" width="726" height="49" alt="AirTran Airways - now a part of Southwest Airlines." usemap="#headermap">
+  </div>
+  <div id="mainnav">
+    <ul>
+      <li id="mn_a">
+        <a href="http://www.aplusrewards.com/aplus/member_home.aspx">my account</a>
+      </li>
+      <li id="mn_r">
+        <a href="http://tickets.airtran.com/Search.aspx">reservations</a>
+      </li>
+      <li id="mn_c">
+        <a href="https://ebyepass.airtran.com/FindReservation.aspx">check-in</a>
+      </li>
+      <li id="mn_f">
+        <a href="http://www.airtran.com/flight-schedules/flight-info.aspx">flight times</a>
+      </li>
+      <li id="mn_t">
+        <a href="http://www.airtran.com/travel_information.aspx">travel info</a>
+      </li>
+      <li id="mn_s">
+        <a href="http://www.airtran.com/sale">specials</a>
+      </li>
+      <li id="mn_p">
+        <a href="http://www.aplusrewards.com/a_rewards_more_rewarding.aspx">programs</a>
+      </li>
+    </ul>
+  </div>
+</div></div>
+
+
+	<div id="main">
+		<table summary="">
+			
+			
+			
+			<tr>
+				<td id="leftcol">
+					<div id="divLeftcol">
+						
+						<div></div>
+					<a href="http://www.southwest.com/html/promotions/click-n-save-sale-140819.html?ref=AirTran" target="_blank"><img id="imgHomeLeft" src="common/images/_home/hero_140819.jpg" alt="Your Options Are Wide Open - Flights On Sale - Now find AirTran &amp; Southwest sale fares at southwest.com&reg;." /></a>
+<p class="hero_terms">Restrictions and exclusions apply. 14-day advance purchase required. Nonrefundable. Select markets. Seats limited.</p>
+<h3>learn about</h3>
+<ul>
+  <li>A+ Rewards<sup>&reg;</sup> <a href="http://rewardsfarther.com/?utm_source=AirTran&utm_medium=microsite&utm_campaign=A%2B%20Rewards%20Linking&ref=AirTran" target="_blank">program transition</a> to Southwest Airlines Rapid Rewards<sup>&reg;</sup>.</li>
+  <li>Be one of the first to know about <a href="https://www.southwest.com/flight/subscription/cns-email-subscribe.html?ref=AirTran" target="_blank">Southwest Airlines&rsquo; travel deals</a>. Sign up now!</li>
+  <li>Learn about all <a href="http://www.airtran.com/policies/ancillary_fees.aspx">our services and associated fees</a>.</li>
+</ul></div>
+					<div id="aPlus">
+						<div id="divLeftcolBottom">
+							
+						<!-- mp_trans_disable_start -->
+  <p class="title"><a href="https://creditcards.chase.com/a1/southwest/airtran?ref=AirTran" target="_blank"><img src="common/images/_content/fl_loyalty_corner.jpg" alt="AirTran Chase Visa" style="margin:0 .5em 1em 0;" />Get A Roundtrip Flight</a></p>
+  <p>No foreign transaction fees.</p>
+<!-- mp_trans_disable_end -->
+<hr />
+<p>Learn more about <a href="http://www.rewardsfarther.com/?ref=airtranpointconversion" target="_blank"><strong>Rewards Conversion</strong></a> with Southwest Airlines Rapid Rewards<sup>&reg;</sup>.</p></div>
+					</div>
+				</td>
+				<td id="tabscol" rowspan="2">
+					<div id="tabs">
+						<ul id="tabsnav">
+							<li id="tab_re" class="current"><a href="index.html" onClick="return switchPanes('re');" name="&amp;lid=Reservation_Tab">reservations</a></li>
+							<li id="tab_ch"><a href="index.html" onClick="return switchPanes('ch');" name="&amp;lid=CheckIn_Tab">check-in</a></li>
+							<li id="tab_st"><a href="index.html" onClick="return switchPanes('st');" name="&amp;lid=FlightStatus_Tab">flight status</a></li>
+						</ul>
+						<div id="pane_re">
+							
+
+<script type="text/javascript">
+		//**************************************************************************************
+	//* GLOBAL JAVASCRIPT VARIABLES
+	//**************************************************************************************
+	//Sets control level variables
+	var thisdate = new Date();
+	var applicationNumberOfMarketsToOffer	= "2";
+	var applicationHtmlId					= "ATAvailabilitySearchInputSearchView$";
+	var applicationJavaScriptHtmlId			= "ATAvailabilitySearchInputSearchView";
+	var applicationFormatedDay				= String(thisdate.getDate());
+		if (applicationFormatedDay.length == 1)
+		{
+			applicationFormatedDay = "0" + applicationFormatedDay;
+		}
+	var applicationFormatedMonth				= String(thisdate.getMonth()+1);
+		if (applicationFormatedMonth.length == 1)
+		{
+			applicationFormatedMonth = "0" + applicationFormatedMonth;
+		}
+	var applicationFormatedYear				= String(thisdate.getFullYear());
+	var applicationFormatedDate				= applicationFormatedYear	 + applicationFormatedMonth + applicationFormatedDay	; //"20060605";
+	var applicationFormatedDateTime			= applicationFormatedYear + "-" + applicationFormatedMonth;
+	var applicationLiftStatus				= "Default";
+	var applicationOpenJawEnabled			= true;
+	var applicationCalendarUriQueryString	= "/Calendar.aspx?";
+	var applicationBookingMaxPassengers		= "9";
+	var applicationPassengerArrayValues		= "ATAvailabilitySearchInputSearchView_DropDownListPassengerType_ADT,ATAvailabilitySearchInputSearchView_DropDownListPassengerType_CHD";
+	var applicationUseDropDownForStations	= true;
+	
+	
+	//Sets localized variables
+	var localizedTextTooManyInfants				= "\nThe number of infants cannot be greater than the number \nof adults.  If you need to change the number of infants \non this booking, please contact the Reservations Centre.\n";
+	var localizedTextInvalidDatePre				= "There are no ";
+	var localizedTextInvalidDateMid				= " days in ";
+	var localizedTextInvalidDatePost			= ".\nPlease select a valid date, and try again.";
+	var localizedTextPastDatePre				= "\nThe date you selected has already passed.\n";
+	var localizedTextPastDatePost				= "\nClick OK to reset your date selection.\n";
+	var localizedTextEarlierDatePre				= "\nPlease make sure that your return date\nis not earlier than your outbound date.\n";
+	var localizedTextEarlierDatePost			= "\nClick OK to reset your return date.\n";
+	var localizedTextTodaysDateMessage			= "\nWhen searching today's flights, only\n flights that depart at least 1 hours 00 minutes\n from now will be displayed.\n\n";
+	var localizedTextTextBoxMarketOrigin		= "";
+	var localizedTextTextBoxMarketDestination	= "";
+	var localizedTextLessThanOnePassenger		= "\nPlease select at least one valid passenger type.\n\n";
+	var localizedTextExceedsMaxPaxAllowed		= "\nNumber of non-infant passengers cannot exceed ";
+	var localizedMissingOrigin					= "\nPlease select an origin airport.\n";
+	var localizedMissingDest					= "\nPlease select a destination airport.\n";
+	var localizedSameOriginDestination			= "\nPlease make sure that your origin\nis not the same as the destination.\n\n";
+	var localizedInvalidCityPairs				= "Your Origin and Destination Going Out must match \nyour Destination and Origin Coming Back, respectively. \n\nPlease correct your airport selections, then try again.\n";
+	var macSearchAllText				            = "Search area airports";
+	var macCodeSeparator				      = ": ";
+	var macCitySeparator				      = ", ";
+		
+	//**************************************************************************************
+	//* END OF GLOBAL JAVASCRIPT VARIABLES
+	//**************************************************************************************
+	
+	
+	
+	var dateSelectArray = new Array();
+	
+	dateSelectArray[1] = {
+		day: 'ATAvailabilitySearchInputSearchView$DropDownListMarketDay1',
+		month: 'ATAvailabilitySearchInputSearchView$DropDownListMarketMonth1'
+	}
+	
+	dateSelectArray[2] = {
+		day: 'ATAvailabilitySearchInputSearchView$DropDownListMarketDay2',
+		month: 'ATAvailabilitySearchInputSearchView$DropDownListMarketMonth2'
+	}
+
+	function OpenCalendar(market) {
+		showCalendar(document.SkySales[dateSelectArray[market].month], document.SkySales[dateSelectArray[market].day], document.SkySales[dateSelectArray[market].month]);
+	}
+	
+	
+		var UpdateCitiesFromCookie = "true";
+	
+	
+	
+</script>
+
+
+		<!-- MODIFIED 2017-10-16 from http://tickets.airtran.com/Search.aspx -->
+		<form name="SkySales" id="SkySales" method="post" action="about:blank" style="height: 390px;">
+	
+	<h3>book a flight&nbsp;&nbsp;</h3>
+	
+	<table class="form">
+		<tbody>
+			<tr>
+				<td colspan="2" style="padding-bottom: 1em; font-weight:bold; color:#055B8E; font-size:12px; letter-spacing: -0.13px; font-family:Arial, Helvetica, sans-serif;">
+					Flight schedule currently open through 3/6/15. To make reservations for AirTran flights departing after 11/1/14 visit <a href="http://www.southwest.com/flight?ref=AirTran">southwest.com</a>.
+				</td>
+			</tr>
+			<tr>
+				
+				<td class="label">Travel:</td>
+				
+				<td>
+					<input id="ATAvailabilitySearchInputSearchView_RoundTrip" type="radio" name="ATAvailabilitySearchInputSearchView$RadioButtonMarketStructure" value="RoundTrip" checked> 
+					Round Trip 
+					
+					<input id="ATAvailabilitySearchInputSearchView_OneWay" type="radio" name="ATAvailabilitySearchInputSearchView$RadioButtonMarketStructure" value="OneWay">
+					One-way
+					<input id="ATAvailabilitySearchInputSearchView_OpenJaw" type="radio" name="ATAvailabilitySearchInputSearchView$RadioButtonMarketStructure" value="OpenJaw" style="display:none;">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="tight" style="white-space:nowrap">
+					<a href="http://tickets.airtran.com/Search.aspx">Flexible Dates</a> | <a href="http://tickets.airtran.com/Search.aspx?MultiCity=true">Multi-City</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">From:</td>
+				<td>
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketOrigin1" id="ATAvailabilitySearchInputSearchView_DropDownListMarketOrigin1" class="single_line city" onChange="changeDest(this, document['SkySales']['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination1'], document['SkySales']['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination1'].options[document['SkySales']['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination1'].selectedIndex].value);highlightMoveDestinationCities(1, '');OriginMac(this);" requiredEmpty="???" style="width:175px !IMPORTANT;">
+						<option value="">Origination City</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="label">To:</td>
+				<td>
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketDestination1" id="ATAvailabilitySearchInputSearchView_DropDownListMarketDestination1" class="single_line city" requiredEmpty="???" onchange="DestinationMac(this);" style="width:175px !IMPORTANT;">
+						<option value="">Destination City</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Departing:</td>
+				<td>
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketDay1" id="ATAvailabilitySearchInputSearchView_DropDownListMarketDay1" class="day" onchange="updateDates(this.name)" style="margin-right:1px; width:45px !IMPORTANT;">
+							<option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21" selected >21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+					</select>
+					
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketMonth1" id="ATAvailabilitySearchInputSearchView_DropDownListMarketMonth1" class="month" onchange="updateDates(this.name)" style="margin-right:1px; width:117px !IMPORTANT;">
+						<!-- MODIFIED 2017-10-16 -->
+						<option value="2017-08" selected >August 2017</option>
+						<option value="2017-09">September 2017</option>
+						<option value="2017-10">October 2017</option>
+						<option value="2017-11">November 2017</option>
+						<option value="2017-12">December 2017</option>
+						<option value="2018-01">January 2018</option>
+						<option value="2018-02">February 2018</option>
+						<option value="2018-03">March 2018</option>
+						<option value="2018-04">April 2018</option>
+						<option value="2018-05">May 2018</option>
+					</select>
+					
+						<a id="ATAvailabilitySearchInputSearchView_HyperLinkMarketCalendar1" onClick="OpenCalendar(1);" href="javascript:void(0);" name="&lid=Departing_Calendar">
+            <img src="Common/images/cal_icon.gif" width="15" height="15" align="absmiddle" hspace="0" border="0" style="margin-bottom:3px;">
+          </a>
+				</td>
+			</tr>
+			
+
+			<!-- Market 2 Date Section -->
+			<tr id="return_date">
+				<td class="label">Returning:</td>
+				<td>
+
+	
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketDay2" id="ATAvailabilitySearchInputSearchView_DropDownListMarketDay2" class="day" onchange="updateDates(this.name)" style="margin-right:1px; width:45px !IMPORTANT;">
+							<option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28" selected >28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+					</select>
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketMonth2" id="ATAvailabilitySearchInputSearchView_DropDownListMarketMonth2" class="month" onchange="updateDates(this.name)" style="margin-right:1px; width:117px !IMPORTANT;">
+						<!-- MODIFIED 2017-10-16 -->
+						<option value="2017-08" selected >August 2017</option>
+						<option value="2017-09">September 2017</option>
+						<option value="2017-10">October 2017</option>
+						<option value="2017-11">November 2017</option>
+						<option value="2017-12">December 2017</option>
+						<option value="2018-01">January 2018</option>
+						<option value="2018-02">February 2018</option>
+						<option value="2018-03">March 2018</option>
+						<option value="2018-04">April 2018</option>
+						<option value="2018-05">May 2018</option>
+					</select>
+					
+					<a id="ATAvailabilitySearchInputSearchView_HyperLinkMarketCalendar2" onClick="OpenCalendar(2);" href="javascript:void(0);" name="&lid=Returning_Calendar">
+            <img src="Common/images/cal_icon.gif" width="15" height="15" align="absmiddle" hspace="0" border="0" style="margin-bottom:3px;">
+          </a>
+
+				</td>
+			</tr>
+
+
+			<!-- Passenger Section -->
+			<tr>
+				<td class="label">Passengers:</td>
+				<td>
+					<select name="ATAvailabilitySearchInputSearchView$DropDownListPassengerType_ADT" id="ATAvailabilitySearchInputSearchView_DropDownListPassengerType_ADT" class="paxList">
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            
+          </select>			
+				</td>
+			</tr>
+						
+			<!-- Search Button -->
+			<tr>
+				<td></td>
+				<td><span class="button"><span><a onclick="return ATAvailabilitySearchInputSearchView_Validate() &amp;&amp; storeCityDefaultsToCookie()" href="javascript:__doPostBack('ATAvailabilitySearchInputSearchView$LinkButtonNewSearch','')" name="&lid=Reservation_Search">search</a></span></span></td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<input type="hidden" name="ATAvailabilitySearchInputSearchView$DropDownListMarketDateRange1" id="ATAvailabilitySearchInputSearchView_DropDownListMarketDateRange1" value="0|0" />
+	<input type="hidden" name="ATAvailabilitySearchInputSearchView$DropDownListMarketDateRange2" id="ATAvailabilitySearchInputSearchView_DropDownListMarketDateRange2" value="0|0" />
+	<input type="hidden" name="ATAvailabilitySearchInputSearchView$TimeSelect_1" id="ATAvailabilitySearchInputSearchView_TimeSelect_1" value="0" />
+	<input type="hidden" name="ATAvailabilitySearchInputSearchView$TimeSelect_2" id="ATAvailabilitySearchInputSearchView_TimeSelect_2" value="0" />
+
+	<div style="display:none;">
+		<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketOrigin2" id="ATAvailabilitySearchInputSearchView_DropDownListMarketOrigin2" class="single_line" onChange="changeDest(this, document['SkySales']['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination2'], document['SkySales']['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination2'].options[document['SkySales']['ATAvailabilitySearchInputSearchView_DropDownListMarketDestination2'].selectedIndex].value);highlightMoveDestinationCities(2, '');OriginMac(this);" requiredEmpty="???">
+			<option value="">Origination City</option>
+		</select>
+		<select name="ATAvailabilitySearchInputSearchView$DropDownListMarketDestination2" id="ATAvailabilitySearchInputSearchView_DropDownListMarketDestination2" class="single_line" requiredEmpty="???" onchange="DestinationMac(this);">
+			<option value="">Destination City</option>
+		</select>	
+	</div>
+	
+	<input type="hidden" value="0" name="ATAvailabilitySearchInputSearchView$DropDownListPassengerType_CHD" id="ATAvailabilitySearchInputSearchView_DropDownListPassengerType_CHD">
+	<input type="hidden" value="0" name="ATAvailabilitySearchInputSearchView$DropDownListPassengerType_INFANT" id="ATAvailabilitySearchInputSearchView_DropDownListPassengerType_INFANT">
+	
+	<input type="hidden" name="IGNOREMAC" id="hidden2" value="1">
+	<input type="hidden" name="ATAVAILABILITYSEARCHINPUT$MacSelectARR1" id="ATAVAILABILITYSEARCHINPUT_MacSelectARR1" value="">
+	<input type="hidden" name="ATAVAILABILITYSEARCHINPUT$MacSelectARR2" id="ATAVAILABILITYSEARCHINPUT_MacSelectARR2" value="">
+	<input type="hidden" name="ATAVAILABILITYSEARCHINPUT$MacSelectDEP1" id="ATAVAILABILITYSEARCHINPUT_MacSelectDEP1" value="">
+	<input type="hidden" name="ATAVAILABILITYSEARCHINPUT$MacSelectDEP2" id="ATAVAILABILITYSEARCHINPUT_MacSelectDEP2" value="">
+	
+	
+	<input type="hidden" name="__EVENTTARGET" value="ATAvailabilitySearchInputSearchView$LinkButtonNewSearch" />
+	
+	
+	
+	
+	<h3 style="padding-top: 10px;">or search for</h3>
+	<div id="altsearch">
+	
+	<!--<nobr><a href="javascript:;" onclick="window.open('https://airtranvacations.com/travel/arc.cfm?tab=r');"><img src="/common/images/hp_hotel.gif" border="0" width="29" height="22"  style="margin-left:-9px !IMPORTANT;" /><span id="aH">hotels</span></a>-->
+    <nobr><a href="http://www.airtran.com/hotel_specials_policies.aspx" style="padding-right: 25px;"><img src="common/images/hp_hotel.gif" border="0" width="29" height="22"  style="margin-left:-9px !IMPORTANT;" /><span id="aH">hotels</span></a>
+	<a href="http://www.airtran.com/car_policies.aspx" padding-left: 25px;"><img src="common/images/hp_car.gif" border="0" width="29" height="22"/><span>cars</span></a>
+	<!--<a href="javascript:;" onclick="window.open('http://www.airtranvacations.com/travel/arc.cfm?tab=p');" style="border-right: 0px;"><img src="/common/images/hp_vac.gif" border="0" width="29" height="22" /><span>vacations</span></a></nobr>-->
+	<a href="javascript:;" onclick="window.open('http://www.southwestvacations.com/Specials/Mexico_Caribbean.aspx?cmpid=ATA-BOOKING-WIDGET-VACATIONS');" style="border-right: 0px;"><img src="common/images/ATluggage_ec2.gif" border="0" width="29" height="22" /><span>vacations</span></a></nobr>
+
+
+	</div>
+	
+	<!--<p align="center" style="margin-top: 5px; margin-bottom: 1px;"><a href="http://airtran.homeandabroad.com" target="_blank"><img src="/common/images/getawayplnr_homebnr.gif" alt="" /></a></p>-->
+	
+	
+	
+</form>
+							
+
+
+
+
+<script type="text/javascript" xmlns="">
+<!--
+var theForm = document.forms['SkySales'];
+if (!window.theForm) {
+    window.theForm = document.SkySales;
+}
+updateDates('Month_1');
+
+function __doPostBack(eventTarget, eventArgument) {
+    var FormPost;
+    FormPost = document.SkySales;
+    if (!FormPost.onsubmit || (FormPost.onsubmit() != false)) {
+        //theForm.__EVENTTARGET.value = eventTarget;
+        //theForm.__EVENTARGUMENT.value = eventArgument;
+        FormPost.submit();
+    }
+  }
+
+// -->
+</script>
+						</div>
+<!-- check in -->
+						<div id="pane_ch">
+							<form name="checkinForm" action="https://ebyepass.airtran.com/FindReservation.aspx" method="get" style="height:360px;">
+								<h3>check in a flight</h3>
+								<table>
+									<tbody>
+										<tr>
+											<td class="label">Departing:</td>
+											<td>
+												<select name="depcity" class="location">
+													<option selected value="XXX">Departure City</option>
+													<option value="XXX">------------</option>
+													<option value="CAK">Akron-Canton, OH (CAK)</option><option value="ALB">Albany, NY (ALB)</option><option value="ABQ">Albuquerque, NM (ABQ)</option><option value="AMA">Amarillo, TX (AMA)</option><option value="AUA">Aruba, Aruba (AUA)</option><option value="ATL">Atlanta, GA (ATL)</option><option value="AUS">Austin, TX (AUS)</option><option value="BWI">Baltimore / Washington, MD (BWI)</option><option value="BHM">Birmingham, AL (BHM)</option><option value="BOI">Boise, ID (BOI)</option><option value="BOS">Boston, MA (BOS)</option><option value="BKG">Branson, MO (BKG)</option><option value="BUF">Buffalo / Niagara, NY (BUF)</option><option value="BUR">Burbank, CA (BUR)</option><option value="CUN">Cancun, MX (CUN)</option><option value="CHS">Charleston, SC (CHS)</option><option value="CLT">Charlotte, NC (CLT)</option><option value="MDW">Chicago, IL - Midway (MDW)</option><option value="CLE">Cleveland, OH (CLE)</option><option value="CMH">Columbus, OH (CMH)</option><option value="CRP">Corpus Christi, TX (CRP)</option><option value="DAL">Dallas, TX (DAL)</option><option value="DAY">Dayton, OH (DAY)</option><option value="DEN">Denver, CO (DEN)</option><option value="DSM">Des Moines, IA (DSM)</option><option value="DTW">Detroit, MI (DTW)</option><option value="ELP">El Paso, TX (ELP)</option><option value="FNT">Flint, MI (FNT)</option><option value="FLL">Fort Lauderdale, FL (FLL)</option><option value="RSW">Fort Myers, FL (RSW)</option><option value="GRR">Grand Rapids, MI (GRR)</option><option value="GSP">Greenville / Spartanburg, SC (GSP)</option><option value="HRL">Harlingen, TX (HRL)</option><option value="BDL">Hartford, CT (BDL)</option><option value="HOU">Houston-Hobby, TX (HOU)</option><option value="IND">Indianapolis, IN (IND)</option><option value="JAN">Jackson, MS (JAN)</option><option value="JAX">Jacksonville, FL (JAX)</option><option value="MCI">Kansas City, MO (MCI)</option><option value="EYW">Key West, FL (EYW)</option><option value="LAS">Las Vegas, NV (LAS)</option><option value="LIT">Little Rock, AR (LIT)</option><option value="ISP">Long Island / Islip, NY (ISP)</option><option value="LAX">Los Angeles, CA (LAX)</option><option value="SDF">Louisville, KY (SDF)</option><option value="LBB">Lubbock, TX (LBB)</option><option value="MHT">Manchester, NH (MHT)</option><option value="MEM">Memphis, TN (MEM)</option><option value="MEX">Mexico City, MX (MEX)</option><option value="MAF">Midland / Odessa, TX (MAF)</option><option value="MKE">Milwaukee, WI (MKE)</option><option value="MSP">Minneapolis/St. Paul, MN (MSP)</option><option value="MBJ">Montego Bay, Jamaica (MBJ)</option><option value="BNA">Nashville, TN (BNA)</option><option value="NAS">Nassau, Bahamas (NAS)</option><option value="MSY">New Orleans, LA (MSY)</option><option value="LGA">New York, NY - LaGuardia (LGA)</option><option value="EWR">Newark, NJ (EWR)</option><option value="ORF">Norfolk, VA (ORF)</option><option value="OAK">Oakland, CA (OAK)</option><option value="OKC">Oklahoma City, OK (OKC)</option><option value="OMA">Omaha, NE (OMA)</option><option value="ONT">Ontario / LA, CA (ONT)</option><option value="SNA">Orange County, CA (SNA)</option><option value="MCO">Orlando, FL (MCO)</option><option value="ECP">Panama City Beach, FL (ECP)</option><option value="PNS">Pensacola / Gulf Coast, FL (PNS)</option><option value="PHL">Philadelphia, PA (PHL)</option><option value="PHX">Phoenix, AZ (PHX)</option><option value="PIT">Pittsburgh, PA (PIT)</option><option value="PUJ">Punta Cana, DO (PUJ)</option><option value="PWM">Portland, ME (PWM)</option><option value="PDX">Portland, OR (PDX)</option><option value="PVD">Providence, RI (PVD)</option><option value="RDU">Raleigh / Durham, NC (RDU)</option><option value="RNO">Reno / Tahoe, NV (RNO)</option><option value="RIC">Richmond, VA (RIC)</option><option value="ROC">Rochester, NY (ROC)</option><option value="SMF">Sacramento, CA (SMF)</option><option value="SLC">Salt Lake City, UT (SLC)</option><option value="SAT">San Antonio, TX (SAT)</option><option value="SAN">San Diego, CA (SAN)</option><option value="SFO">San Francisco, CA (SFO)</option><option value="SJC">San Jose, CA (SJC)</option><option value="SJD">San Jose Cabo, MX (SJD)</option><option value="SJU">San Juan, PR (SJU)</option><option value="SEA">Seattle, WA (SEA)</option><option value="GEG">Spokane, WA (GEG)</option><option value="STL">St. Louis, MO (STL)</option><option value="TPA">Tampa, FL (TPA)</option><option value="TUS">Tucson, AZ (TUS)</option><option value="TUL">Tulsa, OK (TUL)</option><option value="IAD">Washington, D.C. - Dulles (IAD)</option><option value="DCA">Washington, D.C. - Reagan (DCA)</option><option value="PBI">West Palm Beach, FL (PBI)</option><option value="ICT">Wichita, KS (ICT)</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>For international travel, please 
+												<br />check in at the airport at least 
+												<br />60 minutes prior to your flight&rsquo;s 
+												<br />scheduled departure time.
+											</td>
+										</tr>
+										<tr>
+											<td class="label">Conf. No.:</td>
+											<td>
+												<input name="confirmcode" class="full">
+												<input type="hidden" name="process" value="ExternalReservation">
+											</td>
+										</tr>
+										<tr>
+											<td class="label">Or</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td class="label">A+. No.:</td>
+											<td>
+												<input name="milesnum" class="full" onChange="this.form['ATCheckInLookupInputCheckInView$CONTACTEMAIL1'].value = this.value;" onBlur="this.form['ATCheckInLookupInputCheckInView$CONTACTEMAIL1'].value = this.value;">
+												<input type="hidden" name="ATCheckInLookupInputCheckInView$CONTACTEMAIL1">
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>
+												<span class="button" style="WIDTH: 130px">
+													<span><a onClick="javascript:return checkinValidation();" name="&amp;lid=Checkin_Start">begin check-in</a></span>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">Passengers with baggage to check may 
+												<br />check-in online and then proceed to the 
+												<br />baggage check counter when they arrive 
+												<br />at the airport.
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<div id="pane_st">
+							<form name="FLform" method="post" action="http://www.airtran.com/flight-schedules/flight-detail.aspx" onsubmit="submit_FL_Form(); return false;" style="height:360px;">
+								<h3>find flight status</h3>
+								<table>
+									<tbody>
+										<tr>
+											<td class="label">Date:</td>
+											<td>
+												<select name="date" class="month">
+													<option value="2014-08-20">Yesterday, Aug 20</option>
+													<option value="2014-08-21" selected="selected">Today, Aug 21</option>
+													<option value="2014-08-22">Tomorrow, Aug 22</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">Flight Number:</td>
+											<td><input type="text" name="txtFlight" id="txtFlight" size="10"></td>
+										</tr>
+										<tr>
+											<td class="label"><strong>OR</strong></td>
+										</tr>
+										<tr>
+											<td class="label">From:</td>
+											<td>
+												<select name="orig" class="location">
+													<option selected value="XXX">Origination City</option>
+													<option value="XXX">------------</option>
+													<option value="CAK">Akron-Canton, OH (CAK)</option><option value="ALB">Albany, NY (ALB)</option><option value="ABQ">Albuquerque, NM (ABQ)</option><option value="AMA">Amarillo, TX (AMA)</option><option value="AUA">Aruba, Aruba (AUA)</option><option value="ATL">Atlanta, GA (ATL)</option><option value="AUS">Austin, TX (AUS)</option><option value="BWI">Baltimore / Washington, MD (BWI)</option><option value="BHM">Birmingham, AL (BHM)</option><option value="BOI">Boise, ID (BOI)</option><option value="BOS">Boston, MA (BOS)</option><option value="BKG">Branson, MO (BKG)</option><option value="BUF">Buffalo / Niagara, NY (BUF)</option><option value="BUR">Burbank, CA (BUR)</option><option value="CUN">Cancun, MX (CUN)</option><option value="CHS">Charleston, SC (CHS)</option><option value="CLT">Charlotte, NC (CLT)</option><option value="MDW">Chicago, IL - Midway (MDW)</option><option value="CLE">Cleveland, OH (CLE)</option><option value="CMH">Columbus, OH (CMH)</option><option value="CRP">Corpus Christi, TX (CRP)</option><option value="DAL">Dallas, TX (DAL)</option><option value="DAY">Dayton, OH (DAY)</option><option value="DEN">Denver, CO (DEN)</option><option value="DSM">Des Moines, IA (DSM)</option><option value="DTW">Detroit, MI (DTW)</option><option value="ELP">El Paso, TX (ELP)</option><option value="FNT">Flint, MI (FNT)</option><option value="FLL">Fort Lauderdale, FL (FLL)</option><option value="RSW">Fort Myers, FL (RSW)</option><option value="GRR">Grand Rapids, MI (GRR)</option><option value="GSP">Greenville / Spartanburg, SC (GSP)</option><option value="HRL">Harlingen, TX (HRL)</option><option value="BDL">Hartford, CT (BDL)</option><option value="HOU">Houston-Hobby, TX (HOU)</option><option value="IND">Indianapolis, IN (IND)</option><option value="JAN">Jackson, MS (JAN)</option><option value="JAX">Jacksonville, FL (JAX)</option><option value="MCI">Kansas City, MO (MCI)</option><option value="EYW">Key West, FL (EYW)</option><option value="LAS">Las Vegas, NV (LAS)</option><option value="LIT">Little Rock, AR (LIT)</option><option value="ISP">Long Island / Islip, NY (ISP)</option><option value="LAX">Los Angeles, CA (LAX)</option><option value="SDF">Louisville, KY (SDF)</option><option value="LBB">Lubbock, TX (LBB)</option><option value="MHT">Manchester, NH (MHT)</option><option value="MEM">Memphis, TN (MEM)</option><option value="MEX">Mexico City, MX (MEX)</option><option value="MAF">Midland / Odessa, TX (MAF)</option><option value="MKE">Milwaukee, WI (MKE)</option><option value="MSP">Minneapolis/St. Paul, MN (MSP)</option><option value="MBJ">Montego Bay, Jamaica (MBJ)</option><option value="BNA">Nashville, TN (BNA)</option><option value="NAS">Nassau, Bahamas (NAS)</option><option value="MSY">New Orleans, LA (MSY)</option><option value="LGA">New York, NY - LaGuardia (LGA)</option><option value="EWR">Newark, NJ (EWR)</option><option value="ORF">Norfolk, VA (ORF)</option><option value="OAK">Oakland, CA (OAK)</option><option value="OKC">Oklahoma City, OK (OKC)</option><option value="OMA">Omaha, NE (OMA)</option><option value="ONT">Ontario / LA, CA (ONT)</option><option value="SNA">Orange County, CA (SNA)</option><option value="MCO">Orlando, FL (MCO)</option><option value="ECP">Panama City Beach, FL (ECP)</option><option value="PNS">Pensacola / Gulf Coast, FL (PNS)</option><option value="PHL">Philadelphia, PA (PHL)</option><option value="PHX">Phoenix, AZ (PHX)</option><option value="PIT">Pittsburgh, PA (PIT)</option><option value="PUJ">Punta Cana, DO (PUJ)</option><option value="PWM">Portland, ME (PWM)</option><option value="PDX">Portland, OR (PDX)</option><option value="PVD">Providence, RI (PVD)</option><option value="RDU">Raleigh / Durham, NC (RDU)</option><option value="RNO">Reno / Tahoe, NV (RNO)</option><option value="RIC">Richmond, VA (RIC)</option><option value="ROC">Rochester, NY (ROC)</option><option value="SMF">Sacramento, CA (SMF)</option><option value="SLC">Salt Lake City, UT (SLC)</option><option value="SAT">San Antonio, TX (SAT)</option><option value="SAN">San Diego, CA (SAN)</option><option value="SFO">San Francisco, CA (SFO)</option><option value="SJC">San Jose, CA (SJC)</option><option value="SJD">San Jose Cabo, MX (SJD)</option><option value="SJU">San Juan, PR (SJU)</option><option value="SEA">Seattle, WA (SEA)</option><option value="GEG">Spokane, WA (GEG)</option><option value="STL">St. Louis, MO (STL)</option><option value="TPA">Tampa, FL (TPA)</option><option value="TUS">Tucson, AZ (TUS)</option><option value="TUL">Tulsa, OK (TUL)</option><option value="IAD">Washington, D.C. - Dulles (IAD)</option><option value="DCA">Washington, D.C. - Reagan (DCA)</option><option value="PBI">West Palm Beach, FL (PBI)</option><option value="ICT">Wichita, KS (ICT)</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">To:</td>
+											<td>
+												<select name="dest" class="location">
+													<option selected value="XXX">Destination City</option>
+													<option value="XXX">------------</option>
+													<option value="CAK">Akron-Canton, OH (CAK)</option><option value="ALB">Albany, NY (ALB)</option><option value="ABQ">Albuquerque, NM (ABQ)</option><option value="AMA">Amarillo, TX (AMA)</option><option value="AUA">Aruba, Aruba (AUA)</option><option value="ATL">Atlanta, GA (ATL)</option><option value="AUS">Austin, TX (AUS)</option><option value="BWI">Baltimore / Washington, MD (BWI)</option><option value="BHM">Birmingham, AL (BHM)</option><option value="BOI">Boise, ID (BOI)</option><option value="BOS">Boston, MA (BOS)</option><option value="BKG">Branson, MO (BKG)</option><option value="BUF">Buffalo / Niagara, NY (BUF)</option><option value="BUR">Burbank, CA (BUR)</option><option value="CUN">Cancun, MX (CUN)</option><option value="CHS">Charleston, SC (CHS)</option><option value="CLT">Charlotte, NC (CLT)</option><option value="MDW">Chicago, IL - Midway (MDW)</option><option value="CLE">Cleveland, OH (CLE)</option><option value="CMH">Columbus, OH (CMH)</option><option value="CRP">Corpus Christi, TX (CRP)</option><option value="DAL">Dallas, TX (DAL)</option><option value="DAY">Dayton, OH (DAY)</option><option value="DEN">Denver, CO (DEN)</option><option value="DSM">Des Moines, IA (DSM)</option><option value="DTW">Detroit, MI (DTW)</option><option value="ELP">El Paso, TX (ELP)</option><option value="FNT">Flint, MI (FNT)</option><option value="FLL">Fort Lauderdale, FL (FLL)</option><option value="RSW">Fort Myers, FL (RSW)</option><option value="GRR">Grand Rapids, MI (GRR)</option><option value="GSP">Greenville / Spartanburg, SC (GSP)</option><option value="HRL">Harlingen, TX (HRL)</option><option value="BDL">Hartford, CT (BDL)</option><option value="HOU">Houston-Hobby, TX (HOU)</option><option value="IND">Indianapolis, IN (IND)</option><option value="JAN">Jackson, MS (JAN)</option><option value="JAX">Jacksonville, FL (JAX)</option><option value="MCI">Kansas City, MO (MCI)</option><option value="EYW">Key West, FL (EYW)</option><option value="LAS">Las Vegas, NV (LAS)</option><option value="LIT">Little Rock, AR (LIT)</option><option value="ISP">Long Island / Islip, NY (ISP)</option><option value="LAX">Los Angeles, CA (LAX)</option><option value="SDF">Louisville, KY (SDF)</option><option value="LBB">Lubbock, TX (LBB)</option><option value="MHT">Manchester, NH (MHT)</option><option value="MEM">Memphis, TN (MEM)</option><option value="MEX">Mexico City, MX (MEX)</option><option value="MAF">Midland / Odessa, TX (MAF)</option><option value="MKE">Milwaukee, WI (MKE)</option><option value="MSP">Minneapolis/St. Paul, MN (MSP)</option><option value="MBJ">Montego Bay, Jamaica (MBJ)</option><option value="BNA">Nashville, TN (BNA)</option><option value="NAS">Nassau, Bahamas (NAS)</option><option value="MSY">New Orleans, LA (MSY)</option><option value="LGA">New York, NY - LaGuardia (LGA)</option><option value="EWR">Newark, NJ (EWR)</option><option value="ORF">Norfolk, VA (ORF)</option><option value="OAK">Oakland, CA (OAK)</option><option value="OKC">Oklahoma City, OK (OKC)</option><option value="OMA">Omaha, NE (OMA)</option><option value="ONT">Ontario / LA, CA (ONT)</option><option value="SNA">Orange County, CA (SNA)</option><option value="MCO">Orlando, FL (MCO)</option><option value="ECP">Panama City Beach, FL (ECP)</option><option value="PNS">Pensacola / Gulf Coast, FL (PNS)</option><option value="PHL">Philadelphia, PA (PHL)</option><option value="PHX">Phoenix, AZ (PHX)</option><option value="PIT">Pittsburgh, PA (PIT)</option><option value="PUJ">Punta Cana, DO (PUJ)</option><option value="PWM">Portland, ME (PWM)</option><option value="PDX">Portland, OR (PDX)</option><option value="PVD">Providence, RI (PVD)</option><option value="RDU">Raleigh / Durham, NC (RDU)</option><option value="RNO">Reno / Tahoe, NV (RNO)</option><option value="RIC">Richmond, VA (RIC)</option><option value="ROC">Rochester, NY (ROC)</option><option value="SMF">Sacramento, CA (SMF)</option><option value="SLC">Salt Lake City, UT (SLC)</option><option value="SAT">San Antonio, TX (SAT)</option><option value="SAN">San Diego, CA (SAN)</option><option value="SFO">San Francisco, CA (SFO)</option><option value="SJC">San Jose, CA (SJC)</option><option value="SJD">San Jose Cabo, MX (SJD)</option><option value="SJU">San Juan, PR (SJU)</option><option value="SEA">Seattle, WA (SEA)</option><option value="GEG">Spokane, WA (GEG)</option><option value="STL">St. Louis, MO (STL)</option><option value="TPA">Tampa, FL (TPA)</option><option value="TUS">Tucson, AZ (TUS)</option><option value="TUL">Tulsa, OK (TUL)</option><option value="IAD">Washington, D.C. - Dulles (IAD)</option><option value="DCA">Washington, D.C. - Reagan (DCA)</option><option value="PBI">West Palm Beach, FL (PBI)</option><option value="ICT">Wichita, KS (ICT)</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>
+												<span class="button">
+													<span><a href="javascript:submit_FL_Form();" name="&amp;lid=FlightStatus_Search">search</a></span>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+				</td>
+				<td id="rightcol" rowspan="2">
+					<h3>quick links</h3>
+					<ul class="quicklinks">
+						<li><a href="http://www.airtran.com/route-map/city_information.aspx">route map</a></li>
+						<li><a href="http://www.airtran.com/faq/swa_faq.aspx">southwest faq</a></li>
+						<li><a href="http://www.airtran.com/hotel_specials_policies.aspx">book hotel</a></li>
+						<li><a href="http://www.airtran.com/vacation_packages_policies.aspx">Book Vacation Package</a></li>
+						<li><a href="https://tickets.airtran.com/RetrieveBooking.aspx">find itinerary</a></li>
+						<li><a href="https://tickets.airtran.com/RetrieveBooking.aspx">change itinerary</a></li>
+						<li><a href="http://www.rewardsfarther.com/?ref=airtranpointconversion" target="_blank">rewards conversion</a></li>
+						<!-- mp_trans_disable_start -->
+						
+						<table id="chaseVisa_1rt_ql" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+						<li><a href="https://creditcards.chase.com/a1/southwest/airtran?ref=AirTran" target="_blank">southwest airlines visa</a></li>
+						
+</td></tr></table>
+						<!-- mp_trans_disable_end -->
+						<li><a href="http://www.airtran.com/Jobs/employment_opportunities.aspx" name="&amp;lid=Careers_QuickLinks">careers</a></li>
+					</ul>
+					<h3>login or register</h3>
+					<ul>
+						<li><a href="https://tickets.airtran.com/Login.aspx">a+ rewards members</a></li>
+						<li><a href="https://tickets.airtran.com/LoginA2B.aspx">corporate</a></li>
+						<li><a href="https://tickets.airtran.com/LoginAgency.aspx">travel agents</a></li>
+					</ul>
+					<script type="text/javascript" src="common/scripts/mbox.js"></script>
+					<!--div class="mboxDefault"-->
+						<div id="divFeatureOffer" class="featuredOffer">
+							<h3>featured offer</h3>
+							<div id="RightTimer" style="display:none;">
+								<div id="divRightcol">
+									
+								<p><a href="http://www.southwestvacations.com/deals/deal.aspx?deal=1141&cmpid=ATA-HPBR_MXO_1141_081914&vendor=wnt&promocode=MEXAUG150&ref=AirTran" target="_blank"><img src="common/images/_home/fo_swav_140819.jpg" alt="Save up to $150 on Mexico vacation packages with Southwest Vacations&reg;" /></a></p></div>
+							</div>
+							<div id="RightTimer2" style="display:none;">
+								<div id="divRightcol2">
+									
+								<p><a href="http://www.southwest.com/html/hotels/promotions/labor_day_hotels.html?ref=AirTran" target="_blank"><img src="common/images/_home/fo_hotels_140819.jpg" alt="Save up to 40% on hotels for Labor Day - Book now at southwest.com&reg;." /></a></p></div>
+							</div>
+							<div id="RightTimer3" style="display:none;">
+								<div id="divRightcol3">
+									
+								<p><a href="http://www.southwest.com/html/promotions/international-sale-140819.html?ref=AirTran" target="_blank"><img src="common/images/_home/fo_intl_140819.jpg" alt="Fly South For The Winter - Mexico &amp; The Caribbean On Sale - Book now at southwest.com&reg;. - Subject to foreign government approval." /></a></p></div>
+							</div>
+							<div id="RightTimer4" style="display:none;">
+								<div id="divRightcol4">
+									
+								<p><a href="http://travel.southwest.com/specialoffers/offerDetails.html?id=66467375&ref=AirTran" target="_blank"><img src="common/images/_home/fo_cars_140819.jpg" alt="Save up to 35% on Avis car rentals. - Book now at southwest.com&reg;." /></a></p></div>
+							</div>
+							<div id="RightTimer5" style="display:none;">
+								<div id="divRightcol5">
+									<div id="divDefaultHomepageRight5">
+										<p><a href="index.html###net-escapes###" target="_blank"><img src="common/images/_home/fo_netEscapes.gif" alt="Net Escapes: Our Best Deals Emailed Directly to You" /></a><a href="http://www.net-escapes.com/net_escapes_sign_up.aspx" target="_blank">Sign up for Net Escapes</a> and start saving today!</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					<!--/div-->
+					<script type="text/javascript">mboxCreate('fl_hp_promo');</script>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+
+<div id="footer">
+	<ul>
+		<li><a href="index.html">home</a></li>
+		<li><a href="http://www.airtranairways.com/contact/contact_us.aspx">contact us</a></li>
+		<li><a href="http://www.swamedia.com/channels/AirTran-News/releases" target="_blank">media room</a></li>
+		<li><a href="http://www.airtranairways.com/investor-relations/investor_relations.aspx">investor relations</a></li>
+		<li><a href="http://www.southwest.com/html/about-southwest/careers/index.html?ref=AirTran" target="_blank">careers</a></li>
+		<li><a href="http://www.airtran.com/policies/privacy_policy.aspx">privacy policy</a></li>
+		<li><a href="http://www.airtran.com/sitemap.aspx">site map</a></li>
+		<li><a mporgnav href="http://es.airtran.com/enes/" onclick="return switchLanguage('es');
+      function switchLanguage(lang) {
+      MP.SrcUrl=decodeURIComponent('mp_js_orgin_url');MP.UrlLang='mp_js_current_lang';MP.init();
+	      MP.switchLanguage(MP.UrlLang==lang?'en':lang);
+	      return false;
+      }
+      ">espa&ntilde;ol</a></li>
+	</ul>
+	
+	<div id="legal">
+		&copy; 2014 AirTran Airways. All rights reserved. <a href="http://www.airtranairways.com/about-us/terms_of_use.aspx" style="font-size: 8pt;">Terms of use</a>.
+	</div>
+</div>
+
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1997-2008 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="common/scripts/s_code_config.js"></script>
+<script language="JavaScript" type="text/javascript" src="common/scripts/s_code.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+var sFinal = "";
+sFinal = document.title.replace('\x27','');
+sFinal = sFinal.replace('AirTran Airways - ','');
+if (window.sEvents != null)
+    s.events=sEvents;
+s.pageName=window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) + sFinal
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img src="b/ss/ataprod/1/H.24.4--NS/0"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+
+
+<script type="text/javascript" language="javascript"  src="common/scripts/MotionPoint.js"></script>
+
+
+</div>
+<map name="headermap" id="headermap">
+	<area shape="RECT" coords="60,0,210,50" href="index.html" alt="Home" accesskey="1">
+</map>
+</body>
+</html>

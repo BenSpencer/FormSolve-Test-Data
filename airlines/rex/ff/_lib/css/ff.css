@@ -1,0 +1,201 @@
+
+.heading{
+font-family: Geneva, Verdana, Helvetica, Arial, sans-serif;
+font-size: 13pt;
+font-weight: bold;
+color: #ff6600;
+}
+
+p 
+{
+	font-family: Geneva, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 11px;
+ 	/*color: #666666;*/
+}
+td 
+{
+	font-family: Geneva, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	/*color: #999999;*/
+}
+
+
+.privacy {
+	font-size: 6pt;
+}
+
+
+.blue {
+	color: #095d8c;
+}
+
+.card {
+	color: #000000;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+
+.grylinks       { font:bold 10px Verdana,sans-serif; color:#ff6600}
+.gry a          { text-decoration:none; color:#CCC}
+.gry a:hover    { text-decoration:underline}
+
+.panel {
+	visibility: hidden;	
+}
+
+.maintext{ font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:11px;
+    color:#000000; }
+
+.prodheader{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size : 12px;
+	font-weight: normal;
+	color: #ff6600;
+}
+
+.specheader{
+	font-size : 12px;
+	font-weight : bold;
+}
+
+.otherprodlink{
+	color: #757575;
+	text-transform : none;
+}
+
+.imgborder{
+	border : 1px solid #afafaf;
+	height:77px;
+	width:77px;
+}
+
+.imgborderSmall{
+	border : 1px solid #afafaf;
+	height:44px;
+	width:44px;
+}
+
+.imgborderMedium{
+	border : 1px solid #afafaf;
+	height:133px;
+	width:200px;
+}
+
+.selimgborder{
+	border : 1px solid #ff6600;
+	height:77px;
+	width:77px;
+}
+
+.findercategory{
+	font-size: 16px;
+	font-weight:bold;
+}
+
+.thumbtext{font-family:Arial;font-size:9px;}
+.thumbtextcondensed{font-family:Arial;font-size:9px;letter-spacing:	-1px;}
+
+.prodprice{font-size:12px; font-weight:bold;color:#ff6600;}
+
+#cart{position:absolute;left:39px;top:130px;height:11px;width:105px;z-index:10}
+#cartlink{position:absolute;left:0px;top:115px;height:30px;width:155px;z-index:11}
+
+/*
+a{
+	text-decoration:none;
+	color: #483D8B;
+}
+
+a:hover{
+	color : #FF6347;
+	text-decoration:none;
+}
+*/
+
+h2{
+	font-size:15px;
+	font-weight:bold;
+}
+
+.menucontainer{
+	color : pink;
+}
+
+.menuitemtext{
+	color : pink;
+}
+
+#radioGrey{font-family:Arial;font-size:9px;}
+.orangetext{
+	color: #ff6600;
+	font-weight:bold;
+}
+
+ul{
+	list-style-image :   url(file:///H|/world%20folder/scheduales/images/boxbullet.gif);
+	padding-bottom : 5px;
+}
+
+.sellistitem{
+	list-style-image :  url(file:images/boxbenefitsbullet.gif);
+	padding-bottom : 5px;
+}
+
+.listitem{
+	list-style-image :   url(file:///H|/world%20folder/scheduales/images/boxbullet.gif);
+	padding-bottom : 5px;
+}
+
+#othertext{
+	position:absolute;width:100px;height:25px;left:176px;top:135px;
+}
+
+#arrowup{
+	position:absolute;left:175px;top:165px;width:75px;height:10px;
+}
+
+#arrowdown{
+	position:absolute;left:175px;top:530px;width:75px;height:10px;
+}
+
+#otherproducts{
+	position:absolute;left:175px;top:180px;width:80px;height:352px;overflow:hidden;clip:rect(0px,80px,352px,0px);
+}
+
+#benefitdiv{
+	position:absolute;left:0px;top:0px;width:177px;height:60px;background-color:white;visibility:hidden;
+}
+
+#benefittext{
+	position:absolute;left:0px;top:13px;width:177px;height:47px;visibility:hidden;
+}
+
+.normCursor{
+	cursor : default;
+	color : #757575;
+}
+
+.articletitle{
+	font-size:13px;
+	font-weight:bold;
+}
+.required{
+	font-size:9px;
+	font-weight:normal;
+}
+
+.terms {
+	SCROLLBAR-FACE-COLOR: #999999; 
+	FONT-WEIGHT: normal; 
+	FONT-SIZE: 10px; 
+	text-align:left;
+	WIDTH: 580px; 
+	SCROLLBAR-ARROW-COLOR: #eeeeee; 
+	SCROLLBAR-TRACK-COLOR: #eeeeee; 
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; 
+	SCROLLBAR-DARKSHADOW-COLOR: #d3d3d3; 
+	SCROLLBAR-BASE-COLOR: #d3d3d3; 
+	BACKGROUND-COLOR: #eeeeee;
+}

@@ -1,0 +1,100 @@
+/* calendar -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+div.calendar { position: relative; margin-left: 5px; margin-top: -16px; }
+.calendar, .calendar table {
+  color: #222;
+  cursor: default;
+  background: #F2F2F2;
+  border: none;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-collapse: separate !IMPORTANT;
+}
+.calendar { border: 1px solid #0C6B9B; }
+.calendar table td {
+  font: 10px Verdana, Arial, Helvetica, sans-serif !IMPORTANT;
+}
+/* header -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.calendar .button {
+  text-align: center;
+  padding: 2px;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+/* month name and buttons */
+.calendar table thead td.title {
+  text-align: center;
+  font-weight: bold !IMPORTANT;
+  background: #0C6B9B;
+  color: #FFF !IMPORTANT;
+  padding: 2px 0;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+.calendar thead tr {
+  background: #0C6B9B;
+  color: #FFF;
+}
+.calendar thead tr td.button {
+  color: #FFF !IMPORTANT;
+}
+.calendar thead .hilite,
+.calendar thead .active {
+  background-color: #09C;
+}
+
+/* days of week */
+.calendar thead .daynames {
+  background: #09C;
+}
+.calendar thead .name {
+  padding: 2px;
+  text-align: center;
+  color: #FFF;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+/* body -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.calendar tbody .emptycell,
+.calendar tbody .day {
+  color: #333;
+  text-align: center;
+  padding: 2px 3px;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.calendar tbody .day.othermonth,
+.calendar tbody .day.othermonth.oweekend,
+.calendar tbody .disabled {
+  color: #BBB;
+}
+
+.calendar tbody td.hilite,
+.calendar tbody td.active {
+  background: #09C;
+  color: #FFF;
+}
+
+.calendar tbody td.selected {
+  background: #0C6B9B;
+  color: #FFF;
+}
+
+.calendar tbody .emptyrow {
+  display: none;
+}
+
+/* unused -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.calendar tfoot .footrow,
+.calendar tfoot .ttip,
+.calendar tfoot .hilite,
+.calendar tfoot .active,
+.calendar .combo {
+  display: none;
+}

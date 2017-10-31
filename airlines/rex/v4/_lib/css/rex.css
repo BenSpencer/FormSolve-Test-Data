@@ -1,0 +1,887 @@
+/*
+body,td,th {
+	
+	font-family: Arial, Helvetica, sans-serif;
+	
+	font-size: 9px;
+	color: #333333;
+	
+}
+*/
+/*
+body 
+{
+	font-family:Verdana;
+	background-color: #ffffff;
+	color: #000066;
+
+}
+*/
+form
+{
+	margin: 0px 0px 0px 0px;
+}
+
+small
+{
+	font-size: 9px;
+}
+
+td {
+	font-family: Geneva, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	/*color: #333333;*/
+	color: #000066;
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+    background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+a:link {
+
+	color: #ff6600;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #ff6600;
+}
+a:hover {
+	color: #666666;
+}
+a:active {
+	text-decoration: none;
+	color: #666666;
+}
+/*
+.RedemptionPageHypLink {
+	
+	color: #ff6600;
+	
+	color:Purple;
+}
+*/
+.RedemptionPageHypLink:link {
+	/*
+	color: #ff6600;
+	*/
+	color:Purple;
+}
+.RedemptionPageHypLink:visited {
+	/*
+	color: #ff6600;
+	*/
+	color:Purple;
+}
+.RedemptionPageHypLink:hover {
+	
+	color: #666666;
+	
+}
+.RedemptionPageHypLink:active {
+	/*
+	color: #666666;
+	*/
+	color:Purple;
+}
+
+
+
+/*
+.hyplink, .hyplink:link, .hyplink:visited {
+	
+	color: #ff6600;
+	
+	text-decoration: none;
+}
+
+.hyplink:hover, .hyplink:active {
+	color: #666666;
+}
+*/
+
+
+
+.name {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+}
+.navis {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 5px;
+	margin: 0px;
+	line-height: 12px;
+	height: 46px;
+}
+.navisblue {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #003399;
+}
+.textbold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #666666;
+}
+.navisInner {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #2c4d9c;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align:center;
+	vertical-align: middle;
+	line-height: 26px;
+	background-attachment: fixed;
+	background-image: url(http://www.rex.com.au/v4/_lib/css/images/Main_Images/BgBtn.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.Contents {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	color: #333333;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: justify;
+	vertical-align: middle;
+	padding: 6px;
+	margin: 0px;
+	line-height: normal;
+	/*&height: 46px;*/
+}
+.ContentsOr {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #FF6600;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: left;
+	margin: 0px;
+	line-height: normal;
+	height: 46px;
+}
+.Contentsname {
+
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #333333;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	line-height: normal;
+	height: auto;
+}
+.ContentsOrT {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #FF6600;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: left;
+	margin: 0px;
+	line-height: normal;
+	height: 46px;
+}
+.ContentsBL {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #0066CC;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: left;
+	margin: 0px;
+	line-height: normal;
+	/*height: 46px;*/
+}
+.pts {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	color: #333333;
+	word-spacing: 5px;
+	letter-spacing: 0.5px;
+	text-align: justify;
+	vertical-align: middle;
+	padding: 6px;
+	margin: 0px;
+	line-height: normal;
+	height: 46px;
+	list-style-position: outside;
+	list-style-type: disc;
+}
+.SectionTitle {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	color: #003399;
+}
+
+
+/*Existin Style*/
+.white
+{
+	color: #ffffff;
+}
+
+.whiteBorderTop
+{
+	BORDER-TOP: silver 1px solid;
+}
+
+.whiteHeading {
+	color: #ffffff;
+	font-size:13px;
+	font-weight:bold;
+}
+.nav, .nav:visited, .nav:link, .nav:active {
+	color: #ffffff;
+	font-size:11px;
+	font-weight: bold;
+}
+
+.nav:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+.navBackground {
+	background-color: #e87b17;	
+	background-image: url(http://www.rex.com.au/v4/_lib/img/header_bg.jpg);
+    background-repeat: repeat-y;
+    background-position: right;
+	
+}
+
+.footer, .footer:link, .footer:visited {
+	color: #000066;
+	text-decoration: none;	
+}
+
+.footer:hover, .footer:active {
+	color: #666666;
+	text-decoration: underline;
+}
+
+#FaqQuestion { 
+
+            font: 11px  Verdana, Arial, Helvetica, sans-serif;    
+
+            margin-top: 0px;
+
+            color: #ff6600; 
+
+            text-align: justify;
+
+            /*text-decoration: bold;*/
+            font-weight: bold;
+
+}
+
+#HelpQuestion { 
+
+            font: 12px  Verdana, Arial, Helvetica, sans-serif;     
+
+            margin-top: 0px;
+
+            color: #003399; 
+
+            text-align: justify;
+
+            /*text-decoration: bold;*/
+            font-weight: bold;
+
+}
+
+.helptext { 
+
+            font: 10px  Verdana, Arial, Helvetica, sans-serif;  
+
+            margin-top: 0px;
+
+            color: #ffffff; 
+
+            text-align: left;
+			padding-right: 10;
+
+}
+
+#comments_text { 
+
+            font: 10px  Verdana, Arial, Helvetica, sans-serif;   
+
+            margin-top: 0px;
+
+            color: #000000; 
+
+            text-align: left;
+			padding-right: 10;
+
+}
+
+
+
+
+
+
+ 
+#FaqAnswer { 
+
+            font: 11px  Verdana, Arial, Helvetica, sans-serif; 
+
+            margin-top: 0px;
+			width: 600px; 
+
+            color: #999999; 
+
+            text-align: left;
+			padding-right: 11;
+
+}
+
+.thks{ 
+
+            font: 15px  Verdana, Arial, Helvetica, sans-serif;   
+
+            margin-top: 0px;
+            width: 370;
+
+            color: #fff600; 
+			text-align: left;
+			padding-right: 4;
+			font-weight: bold;
+
+}
+#HelpAnswer { 
+
+            font: 11px  Verdana, Arial, Helvetica, sans-serif;   
+
+            margin-top: 0px;
+			width: 600px; 
+
+            color: #666666; 
+
+            text-align: left;
+			padding-right: 10;
+
+}
+
+#back a:link 
+{	
+    font: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:10px;
+	color: #ff6600;
+	text-decoration: none;
+	font-weight: bold;
+}
+#back a:visited 
+{	
+	font: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:10px;
+	color: #ff6600;
+	text-decoration: underline;
+	font-weight: bold;
+}
+#back a:hover
+{	
+	font: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:10px;
+	color: #ff6600;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#HelpQuestion a:link 
+{	
+    font: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:12px;
+	color: #003399;
+	text-decoration: none;
+	font-weight: bold;
+}
+#HelpQuestion a:visited 
+{	
+	font: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:12px;
+	color: #003399;
+	text-decoration: underline;
+	font-weight: bold;
+}
+#HelpQuestion a:hover
+{	
+	font: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:12px;
+	color: #ff6600;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+#more a:link{ 
+
+            font: 10px  Verdana, Arial, Helvetica, sans-serif;  
+
+            margin-top: 0px;
+
+            color: #ff6600; 
+
+            text-align: left;
+			padding: 4;
+			font-weight: bold;
+
+}
+
+#more a:visited { 
+
+            font: 10px  Verdana, Arial, Helvetica, sans-serif; 
+
+            margin-top: 0px;
+
+            color: #ff6600; 
+
+            text-align: left;
+			padding-right: 4;
+			font-weight: bold;
+			
+
+}
+
+#FaqQuestion a:link  { 
+
+            font: Verdana, Arial, Helvetica, sans-serif; 
+			
+			font-size:11px;
+
+            margin-top: 0px;
+
+            color: #003399; 
+
+            text-align: justify;
+
+            /*text-decoration: bold;*/
+            font-weight: bold;
+
+}
+#HelpAnswer a:link  { 
+
+            font:Verdana, Arial, Helvetica, sans-serif; 
+			
+			font-size:12px;
+
+            margin-top: 0px;
+
+            color: #003399; 
+
+            text-align: justify;
+
+            /*text-decoration: bold;*/
+            font-weight: normal;
+
+}
+
+
+
+
+#HelpAnswer a:visited { 
+
+            font: Verdana, Arial, Helvetica, sans-serif; 
+			
+			font-size:12px;
+
+            margin-top: 0px;
+
+            color: #003399; 
+
+            text-align: justify;
+
+            /*text-decoration: bold;*/
+            font-weight: normal;
+
+}
+
+
+
+#FaqQuestion a:visited  { 
+
+           font: 11px  Verdana, Arial, Helvetica, sans-serif; 
+
+            margin-top: 0px;
+
+            color: #003399; 
+
+            text-align: justify;
+            text-decoration: underline;
+
+            /*text-decoration: bold;*/
+            font-weight: bold;
+
+}
+
+#FaqQuestion a:hover  { 
+
+           font: Verdana, Arial, Helvetica, sans-serif; 
+		   
+		   font-size:11px;
+
+            margin-top: 0px;
+
+            color: #ff6600; 
+
+            text-align: justify;
+            text-decoration: underline;
+
+            /*text-decoration: bold;*/
+            font-weight: bold;
+
+}
+.blueText, .blueText:link, .blueText:visited
+{
+	color: #000066;
+	text-decoration: none;
+}
+
+.blueText:hover, .blueText:active
+{
+	color: #000066;
+	text-decoration: underline;
+}
+
+
+
+.schedule .head { PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: silver 1px solid }
+	.schedule .heading { PADDING-RIGHT: 5px; FONT-WEIGHT: bold; COLOR: #ff6600; PADDING-TOP: 2px; BORDER-BOTTOM: silver 1px solid; BACKGROUND-COLOR: whitesmoke }
+	.schedule .out { COLOR: #888888 }
+	.rightBorder { BORDER-RIGHT: silver 1px solid }
+	.schedule { BORDER-RIGHT: silver 1px solid; BORDER-TOP: silver 1px solid; BORDER-LEFT: silver 1px solid; BORDER-BOTTOM: silver 1px solid }
+	.schedule TD {COLOR: #000066; PADDING-RIGHT: 2px; PADDING-LEFT: 5px; PADDING-BOTTOM: 3px; PADDING-TOP: 5px }
+	#ports { BORDER-RIGHT: silver 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: silver 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: silver 1px solid; WIDTH: 700px; PADDING-TOP: 3px; BORDER-BOTTOM: silver 1px solid; BACKGROUND-COLOR: whitesmoke }
+	
+	
+
+#modalPage_OneWay
+{
+    display: none;
+    position: absolute;
+    
+    
+    
+	width: 100%;
+    height: 100%;
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	z-index: 200;
+    top: 0px; left: 0px;
+}
+#modalPage
+{
+    display: none;
+    position: absolute;
+    
+    
+    
+	width: 100%;
+    height: 100%;
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	z-index: 200;
+    top: 0px; left: 0px;
+}
+#modalPage_UM
+{
+    display: none;
+    position: absolute;
+    
+    
+    
+	width: 100%;
+    height: 100%;
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	z-index: 200;
+    top: 0px; left: 0px;
+}
+
+.modalBackground
+{
+    filter: Alpha(Opacity=100);-moz-opacity:1;opacity:1;
+    width: 100%; 
+	height: 100%;	
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	background-color: #999999;
+    position: absolute;
+    z-index: 500;
+    top: 0px; left: 0px;
+}
+.modalContainer
+{
+    position: absolute;
+    width: 300px;
+    left: 50%;
+    top: 50%;
+    z-index: 750;
+}
+.modalContainer_UM
+{
+    position: absolute;
+    width: 300px;
+    left: 50%;
+    top: 50%;
+    z-index: 750;
+}
+.modal_OneWay
+{
+    background-color: white;
+    border: solid 4px red; position: relative;
+    top: -150px;
+    left: -150px;
+    z-index: 1000;
+    width: 300px;
+    height: 240px;
+    padding: 0px;
+}
+
+.modal
+{
+    background-color: white;
+    border: solid 4px black; position: relative;
+    top: -150px;
+    left: -150px;
+    z-index: 1000;
+    width: 300px;
+    height: 320px;
+    padding: 0px;
+}
+.modal_UM
+{
+    background-color: white;
+    border: solid 4px black; position: relative;
+    top: -150px;
+    left: -150px;
+    z-index: 1000;
+    width: 300px;
+    height: 260px;
+    padding: 0px;
+}
+.modalTop
+{
+    width: 292px;
+    background-color: #000099;
+    padding: 4px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align:text-bottom;
+}
+.modalTop_OneWay
+{
+    width: 292px;
+    background-color: #ff0000;
+    padding: 4px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align:text-bottom;
+}
+.modalTop a, .modalTop a:visited
+{
+    color: #ffffff;
+}
+.modalBody
+{
+    padding: 10px;
+}
+
+#modalWaitingPage
+{
+    display: none;
+    position: absolute;
+    
+    
+    
+	width: 100%;
+    height: 100%;
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	z-index: 200;
+    top: 0px; left: 0px;
+}
+.modalWaitingBackground
+{
+    filter: Alpha(Opacity=100);-moz-opacity:1;opacity:1;
+    width: 100%; 
+	height: 100%;	
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	background-color: #999999;
+    position: absolute;
+    z-index: 500;
+    top: 0px; left: 0px;
+}
+.modalWaitingContainer
+{
+    position: absolute;
+    width: 730px; 
+    left: 30%;
+    top: 50%;
+    z-index: 750;
+}
+.modalWaiting
+{
+    background-color: white;
+    border: solid 4px black; position: relative;
+    top: -150px;
+    left: -150px;
+    z-index: 1000;
+    width: 730px;
+    /*height: 220px;*/
+    padding: 0px;
+}
+.modalWaitingTop
+{
+    width: 730px;
+    background-color: #000099;
+    padding: 4px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align:text-bottom;
+}
+.modalWaitingTop a, .modalWaitingTop a:visited
+{
+    color: #ffffff;
+}
+.modalWaitingBody
+{
+    padding: 10px;
+}	
+/* New css Qconnect*/
+#modalWaitingPageQConnect
+{
+    display: none;
+    position: absolute;
+    
+    
+    
+	width: 100%;
+    height: 100%;
+	
+	width:expression(document.body.clientWidth);
+	height:expression(document.body.clientHeight);
+
+	z-index: 220;
+    top: 0px; left: 0px;
+}
+
+
+/* end*/
+.awardImageLink
+{
+   vertical-align:middle;
+   border:none;
+   margin-bottom:5px;
+}
+.modalBackground_ContactUs {
+/*
+ filter: Alpha(Opacity=85); -moz-opacity:0.85; opacity:0.85; 
+    width: 100%; height: 100%; 
+    background-color:#003366;
+    position:relative;
+    z-index: 500;
+    top: 0px; left: 0px;
+	*/
+	filter: Alpha(Opacity=85); 	-moz-opacity:0.85; 	opacity:0.85; 
+	position: relative;
+    top: 0px; 
+	left: 0px;
+    width: 100%; 
+	height: 100%;	
+	
+	
+	background-color: #003366;
+   
+    /*z-index: 50000!important;*/
+
+	
+}

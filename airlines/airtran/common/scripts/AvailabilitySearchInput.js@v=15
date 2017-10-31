@@ -1,0 +1,1363 @@
+/*========================================================================================
+  
+$rcsfile: AvailabilitySearchInput.js $
+
+$Revision: 1.10.2.1a $ $Date: 2006/04/05 15:45:19 $
+*** AirTran modified
+
+Summary:	JavaScript file for the AvailabilitySearchInput control. Content moved from the C# code.
+
+------------------------------------------------------------------------------------------
+This file is part of the Navitaire NewSkies application.
+Copyright (C) Navitaire.  All rights reserved.
+========================================================================================*/
+
+var ElementsState = new Array();
+var ExistingMarkets = new Array();
+var aliasStations = null;
+
+var optBackAT = '#ffffff';
+//var optBackF9 = '#d4d6e3';
+var optBackF9 = '#ffffff';
+
+function arrayInsert(arr, item, loc) {
+	if (loc > arr.length) loc = arr.length;
+	if (loc < 0) loc = 0;
+	
+	for (var i = arr.length; i > loc; i--) {
+		arr[i] = arr[i - 1];
+	}
+	
+	arr[loc] = item;
+}
+
+function createAliasStation(stationCode, aliasCode, aliasName) {
+	if (Stations[stationCode]) 
+	{
+		Stations[aliasCode] = new Station(stationCode, "", aliasName, true, true, Stations[stationCode].mkts);
+	}
+}
+
+function addAliasStations() {
+
+	// check the stations hash
+	if ((!Stations) || (!Stations.length == 0)) return;
+
+
+
+//	aliasStations = new Array("CA1", "PH1", "PH2");
+	aliasStations = new Array();
+	
+	
+//	createAliasStation("CAK", "CA1", "Cleveland AREA");
+//	createAliasStation("PHF", "PH1", "Norfolk AREA");
+//	createAliasStation("PHF", "PH2", "Williamsburg, VA");
+	
+
+	for (var i = 0; i < aliasStations.length; i++)
+     {
+		var aliasStn = Stations[aliasStations[i]];
+		
+		for (var stnCode in Stations) 
+		{
+			var stn = Stations[stnCode];
+			if ((!stn) || (!stn.mkts)) continue;
+			
+            
+  		// check this station's markets, and add the alias if its real station is in the list
+			for (var j = 0; j < stn.mkts.length; j++) {
+
+			   
+
+				if (stn.mkts[j] == aliasStn.code) {
+					arrayInsert(stn.mkts, aliasStations[i], i);
+					break;
+				}
+               
+                 
+			}
+
+		}
+		//add the new alias at the end; we'll sort later
+        SortedStations[SortedStations.length] = aliasStations[i];			
+		
+	}
+
+
+
+	SortedStations.sort(sortByStationName);
+	
+	
+	//now add ATL at the top:
+	createAliasStation("ATL", "AT1", "Atlanta, GA");
+	arrayInsert(SortedStations, "AT1", 0);
+
+}
+
+
+//Use this function to sorts the SortedStation array by the 
+//Station Name - like so: SortedStations.sort(sortByStationName)
+function sortByStationName(a, b) {
+  
+ if (Stations[a] == null)
+    {
+    return 1;
+    } 
+    if (Stations[b] == null)
+    {
+        return -1;
+    } 
+    var x = Stations[a].name;
+    var y = Stations[b].name;
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+}
+function stripNonATArray(arr) {
+	for (var i = (arr.length - 1); i >= 0; i--) {
+		if ((!Stations[arr[i]]) || (! Stations[arr[i]].isAT)) {
+			arr.splice(i,1);
+		}
+	}
+}
+
+function stripNonATStations() {
+	if ((!Stations) || (!Stations.length == 0)) return;
+	if (window.airlineATArrayValues == null) return;
+	
+	// make sure we've already parsed all the stations
+	processAirlineStations();
+	for (var stnCode in Stations) {
+		if (!Stations[stnCode].isAT) {
+			Stations[stnCode] = null;
+			delete Stations[stnCode];
+		} else {
+			stripNonATArray(Stations[stnCode].mkts);
+		}
+	}
+	
+	stripNonATArray(SortedStations);
+
+//for normal bookings, this is done later in the process, but for
+//check-in, we need to do it here
+    SortedStations.sort(sortByStationName);
+}
+
+function stripDenver(arr) {
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] == 'DEN') {
+			arr.splice(i,1);
+			return;
+		}
+	}
+}
+
+function stripGLStations(arr) {
+	for (var i = (arr.length - 1); i >= 0; i--) {
+		if (airlineGLArrayValues.indexOf(arr[i]) != -1) {
+			arr.splice(i,1);
+		}
+	}
+}
+
+function processAirlineStations() {
+	if ((!Stations) || (!Stations.length == 0)) return;
+	if (window.airlineATArrayValues == null) return;
+	if (window.airlineF9ArrayValues == null) {
+		airlineF9ArrayValues = '';
+	}
+	if (window.airlineSWArrayValues == null) {
+	    airlineSWArrayValues = '';
+	}
+	
+	for (var stnCode in Stations) {
+		var stn = Stations[stnCode];
+		if (!stn) continue;
+		stn.isAT = (airlineATArrayValues.indexOf(stn.code) != -1);
+		stn.isF9 = (airlineF9ArrayValues.indexOf(stn.code) != -1);
+		stn.isSW = (airlineSWArrayValues.indexOf(stn.code) != -1);
+		
+		// check if GL station
+		if (window.airlineGLArrayValues != null) {
+			if (airlineGLArrayValues.indexOf(stn.code) != -1) {
+				stripDenver(stn.mkts);
+				stripGLStations(stn.mkts);
+			}
+		}
+	}
+	
+	if (window.airlineGLArrayValues != null) {
+		stripGLStations(Stations['DEN'].mkts);
+	}
+}
+
+//// Assumes that Stations and SortedStations arrays were initialized and populated above
+//klp - updated for 2.0.2 (9/5/2007)
+function changeDest(o, d, dVal)
+{
+	if (!document.images) {	return;	}
+
+	if ((!d) || (!o)) { return; }
+
+	var dLabel = d.options[0].text;
+	var oIx = eval(o.selectedIndex);
+	var dIx = 0;
+	var name = '';
+
+	if (oIx > 0)
+	{
+		var oVal = o.options[oIx].value;
+		
+		// clear and begin new destList
+		d.length = 1;
+		d.options[0] = new Option(dLabel);
+        if(d.getAttribute('requiredEmpty'))
+        {
+		    d.options[0].value = d.getAttribute('requiredEmpty');
+        }
+        
+		for (var i=0; i < SortedStations.length; i++)
+		{
+			for (j=0; j<Stations[oVal].mkts.length; j++)
+			{
+				//alert(j);
+			    var stnCode = Stations[oVal].mkts[j];
+
+			    if (i == 114) {
+                    var x = "debug";
+			    }
+			    // mt - display only AT stations
+			    //if ((SortedStations[i] == stnCode) && (Stations[stnCode] != undefined) && (Stations[stnCode].validDest == true))
+				if ((SortedStations[i] == stnCode) && (Stations[stnCode] != undefined) && (Stations[stnCode].validDest == true)  && ((Stations[stnCode].isAT) || (Stations[stnCode].isSW)))
+				{
+					
+					if ( stnCode == dVal ) { dIx = d.length; }
+
+
+					if (showStationCodes)
+					{
+						name = Stations[stnCode].name + ' (' + Stations[stnCode].code + ')';
+					}
+					else
+					{
+						name = Stations[stnCode].name;
+					}
+
+		            d.length += 1;
+					d.options[d.length-1] = new Option( name );
+					d.options[d.length-1].value = Stations[stnCode].code;
+					
+					break;
+				}
+			}
+
+            //BDW 1/11: have to compare d.length to mkts.length + 1
+            //because the heading "Destination City" counts as one, and
+            //is not in the Stations array
+            if (d.length == (Stations[oVal].mkts.length + 1)) {
+                break; 
+             }
+		}
+
+		d.selectedIndex = dIx;
+	}
+	else
+	{
+		fillList(d, dVal);
+	}
+	
+//	getCityDefaultsFromCookie();
+} // end changeDest
+
+
+function SortDropDown(sel)
+{
+    var ary = (function (nl) {
+        var a = [];
+        for (var i = 0, len = nl.length; i < len; i++)
+            a.push(nl.item(i));
+        return a;
+    })(sel.options);
+    // sort OPTIONs Array
+    ary.sort(function (a, b) {
+        // sort by "value"? (numeric comparison)
+        // NOTE: please remember what ".value" means for OPTION objects
+        //return a.value - b.value;
+        // or by "label"? (lexicographic comparison)
+        return a.text < b.text ? -1 : a.text > b.text ? 1 : 0;
+    });
+    // remove all OPTIONs from SELECT (don't worry, the original
+    // OPTION objects are still referenced in "ary") ;-)
+    for (var i = 0, len = ary.length; i < len; i++)
+        sel.remove(ary[i].index);
+    // (re)add re-ordered OPTIONs to SELECT
+    for (var i = 0, len = ary.length; i < len; i++) {
+        var optn = document.createElement("OPTION");
+        optn.text = ary[i].text;
+        optn.value = ary[i].value;
+        sel.options.add(ary[i]);
+    }
+}
+
+
+// Assumes that Stations and SortedStations arrays were initialized and populated above
+//klp - updated for 2.0.2 (9/5/2007)
+function fillList(d, dVal)
+{
+//  if (!d) { alert("There's no DropDownDest!"); return; }
+	if (!d) { return; }
+	if (!aliasStations) {
+		addAliasStations();
+		processAirlineStations();
+	}
+	var dLabel = d.options[0].text;
+
+	if ((dVal == '') && (d.selectedIndex > -1))
+	{
+		dVal = d.options[ d.selectedIndex ].value;
+	}
+	var dIx = 0;
+
+	d.length = 1;
+	d.options[0] = new Option(dLabel);
+	if(d.getAttribute('requiredEmpty'))
+    {
+        d.options[0].value = d.getAttribute('requiredEmpty');
+    }       
+	
+	
+	var name = '';
+	for (var i=0; i<SortedStations.length; i++)
+	{
+		stnCode	= SortedStations[i];
+		
+	
+        var station = Stations[stnCode];
+        if (!station)
+		{
+            //alert("no station for " + stnCode);
+            continue;
+        }
+    
+        // mt - only display AT stations 
+		// if (Stations[stnCode].validDest == true)
+	    if (Stations[stnCode].validDest == true  &&  (Stations[stnCode].isAT || Stations[stnCode].isSW) )
+		{
+		    //alert(Stations[stnCode].name + '  ' + Stations[stnCode].isAT);
+		
+			if (dVal == stnCode)
+			{
+				dIx = d.length;
+			}
+			d.length += 1;
+			if (showStationCodes)
+			{
+				//name = Stations[stnCode].name + ' (' + stnCode + ')';
+				name = Stations[stnCode].name + ' (' + Stations[stnCode].code + ')';
+			}
+			else
+			{
+				name = Stations[stnCode].name;
+			}
+			d.options[d.length-1] = new Option( name);
+			d.options[d.length-1].value = Stations[stnCode].code;
+			d.options[d.length-1].style.background = (Stations[stnCode].isAT) ? optBackAT : optBackF9;
+		}
+	}
+
+	d.selectedIndex = dIx;
+	getCityDefaultsFromCookie();
+
+}	// end fillList
+
+function ToggleElementVisibility(idPS, vis) {
+	if(!document.getElementById || !document.createTextNode)
+		return true;
+
+	// if being passed element names
+	if (idPS[0] == '_') idPS = applicationJavaScriptHtmlId + idPS;
+	
+	var element = document.getElementById(idPS);
+	if (! element) return;
+	
+	// compute the new class
+	var newClass = element.className.replace(/hidden/,'');
+	if (! vis) {
+		newClass += ' hidden';
+	}
+
+	element.className = newClass;
+}
+
+function HideShowMarket(mktIx, disp)
+{
+	if(!document.getElementById || !document.createTextNode)
+		return true;
+
+	var disp = (disp == 'block');
+	
+	ToggleElementVisibility('_LabelMarketDate' + mktIx,disp);
+	ToggleElementVisibility('_LabelMarketStation' + mktIx,disp);
+	ToggleElementVisibility('_TextBoxMarketOrigin' + mktIx,disp);
+	ToggleElementVisibility('_TextBoxMarketDestination' + mktIx,disp);
+	ToggleElementVisibility('_DropDownListMarketOrigin' + mktIx,disp);
+	ToggleElementVisibility('_DropDownListMarketDestination' + mktIx,disp);
+	ToggleElementVisibility('_DropDownListMarketDay' + mktIx,disp);
+	ToggleElementVisibility('_DropDownListMarketMonth' + mktIx,disp);
+	ToggleElementVisibility('_DropDownListMarketDateRange' + mktIx,disp);
+	ToggleElementVisibility('_HyperLinkMarketCalendar' + mktIx,disp);
+	ToggleElementVisibility('_Market' + mktIx + 'Block',disp);
+}
+
+function DisableEnableMarket(mktIx, disableStatus)
+{
+	if(!document.getElementById || !document.createTextNode)
+		return true;
+
+	var orig = document.getElementById(applicationJavaScriptHtmlId + '_TextBoxMarketOrigin' + mktIx);
+	var dest = document.getElementById(applicationJavaScriptHtmlId + '_TextBoxMarketDestination' + mktIx);
+	var listOrigin = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketOrigin' + mktIx);
+	var listDest = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketDestination' + mktIx);
+	var day = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketDay' + mktIx);
+	var month = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketMonth' + mktIx);
+	var dateRange = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketDateRange' + mktIx);
+	var cal = document.getElementById(applicationJavaScriptHtmlId + '_HyperLinkMarketCalendar' + mktIx);
+	
+	if (orig) orig.disabled=disableStatus;
+	if (dest) dest.disabled=disableStatus;
+	if (listOrigin) listOrigin.disabled=disableStatus;
+	if (listDest) listDest.disabled=disableStatus;
+	if (day) day.disabled=disableStatus;
+	if (month) month.disabled=disableStatus;
+	if (dateRange) dateRange.disabled=disableStatus;
+	if (cal) cal.disabled=disableStatus;
+}
+
+function CheckBahamas() {
+	// only care about one-way trips
+	var mktStructure = GetMarketStructure();
+	if (mktStructure != 'OneWay') return;
+	
+	// find the dropdown list for the destination
+	var ds = document['SkySales'];
+	var dest = ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination1'];
+	if (dest == null) return;
+	
+	if (dest.options[dest.selectedIndex].value == 'FPO') {
+		alert('Note: You must be a Bahamian resident to book one-way travel to the Bahamas. All other travelers must have a return or onward ticket.');
+	}
+}
+
+function ATAvailabilitySearchInputSearchView_Validate(validateEventArgs)
+{
+	if (CheckCities() && CheckDates() && CheckPaxCount())
+	{
+		CheckBahamas();
+
+		return true;
+	}
+
+	return false;
+}
+
+function CheckPassengers()
+{
+	var ds = document['SkySales'];
+	var adult = GetValue(applicationJavaScriptHtmlId + '_DropDownListPassengerType_ADT')*1;
+
+	if (adult == 0)
+	{
+		alert('Please select a number of passengers.');
+		return false;
+	}
+
+	return true;
+}
+
+function UpdateCalendarDate(updateCalendarDateEventArgs)
+{
+	var ds = document['SkySales'];
+	var dropDownListMarketDay = applicationJavaScriptHtmlId + '_DropDownListMarketDay' + updateCalendarDateEventArgs.passedInfo;
+	var dropDownListMarketMonth = applicationJavaScriptHtmlId + '_DropDownListMarketMonth' + updateCalendarDateEventArgs.passedInfo;
+			
+	var month = updateCalendarDateEventArgs.dateSelected.getMonth() + 1;
+	if(month < 10)
+	{
+		month = '0' + month;
+	}
+	var day = updateCalendarDateEventArgs.dateSelected.getDate();
+	if(day < 10)
+	{
+		day = '0' + day;
+	}
+			
+	ds[dropDownListMarketMonth].value = updateCalendarDateEventArgs.dateSelected.getYear() + '-' + month;
+	ds[dropDownListMarketDay].value = day;
+}
+
+function setDaysInMonth(ddl, daysInMonth) {
+    var val = '';
+    var sel = ddl.selectedIndex;
+    
+    ddl.length = 0;
+    for (var i = 1; i <= daysInMonth; i++) {
+        val = (i < 10) ? '0' + i : '' + i;
+        ddl.length++;
+        ddl.options[i - 1] = new Option(val, val);
+    }
+
+    if (sel < ddl.length)
+        ddl.selectedIndex = sel;
+    else
+        ddl.selectedIndex = ddl.length - 1;
+}
+
+function updateDaysInMonth(dayInput, monthInput) {
+	var monthVal = monthInput.options[monthInput.selectedIndex].value;
+	var daysInMonth = 31;
+    switch (monthVal) {
+        case '2014-04':
+        case '2014-06':
+        case '2014-09':
+        case '2014-11':
+        case '2015-04':
+        case '2015-06':
+            daysInMonth = 30;
+            break;
+        case '2015-02':
+            daysInMonth = 28;
+            break;
+    }
+
+    setDaysInMonth(dayInput, daysInMonth);
+}
+
+function updateDates(inputName) {
+    if (!window.theForm) window.theForm = document.SkySales;
+    var mktIx = inputName.charAt(inputName.length - 1) * 1;
+	var ddlDayPrefix = applicationJavaScriptHtmlId + '_DropDownListMarketDay';
+	var ddlMonthPrefix = applicationJavaScriptHtmlId + '_DropDownListMarketMonth';
+
+    // if a month change, update number of days
+	if (inputName.indexOf('Month') != -1) {
+	    updateDaysInMonth(theForm.elements[ddlDayPrefix + mktIx], theForm.elements[ddlMonthPrefix + mktIx]);
+	}
+
+    // make sure later markets have at least this date
+	var i = mktIx + 1;
+	while (theForm.elements[ddlDayPrefix+i] != null) {
+		if ((theForm.elements[ddlMonthPrefix+i].selectedIndex < theForm.elements[ddlMonthPrefix+mktIx].selectedIndex) ||
+			((theForm.elements[ddlMonthPrefix+i].selectedIndex == theForm.elements[ddlMonthPrefix+mktIx].selectedIndex) &&
+			(theForm.elements[ddlDayPrefix+i].selectedIndex < theForm.elements[ddlDayPrefix+mktIx].selectedIndex))) {
+			
+			theForm.elements[ddlDayPrefix + i].selectedIndex = theForm.elements[ddlDayPrefix+mktIx].selectedIndex;
+			theForm.elements[ddlMonthPrefix + i].selectedIndex = theForm.elements[ddlMonthPrefix + mktIx].selectedIndex;
+			updateDaysInMonth(theForm.elements[ddlDayPrefix + i], theForm.elements[ddlMonthPrefix + i]);
+		}
+		mktIx = i;
+		i++;
+	}
+}
+
+
+// find the index of where value is in the list
+// and returns the index.
+function findIndexByValue(list, value)
+{
+	var i=0;
+	while ( i< list.length )
+	{
+		if ( list[i].value == value )
+			return i;
+		i++;
+	}
+	return -1;
+}
+
+function addOption(list, text, value)
+{
+	var idx = list.length;
+	list[idx]=new Option(text);
+	list[idx].value=value;
+	list.selectedIndex=idx;
+	return idx;
+}
+
+function setDatesState(state, mktIx)
+{
+	ElementsState['DropDownListMarketDay'+mktIx] = state;
+	ElementsState['DropDownListMarketMonth'+mktIx] = state;
+	ElementsState['DropDownListMarketDateRange'+mktIx] = state;
+	ElementsState['HyperLinkMarketCalendar'+mktIx] = state;
+}
+
+function setPaxsState(state)
+{
+	ElementsState['DropDownListAdult'] = state;
+	ElementsState['DropDownListChild'] = state;
+	ElementsState['DropDownListInfant'] = state;
+	ElementsState['PassengersBlock'] = state;
+}
+
+function setMarketState(state, mktIx)
+{
+	ElementsState['Market'+mktIx+'Block'] = state;
+}
+
+function validateElement(elementName)
+{
+	if ((document['SkySales'][applicationJavaScriptHtmlId + '_' + elementName]) && (ElementsState[elementName]!= 'cancel') ) 
+		return true;
+	return false;
+}
+
+
+//This function uses the global variable applicationNumberOfMarketsToOffer, defined in the XSLT file for the 
+//AvailabilitySearchInput control.
+var previousMarketStructure = '';
+function ReturnDateDisplay()
+{
+	if(!document.getElementById || !document.createTextNode)
+		return true;
+
+	var ds = document['SkySales'];					
+	var selected   = GetMarketStructure();
+	var rowsToHide = null;
+	var rowsToShow = null;
+
+	if (selected == 'OneWay')
+	{
+		rowsToHide	= ['OpenJaw_msg','Market1_head','Market2_head','Market2_from','Market2_to','OpenJaw_divider','Market2_date','Market2_range'];
+	}
+	else  if (selected == 'RoundTrip')
+	{
+		rowsToHide	= ['OpenJaw_msg','Market1_head','Market2_head','Market2_from','Market2_to','OpenJaw_divider'];
+		rowsToShow	= ['Market2_date','Market2_range'];
+	}
+	else if (selected == 'OpenJaw')
+	{
+		rowsToShow = ['OpenJaw_msg','Market1_head','Market2_head','Market2_from','Market2_to','OpenJaw_divider','Market2_date','Market2_range'];
+		
+		// update city pairs if we're moving to open jaw
+		if (previousMarketStructure != 'OpenJaw') {
+			UpdateCityPairs();
+		}
+	}
+
+	for (var row in rowsToHide)
+		ToggleElementVisibility(rowsToHide[row],false);
+	for (var row in rowsToShow)
+		ToggleElementVisibility(rowsToShow[row],true);
+	
+	previousMarketStructure = selected;
+}
+
+function UpdateCityPairs() {
+	var ds = document['SkySales'];
+
+	var dOrigin	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketOrigin1']; 
+	var dDest	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination1'];
+	var rOrigin	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketOrigin2']; 
+	var rDest	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination2'];
+	
+	var dDestValue = dDest.options[dDest.selectedIndex].value;
+	rOrigin.selectedIndex = 0;
+	for (var i = 0; i < rOrigin.options.length; i++) {
+		if (rOrigin.options[i].value == dDestValue) {
+			rOrigin.selectedIndex = i;
+			break;
+		}
+	}
+	rOrigin.onchange();
+	
+	var dOriginValue = dOrigin.options[dOrigin.selectedIndex].value;
+	rDest.selectedIndex = 0;
+	for (var i = 0; i < rDest.options.length; i++) {
+		if (rDest.options[i].value == dOriginValue) {
+			rDest.selectedIndex = i;
+			break;
+		}
+	}
+}
+
+function GetMarketStructure()
+{
+	var radioGroup = document['SkySales'][applicationHtmlId + 'RadioButtonMarketStructure'];
+
+	var selected   = '';
+
+	if (radioGroup)
+	{
+		if (radioGroup[0]) // array of buttons
+		{
+			for (var i=0; i<radioGroup.length; i++)
+			{
+				if (radioGroup[i].checked)
+				{
+					selected = radioGroup[i].value;
+					break;
+				}
+			}
+		}
+		else // single button
+		{
+			selected = radioGroup.value;
+		}
+
+		if (selected=='OneWay')
+		{
+			numMarketsToValidate=1;
+			numDatesToValidate=1;
+		}
+		else if (selected=='RoundTrip')
+		{
+			numMarketsToValidate=1;
+			numDatesToValidate=2;
+		}
+		else if (selected=='OpenJaw')
+		{
+			numMarketsToValidate=2;
+			numDatesToValidate=2;
+		}
+		else 
+		{
+			numMarketsToValidate=applicationNumberOfMarketsToOffer; //set to max
+			numDatesToValidate=applicationNumberOfMarketsToOffer;
+		}
+
+		return selected;
+	}				
+}
+	
+
+/*
+* Validates that the first departure date selected is not before the current date
+* Validates that the date for marketN is not earlier than marketN-1
+*/
+function CheckDates()
+{	
+	var ds=document['SkySales'];					
+	var dateToCompare = applicationFormatedDate; 
+	var dayToday = applicationFormatedDay;
+	var monthYearValue = applicationFormatedDateTime;
+
+	for (var mktIx=1; mktIx<=numDatesToValidate; mktIx++)
+	{
+		if (MarketAction[mktIx] == 'Cancel')
+			continue;
+
+		if (!validateElement('DropDownListMarketDay' + mktIx))
+			continue;
+
+		var mktDay 	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+mktIx].selectedIndex].value;
+		var mktMonth	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].selectedIndex].value.substring(5, 7);
+		var mktYear	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].selectedIndex].value.substring(0, 4);
+		var mktMonthText	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].selectedIndex].text;
+		var mkt2Lines	= 0;	// TODO: set this to 1 if/when mkt2 month and day lists have a default '-' item at index 0.
+		var mktDate = ''+mktYear+mktMonth+mktDay;
+		
+		if (! CheckDaysOfMonth(mktDay, mktMonth, mktYear))
+		{
+			var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+			alert(localizedTextInvalidDatePre + mktDay + localizedTextInvalidDateMid + months[mktMonth - 1] + localizedTextInvalidDatePost);
+			return false;
+		}
+		
+		// alert(mktIx+' '+MarketLiftStatus[mktIx]);
+		// don't check date if liftstatus is not default
+		if ((mktDate < dateToCompare) && ((MarketLiftStatus[mktIx] == applicationLiftStatus) || (! MarketLiftStatus[mktIx])))
+		{
+			if (mktIx == 1)
+			{
+				if (MarketAction[mktIx] != 'Retain') {
+					// if dptr of first market is past date, display alert and set to current date
+					var msg=localizedTextPastDatePre;
+
+					// don't want to reset the date when it's not 'change'
+					// 'retain' is supposed to keep the old dates
+					if (MarketAction[mktIx]=='New' || MarketAction[mktIx]=='Change')
+					{
+						msg=msg+localizedTextPastDatePost;
+						alert(msg);
+						ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+mktIx].options.selectedIndex = dayToday - 1;
+						ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options.selectedIndex = findIndexByValue(ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx],monthYearValue);
+					}
+					else
+						alert(msg);
+					return false;
+				}
+			}
+			else
+			{
+				var msg=localizedTextEarlierDatePre;
+				if (MarketAction[mktIx]=='New' || MarketAction[mktIx]=='Change')
+				{
+					msg=msg+localizedTextEarlierDatePost;
+					alert(msg);
+					ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+mktIx].options.selectedIndex = eval(ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+(mktIx-1)].options.selectedIndex) + mkt2Lines;
+					ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options.selectedIndex = eval(ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+(mktIx-1)].options.selectedIndex) + mkt2Lines;
+				}
+				else
+					alert(msg);
+				return false;
+			}
+		}
+		
+		dateToCompare = mktDate;
+
+	}
+
+	dateToCompare = applicationFormatedDate;
+	
+	// look for first market that's not 'Cancel'and not 'Retain'
+	// these are the markets where availability will be obtained
+	for (var mktIx=1; mktIx<=numDatesToValidate; mktIx++)
+	{
+		if (MarketAction[mktIx] == 'Cancel' || MarketAction[mktIx] == 'Retain')
+			continue;
+		if (!validateElement('DropDownListMarketDay' + mktIx))
+			continue;
+
+	var mktDay 	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay'+mktIx].selectedIndex].value;
+	var mktMonth	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].selectedIndex].value.substring(5, 7);
+	var mktYear	= ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].options[ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth'+mktIx].selectedIndex].value.substring(0, 4);
+	var mktDate = ''+mktYear+mktMonth+mktDay;
+
+	if (mktDate == dateToCompare)
+	{
+		var todayDateMsg = localizedTextTodaysDateMessage;
+		if (todayDateMsg)
+		{
+			alert(todayDateMsg);
+		}
+	}
+	break; 
+	} // end loop to look for first market that's not 'Cancel'and not 'Retain'
+
+	return true;
+}
+
+var tempEventArgs;
+var retryCount = 0;
+function UpdateFlightSearch(eventArgs)
+{
+	//Safe retry if the object hasn't been initialized yet
+	if (ExistingMarkets == null || ExistingMarkets.length == 0)
+	{
+		tempEventArgs = eventArgs;
+		retryCount++;
+		if (retryCount < 4)
+		{
+			setTimeout('UpdateFlightSearch(tempEventArgs)',50);
+		}
+		
+		return;
+	}
+	
+	var allowOpenJaw = applicationOpenJawEnabled;
+	var ds = document['SkySales'];
+
+	for (var i=0; i<eventArgs.SelectedModificationsArray.length; i++)
+	{
+
+		var orig = ds[applicationJavaScriptHtmlId + '_TextBoxMarketOrigin' + (i+1)];
+		var dest = ds[applicationJavaScriptHtmlId + '_TextBoxMarketDestination' + (i+1)]; 
+		var listOrigin = ds[applicationJavaScriptHtmlId + '_DropDownListMarketOrigin' + (i+1)]; 
+		var listDest = ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination' + (i+1)]; 
+		var day = ds[applicationJavaScriptHtmlId + '_DropDownListMarketDay' + (i+1)];
+		var month = ds[applicationJavaScriptHtmlId + '_DropDownListMarketMonth' + (i+1)];
+
+		if ( eventArgs.SelectedModificationsArray[i] == 'Retain')
+		{
+			var ds = document['SkySales'];
+			var idx=-1;
+			// revert values to market from existing booking 
+			if (orig) orig.value=ExistingMarkets[i+1].orig;
+			if (dest) dest.value=ExistingMarkets[i+1].dest;
+
+			if (listOrigin)
+			{
+					listOrigin.selectedIndex=findIndexByValue(listOrigin,ExistingMarkets[i+1].orig);
+					changeDest(listOrigin, listDest, listOrigin,ExistingMarkets[i+1].orig);
+					idx= findIndexByValue(listDest,ExistingMarkets[i+1].dest);
+					if (idx== '-1')
+						addOption(listDest,ExistingMarkets[i+1].dest, ExistingMarkets[i+1].dest);
+					else
+						listDest.selectedIndex=idx;
+			}
+			if (day) day.selectedIndex=findIndexByValue(day,ExistingMarkets[i+1].day);
+			if (month)
+			{
+			
+				idx=findIndexByValue(month,ExistingMarkets[i+1].monthYearValue);
+				if (idx== '-1')
+					addOption(month, ExistingMarkets[i+1].monthYear, ExistingMarkets[i+1].monthYearValue);
+				else
+					month.selectedIndex=idx;
+					
+			}
+			// diabled = retained
+			setStationsState('retain', i+1);
+			setDatesState('retain', i+1);
+			setMarketState('retain', i+1);
+			setPaxsState('retain');
+			MarketAction[i+1] = 'Retain';
+		}
+		else if ( eventArgs.SelectedModificationsArray[i] == 'Change')
+		{
+			// enabled = change
+			setDatesState('change', i+1);
+			setMarketState('change', i+1);
+			MarketAction[i+1] = 'Change';
+			if (exists('Retain'))
+			{
+				setPaxsState('retain');
+				if (allowOpenJaw)
+					setStationsState('change', i+1);
+				else
+					setStationsState('cancel', i+1);
+			}
+			else //if all other mkts == Change or Cancel
+			{
+				setStationsState('change', i+1);
+				setPaxsState('change');
+			}
+		}
+		else // mkt == 'Cancel'
+		{
+
+			if (orig) orig.value=localizedTextTextBoxMarketOrigin;
+			if (dest) dest.value=localizedTextTextBoxMarketDestination;
+
+			if (listOrigin)
+			{
+					listOrigin.selectedIndex=findIndexByValue(listOrigin,'???');
+					listDest.selectedIndex=findIndexByValue(listDest,'???');
+			}
+
+			// hidden = cancel
+			setStationsState('cancel', i+1);
+			setDatesState('cancel', i+1);
+			setMarketState('cancel', i+1);
+			MarketAction[i+1] = 'Cancel';
+			if (all('Cancel'))
+				setPaxsState('cancel');
+		}
+	}
+
+	// changeInterface();
+
+}
+
+function changeInterface()
+{
+	if(!document.getElementById || !document.createTextNode)
+		return true;
+
+	var ds = document['SkySales'];
+	for (var id in ElementsState)
+	{
+		if (ElementsState[id] == 'retain')
+		{
+			if (document.getElementById(applicationJavaScriptHtmlId + '_'+id)) document.getElementById(applicationJavaScriptHtmlId + '_'+id).style.display = 'inline';
+			if (ds[applicationJavaScriptHtmlId + '_'+id]) ds[applicationJavaScriptHtmlId + '_'+id].disabled = true;
+		}
+		else if (ElementsState[id] == 'change')
+		{
+			if (document.getElementById(applicationJavaScriptHtmlId + '_'+id)) document.getElementById(applicationJavaScriptHtmlId + '_'+id).style.display = 'inline';
+			if (ds[applicationJavaScriptHtmlId + '_'+id]) ds[applicationJavaScriptHtmlId + '_'+id].disabled = false;
+		}
+		else if (ElementsState[id] == 'cancel')
+		{
+			if (document.getElementById(applicationJavaScriptHtmlId + '_'+id)) document.getElementById(applicationJavaScriptHtmlId + '_'+id).style.display = 'none';
+		}
+	}
+}
+
+function ExistingMarket(orig,dest,day,monthYear,monthYearValue)
+{
+	this.orig = orig;
+	this.dest = dest;
+	this.day = day;
+	this.monthYear = monthYear;
+	this.monthYearValue = monthYearValue;
+}
+
+function all(action)
+{
+	var radioGroupCount = applicationNumberOfMarketsToOffer;
+	for (var i=1; i<=radioGroupCount; i++)
+	{
+		if ( GetCheckedValue(applicationHtmlId + 'RadioGroupMarket'+i) != action) return false;
+	}
+	return true;
+}
+
+function exists(action)
+{
+	var radioGroupCount = applicationNumberOfMarketsToOffer;
+	for (var i=1; i<=radioGroupCount; i++)
+	{ 
+		if ( GetCheckedValue(applicationHtmlId + 'RadioGroupMarket'+i) == action) return true;
+	}
+	return false;
+}
+
+function CheckPaxCount()
+{
+	var dropDownNames = applicationPassengerArrayValues.split(",");
+	var ds = document['SkySales'];
+	var paxDropdownRendered = false;
+	
+	if(document.getElementById && document.createTextNode)
+	{
+		var paxCount = 0;
+		var undefined;
+
+		for(var i=0; i < dropDownNames.length; i++)
+		{
+			if (ds[dropDownNames[i]] != undefined)
+			{
+				paxDropdownRendered = true;
+				paxCount = paxCount + parseInt(ds[dropDownNames[i]].value);
+			}
+		}
+
+		if (paxDropdownRendered && paxCount == 0)
+		{
+			alert(localizedTextLessThanOnePassenger);
+			return false;
+		}
+		else if (paxCount > applicationBookingMaxPassengers)
+		{
+			alert(localizedTextExceedsMaxPaxAllowed + applicationBookingMaxPassengers);
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+/*
+* Validates that there's 1 set of O&D entered if one way is selected
+* Validates that there's 1 set of O&D entered if round trip is selected
+* Validates that there's 2 sets of O&D entered if open jaw is selected
+* For TripPlanner, the number of markets to search is however many was entered
+* For Round trip, validates that the origin is the same as the ultimate/last
+* destination
+* Validates that Origin is not the same as destination
+* Sets the global variables numDatesToValidate and numMarketsToValidate
+*/
+function IsEmpty2(element, defaultValue)
+{
+    if (defaultValue == null)
+    {
+        if(element.getAttribute('requiredEmpty'))
+        {
+            defaultValue = element.getAttribute('requiredEmpty');
+        }
+        else
+        {
+            defaultValue = '';
+        }
+    }
+	var val = GetValue(element);
+
+	if (val == null) return false;
+	while (val.substring(0,1) == ' ') val = val.substring(1);
+	while (val.substring(val.length-1,val.length) == ' ') val = val.substring(0,val.length-1);
+	if ((val.length == 0) || ((defaultValue != null) && (val == defaultValue))) return true;
+	else return false;
+}
+
+function CheckCities()
+{
+	var selected   = GetMarketStructure();
+	
+	var ds = document['SkySales'];
+	var stations = new Array();
+
+	var i=-1;
+	for (var mktIx=1; mktIx<=numMarketsToValidate; mktIx++)
+	{
+		if (MarketAction[mktIx] == 'Cancel')
+			continue;
+			//alert(validateElement('DropDownListMarketOrigin' + mktIx));
+			if (validateElement('DropDownListMarketOrigin' + mktIx))
+				{
+					i+=1;
+					stations[i] = ds[applicationJavaScriptHtmlId + '_DropDownListMarketOrigin' + mktIx];
+					if (IsEmpty2(stations[i], '???'))
+					{
+						if ( selected=='TripPlanner' && mktIx>1)
+						{
+							// an empty origin signals the end of the requested market
+							numMarketsToValidate = mktIx-1;
+							numDatesToValidate = mktIx-1;
+							break;
+						}
+						else
+						{
+							alert(localizedMissingOrigin);
+							return false;
+						}
+					}
+				}
+				else if (selected=='TripPlanner' && mktIx>1)
+				{
+					// an empty origin signals the end of the requested market
+					numMarketsToValidate = mktIx-1;
+					numDatesToValidate = mktIx-1;
+					break;
+					
+				}
+
+				if (validateElement('DropDownListMarketDestination' + mktIx))
+				{
+					i+=1;
+					stations[i] = ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination' + mktIx];
+
+					if (IsEmpty2(stations[i], '???'))
+					{
+						alert(localizedMissingDest);
+						return false;
+					}
+					
+				}
+
+	} // end loop mktIx<=numMarketsToValidate
+	
+	if (!applicationOpenJawEnabled)
+	{
+		var ok = true;
+		if (stations.length > 2) 
+		{
+			for (var i=1; i<stations.length-1; i+=2)
+			{
+				if (stations[i].value.toUpperCase() != stations[i+1].value.toUpperCase()) 
+				{
+					ok = false;
+					break;
+				}
+			}
+		}
+		if (!ok)
+		{
+			alert (localizedInvalidCityPairs);
+			return false;
+		}
+	}
+	
+	return true;
+} // end of AVAILABILITYSEARCH_checkCities
+
+function setStationsState(state, mktIx)
+{
+	if (applicationUseDropDownForStations)
+	{
+		ElementsState['DropDownListMarketOrigin'+mktIx] = state;
+		ElementsState['DropDownListMarketDestination'+mktIx] = state;
+	}
+	else
+	{
+		ElementsState['TextBoxMarketOrigin'+mktIx] = state;
+		ElementsState['TextBoxMarketDestination'+mktIx] = state;
+	}
+}
+
+function OriginMac(object)
+{
+	return;
+    var index =  object.id.substring(object.id.length - 1);
+    if(index > 0)
+    {
+        var div = document.getElementById(applicationJavaScriptHtmlId + '_DivMacOrigin' + index);
+        var checkbox = document.getElementById(applicationJavaScriptHtmlId + '_CheckBoxUseMacOrigin' + index);
+        var checkboxDiv = document.getElementById(applicationJavaScriptHtmlId + '_DivCheckboxMacOrigin' + index);
+        var checkboxLabel = document.getElementById(applicationJavaScriptHtmlId + '_LabelUseMacOrigin' + index);
+        if (div && checkbox && checkboxDiv && checkboxLabel)
+        {
+            setMac(object, div, checkbox, checkboxDiv, checkboxLabel);
+            // reset the destination macs items
+            var destId = object.id;
+            destId = destId.replace(/Origin/, "Destination");
+            var dest = document.getElementById(destId);
+            DestinationMac(dest);
+        }
+    }
+}
+
+function DestinationMac(object)
+{
+	return;
+    var index =  object.id.substring(object.id.length - 1);
+    if(index > 0)
+    {
+        var div = document.getElementById(applicationJavaScriptHtmlId + '_DivMacDestination' + index);
+        var checkbox = document.getElementById(applicationJavaScriptHtmlId + '_CheckBoxUseMacDestination' + index);
+        var checkboxDiv = document.getElementById(applicationJavaScriptHtmlId + '_DivCheckboxMacDestination' + index);
+        var checkboxLabel = document.getElementById(applicationJavaScriptHtmlId + '_LabelUseMacDestination' + index);
+        if (div && checkbox && checkboxDiv && checkboxLabel) setMac(object, div, checkbox, checkboxDiv, checkboxLabel);
+    }
+}
+
+function setMac(object, div, checkbox, checkboxDiv, checkboxLabel)
+{
+    if(Stations != null && Stations[object.value.toUpperCase()] != null && Stations[object.value.toUpperCase()].macCode.length > 0)
+    {
+	    if (div)
+	        div.className = 'macDiv';
+
+	    // hide just the checkbox because the mac code is the selected market (station)
+	    if (checkboxDiv)
+	    {
+	        if ((Stations[object.value.toUpperCase()] != null) && (object.value.toUpperCase() == Stations[object.value.toUpperCase()].macCode.toUpperCase()))
+	            checkboxDiv.style.display='none';
+	        else
+	            checkboxDiv.style.display='block';
+	    }
+	    var MAC_Names = "Area airports include:\\n";
+        if (Stations[object.value.toUpperCase()] != null)
+        {
+	        for(var i in MacsArray[Stations[object.value.toUpperCase()].macCode])
+	        {
+	            if(i > 0)
+	            {
+	                MAC_Names += macCitySeparator + "\\n";
+	            }
+	            var MAC = MacsArray[Stations[object.value.toUpperCase()].macCode][i];
+	            MAC_Names +=  Stations[MAC].name + " (" + MAC + ")";
+	        }
+	    }
+	    MAC_Names = "'" + MAC_Names + "'";
+	    if (checkboxLabel) {
+	        checkboxLabel.innerHTML = macSearchAllText + " <a href=\"javascript:showMacDetails(" + MAC_Names + ")\"><img src=\"/common/images/_skysales/smallbtn/help_tiny.gif\" border=\"0\" alt=\"\" align=\"baseline\" /></a><br/>";
+	        }
+
+	}
+	else
+	{
+	    if (div) div.className = 'macDiv hidden';
+	    if (checkboxDiv) checkboxDiv.style.display='none';
+	    if (checkbox) checkbox.checked = false;
+	    if (checkboxLabel) checkboxLabel.innerHtml = "";
+	}
+}
+
+function showMacDetails( macs )
+{
+    alert( macs );
+
+}
+function initMacs()
+{
+    for(var i = 1; i <= applicationNumberOfMarketsToOffer; i++)
+    {
+	    var orig = document.getElementById(applicationJavaScriptHtmlId + '_TextBoxMarketOrigin' + i);
+	    var dest = document.getElementById(applicationJavaScriptHtmlId + '_TextBoxMarketDestination' + i);
+	    var listOrigin = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketOrigin' + i);
+	    var listDest = document.getElementById(applicationJavaScriptHtmlId + '_DropDownListMarketDestination' + i);
+	    
+	    if (orig) OriginMac(orig);
+	    if (dest) DestinationMac(dest);
+	    if (listOrigin) OriginMac(listOrigin);
+	    if (listDest) DestinationMac(listDest);
+    }
+}
+
+function storeCityDefaultsToCookie()
+{
+    var ds = document['SkySales'];
+	var orig = ds[applicationJavaScriptHtmlId + '_DropDownListMarketOrigin1'];
+	var dest = ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination1'];
+
+
+	var theDate = new Date();
+    var oneYearLater = new Date( theDate.getTime() + 31536000000 );
+
+    document.cookie = "dest=" + dest.options[dest.selectedIndex].value +";expires=" + oneYearLater.toGMTString()+"; path=/";
+    document.cookie = "orig=" + orig.options[orig.selectedIndex].value +";expires=" + oneYearLater.toGMTString()+"; path=/";
+	return true;
+}
+
+function getCityDefaultsFromCookie()
+{
+   var ds = document['SkySales'];
+
+   var orig = ds[applicationJavaScriptHtmlId + '_DropDownListMarketOrigin1'];
+   var dest = ds[applicationJavaScriptHtmlId + '_DropDownListMarketDestination1'];
+	
+	//put this in try/catch block, because some pages may
+	//not define UpdateCitiesFromCookie
+	try
+	{
+		if (UpdateCitiesFromCookie != 'true')
+		{
+			//set sale list if present
+			try
+			{
+				if ((vOrigin != '') & (vDest != ''))
+				{		
+					for (var i = 0; i < orig.options.length; i++) 
+   					{
+						if (orig.options[i].value == vOrigin) 
+						{
+							orig.selectedIndex = i;
+							break;
+						}
+					}
+ 					for (var i = 0; i < dest.options.length; i++) 
+   					{
+						if (dest.options[i].value == vDest) 
+						{
+							dest.selectedIndex = i;
+							break;
+						}
+					}
+				}
+			}
+			catch(err){	}
+		return;   
+		}
+	}
+	catch(err)
+	{
+		return;
+	}
+   
+
+   var orig_val = get_cookie( "orig");
+   var dest_val = get_cookie( "dest");
+   
+   	for (var i = 0; i < orig.options.length; i++) 
+   	{
+		if (orig.options[i].value == orig_val) 
+		{
+			orig.selectedIndex = i;
+			break;
+		}
+	}
+
+ 	for (var i = 0; i < dest.options.length; i++) 
+   	{
+		if (dest.options[i].value == dest_val) 
+		{
+			dest.selectedIndex = i;
+			break;
+		}
+	}
+}
+
+function get_cookie ( cookie_name )
+{
+  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+
+  if ( results )
+    return ( unescape ( results[2] ) );
+  else
+    return null;
+}
+
+function highlightMoveDays() {}
+function highlightMoveOriginCities() {}
+function highlightMoveDestinationCities() {}
+
+var jsLoaded = true;
