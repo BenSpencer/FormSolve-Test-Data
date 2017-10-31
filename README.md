@@ -7,7 +7,7 @@ JavaScript validation code. Subdirectories contain the following:
   [generator/Readme-Forms.md](generator/Readme-Forms.md), respectively
 * [synthetic-scripts/](synthetic-scripts/): suite of 1000 synthetic
   standalone JavaScript programs
-* [synthetic-forms/](synthetic-forms/): suite of 100 synthetic forms with
+* [synthetic-forms/](synthetic-forms/): suite of 1000 synthetic forms with
   validation constraints
 * [jsfiddle/](jsfiddle/): 22 example forms from
   [https://jsfiddle.net/](JSFiddle)
