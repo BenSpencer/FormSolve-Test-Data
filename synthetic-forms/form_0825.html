@@ -1,0 +1,161 @@
+<!doctype HTML>
+<html>
+<head>
+    <title>Randomly generated test form</title>
+    <style type="text/css" >
+        *
+        {
+            font-family: sans-serif;
+        }
+        .expr
+        {
+            font-family: monospace;
+        }
+        .valid
+        {
+            outline: 3px solid green;
+        }
+        .invalid
+        {
+            outline: 3px solid red;
+        }
+    </style>
+    <script type="text/javascript" >
+        function mark_valid(id) {
+            var x = document.getElementById(id);
+            x.classList.remove("invalid");
+            x.classList.add("valid");
+        }
+        function mark_invalid(id) {
+            var x = document.getElementById(id);
+            x.classList.remove("valid");
+            x.classList.add("invalid");
+        }
+        // Global state
+        var valid = {};
+        
+        function validate_1() {
+            return ((function () {
+                var b1 = Boolean(47);
+                var x3;
+                if (b1) {
+                    x3 = document.getElementById("input-1-2").checked;
+                } else {
+                    var b2 = !(document.getElementById("input-1-2").checked);
+                    x3 = b2;
+                }
+                return x3;
+            })());
+        }
+        function process_1() {
+            if (validate_1()) {
+                mark_valid("input-1-container");
+                valid["input-1"] = true;
+                return true;
+            } else {
+                mark_invalid("input-1-container");
+                valid["input-1"] = false;
+                alert("Error at input-1");
+                return false;
+            }
+        }
+        
+        function validate_2() {
+            var b2 = false;
+            if (Number(document.getElementById("input-2").value) > 0) {
+                b2 = true;
+            }
+            return (b2);
+        }
+        function process_2() {
+            if (validate_2()) {
+                mark_valid("input-2");
+                valid["input-2"] = true;
+                return true;
+            } else {
+                mark_invalid("input-2");
+                valid["input-2"] = false;
+                alert("Error at input-2");
+                return false;
+            }
+        }
+        
+        function validate_submit(e) {
+            // Check each field has been validated successfully.
+            all_valid = true;
+            
+            process_1();
+            all_valid = all_valid && valid["input-1"];
+        
+            process_2();
+            all_valid = all_valid && valid["input-2"];
+            
+            if (!all_valid) {
+                e.preventDefault();
+                alert("Error. Some fields are not yet valid.");
+            }
+        }
+        
+        window.addEventListener("load", function() {
+            var i1_1 = document.getElementById("input-1-1");
+            i1_1.addEventListener("change", process_1);
+            var i1_2 = document.getElementById("input-1-2");
+            i1_2.addEventListener("change", process_1);
+            var i1_3 = document.getElementById("input-1-3");
+            i1_3.addEventListener("change", process_1);
+            var i1_4 = document.getElementById("input-1-4");
+            i1_4.addEventListener("change", process_1);
+            var i1_5 = document.getElementById("input-1-5");
+            i1_5.addEventListener("change", process_1);
+            var i1_6 = document.getElementById("input-1-6");
+            i1_6.addEventListener("change", process_1);
+            var i1_7 = document.getElementById("input-1-7");
+            i1_7.addEventListener("change", process_1);
+        
+            var i2 = document.getElementById("input-2");
+            i2.addEventListener("change", process_2);
+            
+            var btn = document.getElementById("submit-btn");
+            btn.addEventListener("click", validate_submit);
+            // TODO: Maybe also add this to form/onsubmit?
+            
+        }, false);
+    </script>
+</head>
+<body>
+    <h1>Randomly generated test form</h1>
+    <form action="about:blank" method="GET" >
+        <fieldset id="input-1-container" >
+            <legend>Input 1</legend>
+            <input type="radio" id="input-1-1" name="input-1" value="KnNdC" >
+            <label for="input-1-1" >KnNdC</label><br>
+            <input type="radio" id="input-1-2" name="input-1" value="qeB" >
+            <label for="input-1-2" >qeB</label><br>
+            <input type="radio" id="input-1-3" name="input-1" value="EFD" >
+            <label for="input-1-3" >EFD</label><br>
+            <input type="radio" id="input-1-4" name="input-1" value="GK2j8" >
+            <label for="input-1-4" >GK2j8</label><br>
+            <input type="radio" id="input-1-5" name="input-1" value="kL" >
+            <label for="input-1-5" >kL</label><br>
+            <input type="radio" id="input-1-6" name="input-1" value="AWn" >
+            <label for="input-1-6" >AWn</label><br>
+            <input type="radio" id="input-1-7" name="input-1" value="HhO" >
+            <label for="input-1-7" >HhO</label><br>
+        </fieldset>
+        <br>
+        
+        <label for="input-2" >Input 2:</label>
+        <input type="text" id="input-2" name="input-2" >
+        <br><br>
+        
+        <input type="submit" value="Submit" id="submit-btn" >
+    </form>
+    
+    <hr>
+    <p>Cheat-sheet of validation rules:</p>
+    <ul>
+        <li>Input 1: <span class="expr" >(if bool(47) then input_bool('input-1-2') else not(input_bool('input-1-2')))</span></li>
+        <li>Input 2: ([template] positive int) <span class="expr" >(int(input_string('input-2')) &gt; 0)</span></li>
+    </ul>
+</body>
+</html>

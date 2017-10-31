@@ -1,0 +1,356 @@
+<!doctype HTML>
+<html>
+<head>
+    <title>Randomly generated test form</title>
+    <style type="text/css" >
+        *
+        {
+            font-family: sans-serif;
+        }
+        .expr
+        {
+            font-family: monospace;
+        }
+        .valid
+        {
+            outline: 3px solid green;
+        }
+        .invalid
+        {
+            outline: 3px solid red;
+        }
+    </style>
+    <script type="text/javascript" >
+        function mark_valid(id) {
+            var x = document.getElementById(id);
+            x.classList.remove("invalid");
+            x.classList.add("valid");
+        }
+        function mark_invalid(id) {
+            var x = document.getElementById(id);
+            x.classList.remove("valid");
+            x.classList.add("invalid");
+        }
+        // Global state
+        var valid = {};
+        
+        function validate_1() {
+            var b1 = document.getElementById("input-1-1").value;
+            var b2 = document.getElementById("input-1-2").value;
+            return (b1 != b2);
+        }
+        function process_1() {
+            if (validate_1()) {
+                mark_valid("input-1-container");
+                valid["input-1"] = true;
+                return true;
+            } else {
+                mark_invalid("input-1-container");
+                valid["input-1"] = false;
+                alert("Error at input-1");
+                return false;
+            }
+        }
+        
+        function validate_2() {
+            return ((document.getElementById("input-2").value != ""));
+        }
+        function process_2() {
+            if (validate_2()) {
+                mark_valid("input-2");
+                valid["input-2"] = true;
+                return true;
+            } else {
+                mark_invalid("input-2");
+                valid["input-2"] = false;
+                alert("Error at input-2");
+                return false;
+            }
+        }
+        
+        function validate_3() {
+            return ((document.getElementById("input-3-1").value != document.getElementById("input-3-2").value));
+        }
+        function process_3() {
+            if (validate_3()) {
+                mark_valid("input-3-container");
+                valid["input-3"] = true;
+                return true;
+            } else {
+                mark_invalid("input-3-container");
+                valid["input-3"] = false;
+                alert("Error at input-3");
+                return false;
+            }
+        }
+        
+        function validate_4() {
+            return ((function () {
+                var b1 = Boolean(document.getElementById("input-6").selectedIndex);
+                var b2 = false;
+                if (document.getElementById("input-8").value > document.getElementById("input-4").value) {
+                    b2 = true;
+                }
+                var s5 = '' + (!(b2));
+                var b6 = !! (s5);
+                return (b1 ? b6 : true);
+            })());
+        }
+        function process_4() {
+            if (validate_4()) {
+                mark_valid("input-4");
+                valid["input-4"] = true;
+                return true;
+            } else {
+                mark_invalid("input-4");
+                valid["input-4"] = false;
+                alert("Error at input-4");
+                return false;
+            }
+        }
+        
+        function validate_5() {
+            var fn6 = function () {
+                var s1 = String(true);
+                var opts3 = ['jJWFb', 'v3', ''];
+                var b2 = false;
+                for (var idx4 = 0; idx4 < opts3.length; idx4++) {
+                    if (opts3[idx4] == s1) {
+                        b2 = true;
+                        break;
+                    }
+                }
+                return (document.getElementById("input-5").checked ? b2 : document.getElementById("input-7").checked);
+            }
+            return (fn6());
+        }
+        function process_5() {
+            if (validate_5()) {
+                mark_valid("input-5");
+                valid["input-5"] = true;
+                return true;
+            } else {
+                mark_invalid("input-5");
+                valid["input-5"] = false;
+                alert("Error at input-5");
+                return false;
+            }
+        }
+        
+        function validate_6() {
+            return ((function () {
+                var opts3 = [60, 7, 1, 66, 0, 61];
+                var b5 = !! (document.getElementById("input-6").selectedIndex);
+                return (document.getElementById("input-7").checked ? opts3.indexOf((document.getElementById("input-4").value).length) > -1 : b5);
+            })());
+        }
+        function process_6() {
+            if (validate_6()) {
+                mark_valid("input-6");
+                valid["input-6"] = true;
+                return true;
+            } else {
+                mark_invalid("input-6");
+                valid["input-6"] = false;
+                alert("Error at input-6");
+                return false;
+            }
+        }
+        
+        function validate_7() {
+            var fn4 = function () {
+                var b1;
+                if (document.getElementById("input-7").checked !== document.getElementById("input-7").checked) {
+                    b1 = true;
+                } else {
+                    b1 = false;
+                }
+                var x3;
+                if (b1) {
+                    x3 = document.getElementById("input-5").checked;
+                } else {
+                    x3 = false;
+                }
+                return x3;
+            }
+            return (fn4());
+        }
+        function process_7() {
+            if (validate_7()) {
+                mark_valid("input-7");
+                valid["input-7"] = true;
+                return true;
+            } else {
+                mark_invalid("input-7");
+                valid["input-7"] = false;
+                alert("Error at input-7");
+                return false;
+            }
+        }
+        
+        function validate_8() {
+            function fn3() {
+                var x2;
+                if (document.getElementById("input-5").checked) {
+                    x2 = false;
+                } else {
+                    x2 = (document.getElementById("input-8").value) ? true : false;
+                }
+                return x2;
+            }
+            return (fn3());
+        }
+        function process_8() {
+            if (validate_8()) {
+                mark_valid("input-8");
+                valid["input-8"] = true;
+                return true;
+            } else {
+                mark_invalid("input-8");
+                valid["input-8"] = false;
+                alert("Error at input-8");
+                return false;
+            }
+        }
+        
+        function validate_submit(e) {
+            // Check each field has been validated successfully.
+            all_valid = true;
+            
+            process_1();
+            all_valid = all_valid && valid["input-1"];
+        
+            process_2();
+            all_valid = all_valid && valid["input-2"];
+        
+            process_3();
+            all_valid = all_valid && valid["input-3"];
+        
+            process_4();
+            all_valid = all_valid && valid["input-4"];
+        
+            process_5();
+            all_valid = all_valid && valid["input-5"];
+        
+            process_6();
+            all_valid = all_valid && valid["input-6"];
+        
+            process_7();
+            all_valid = all_valid && valid["input-7"];
+        
+            process_8();
+            all_valid = all_valid && valid["input-8"];
+            
+            if (!all_valid) {
+                e.preventDefault();
+                alert("Error. Some fields are not yet valid.");
+            }
+        }
+        
+        window.addEventListener("load", function() {
+            var i1_1 = document.getElementById("input-1-1");
+            i1_1.addEventListener("change", process_1);
+            var i1_2 = document.getElementById("input-1-2");
+            i1_2.addEventListener("change", process_1);
+        
+            var i2 = document.getElementById("input-2");
+            i2.addEventListener("change", process_2);
+        
+            var i3_1 = document.getElementById("input-3-1");
+            i3_1.addEventListener("change", process_3);
+            var i3_2 = document.getElementById("input-3-2");
+            i3_2.addEventListener("change", process_3);
+        
+            var i4 = document.getElementById("input-4");
+            i4.addEventListener("change", process_4);
+        
+            var i5 = document.getElementById("input-5");
+            i5.addEventListener("change", process_5);
+        
+            var i6 = document.getElementById("input-6");
+            i6.addEventListener("change", process_6);
+        
+            var i7 = document.getElementById("input-7");
+            i7.addEventListener("change", process_7);
+        
+            var i8 = document.getElementById("input-8");
+            i8.addEventListener("change", process_8);
+            
+            var btn = document.getElementById("submit-btn");
+            btn.addEventListener("click", validate_submit);
+            // TODO: Maybe also add this to form/onsubmit?
+            
+        }, false);
+    </script>
+</head>
+<body>
+    <h1>Randomly generated test form</h1>
+    <form action="about:blank" method="GET" >
+        <fieldset id="input-1-container" >
+            <legend>Input 1</legend>
+            <input type="text" id="input-1-1" name="input-1-1" >
+            <input type="text" id="input-1-2" name="input-1-2" >
+        </fieldset>
+        <br>
+        
+        <label for="input-2" >Input 2:</label>
+        <input type="text" id="input-2" name="input-2" >
+        <br><br>
+        
+        <fieldset id="input-3-container" >
+            <legend>Input 3</legend>
+            <input type="text" id="input-3-1" name="input-3-1" >
+            <input type="text" id="input-3-2" name="input-3-2" >
+        </fieldset>
+        <br>
+        
+        <label for="input-4" >Input 4:</label>
+        <input type="text" id="input-4" name="input-4" >
+        <br><br>
+        
+        <label for="input-5" >Input 5:</label>
+        <input type="checkbox" id="input-5" name="input-5" >
+        <br><br>
+        
+        <label for="input-6" >Input 6:</label>
+        <select id="input-6" >
+            <option value="Pdk" >Pdk</option>
+            <option value="K4S" >K4S</option>
+            <option value="Y0a" >Y0a</option>
+            <option value="b0" >b0</option>
+            <option value="3B" >3B</option>
+            <option value="0vdmR" >0vdmR</option>
+            <option value="X9HI" >X9HI</option>
+        </select>
+        <br><br>
+        
+        <label for="input-7" >Input 7:</label>
+        <input type="checkbox" id="input-7" name="input-7" >
+        <br><br>
+        
+        <label for="input-8" >Input 8:</label>
+        <select id="input-8" >
+            <option value="0S635" >0S635</option>
+            <option value="EjJoV" >EjJoV</option>
+            <option value="zabNs" >zabNs</option>
+            <option value="W6jv" >W6jv</option>
+        </select>
+        <br><br>
+        
+        <input type="submit" value="Submit" id="submit-btn" >
+    </form>
+    
+    <hr>
+    <p>Cheat-sheet of validation rules:</p>
+    <ul>
+        <li>Input 1: ([template] non-equal fields) <span class="expr" >(input_string('input-1-1') != input_string('input-1-2'))</span></li>
+        <li>Input 2: ([template] non-empty field) <span class="expr" >(input_string('input-2') != "")</span></li>
+        <li>Input 3: ([template] non-equal fields) <span class="expr" >(input_string('input-3-1') != input_string('input-3-2'))</span></li>
+        <li>Input 4: <span class="expr" >(if bool(input_int('input-6')) then bool(str(not((input_string('input-8') &gt; input_string('input-4'))))) else true)</span></li>
+        <li>Input 5: <span class="expr" >(if input_bool('input-5') then (str(true) in ['jJWFb', 'v3', '']) else input_bool('input-7'))</span></li>
+        <li>Input 6: <span class="expr" >(if input_bool('input-7') then (len(input_string('input-4')) in [60, 7, 1, 66, 0, 61]) else bool(input_int('input-6')))</span></li>
+        <li>Input 7: <span class="expr" >(if (input_bool('input-7') !== input_bool('input-7')) then input_bool('input-5') else false)</span></li>
+        <li>Input 8: <span class="expr" >(if input_bool('input-5') then false else bool(input_string('input-8')))</span></li>
+    </ul>
+</body>
+</html>
