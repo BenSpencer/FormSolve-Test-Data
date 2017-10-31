@@ -10,4 +10,4 @@ JavaScript validation code. Subdirectories contain the following:
 * [synthetic-forms/](synthetic-forms/): suite of 1000 synthetic forms with
   validation constraints
 * [jsfiddle/](jsfiddle/): 22 example forms from
-  [https://jsfiddle.net/](JSFiddle)
+  [JSFiddle](https://jsfiddle.net/)
