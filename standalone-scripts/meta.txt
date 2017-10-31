@@ -1,0 +1,4 @@
+Auto-generated example JavaScript programs.
+Date: 2017-10-05 14-51-31
+Random seed: 7608195022094983814
+Samples: 1000
