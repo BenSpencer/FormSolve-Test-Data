@@ -4,6 +4,8 @@ This repository contains a generator for some synthetic examples to test
 the bytecode-based approach to concolic testing of Web JavaScript
 vs. other approaches.
 
+[Readme for Web form generation](Readme-Forms.md)
+
 ## Approach
 
 We have a CFG defining symbolic expressions. We can sample strings at
