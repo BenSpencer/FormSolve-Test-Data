@@ -18,10 +18,7 @@ The test pages are generated as follows:
 
 The possible form field types are: text inputs, checkboxes, radio button groups, and select boxes. The possible values for select boxes and radio button groups are randomly generated strings.
 
-
-*Currently, the field types and validation expressions are completely random, so the generated forms are very unnatural.*
-*In future, we would like to use a more template-based approach, so that some common real-world patterns can be included in the generated forms as well.*
-
+Some templates for common patterns in form validation can also be generated, such as text fields which are required, integer inputs which must be positive, or "minimum" fields whihc must be less than the corresponding "maximum".
 
 ## Demos
 
@@ -42,12 +39,9 @@ The possible form field types are: text inputs, checkboxes, radio button groups,
 
 ## Running experiments
 
-* To generate a directory of test forms to be used for the evaluation:
+To generate a directory of test forms to be used for the evaluation:
+```
+$ ./generator/main_forms.py 100
+```
+This generates `generated-forms_<timestamp>` contining standalone HTML pages containing forms with validation.
 
-    ```
-    $ ./generator/main_forms.py 100
-    ```
-    
-    This generates `generated-forms_2017-09-28_16-36-53/`.
-
-* 
