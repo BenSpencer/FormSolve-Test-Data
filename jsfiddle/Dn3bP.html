@@ -216,6 +216,7 @@ var Validator = function(form) {
             //e.preventDefault();
             if (!can_submit) {
                 e.preventDefault();
+                alert("Error");
             }
         });
 
@@ -258,7 +259,8 @@ validator.validate();
 
 <li>
     <label for="message">Message:</label>
-    <textarea id="message" name="message" cols="30" rows="15"></textarea>
+<!--    <textarea id="message" name="message" cols="30" rows="15"></textarea>-->
+    <input type="text" id="message" name="message" >
 </li>
 
 

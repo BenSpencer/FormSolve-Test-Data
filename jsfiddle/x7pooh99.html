@@ -89,7 +89,11 @@ $('#update-form').bootstrapValidator({
                 notEmpty: {
                     message: 'The email is required'
                 },
-                emailAddress: {
+/*                emailAddress: {
+                    message: 'The input is not a valid email address'
+                }*/
+                regexp: {
+                    regexp: /^\w+@\w+\.\w+$/,
                     message: 'The input is not a valid email address'
                 }
             }
@@ -106,6 +110,9 @@ $('#update-form').bootstrapValidator({
             }
         }
     }
+})
+.on('error.field.bv', function (e){
+    alert("Error");
 })
 .on('error.field.bv', '[name="phone"]', function(e, data){
     // change the data-bv-trigger value to keydown

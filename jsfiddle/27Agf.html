@@ -74,10 +74,10 @@ $(window).load(function(){
 			}
 		});
 
-$('#ss-submit').on('click', function(){
-			formValidation('#ss-form');
+$('#ss-submit').on('click', function(evt){
+			formValidation('#ss-form', evt);
 	});
-		function formValidation(formId){
+		function formValidation(formId, evt){
 			var status=true;
 			$(formId+' .required').each(function(){
 				var element=$(this);
@@ -88,7 +88,8 @@ $('#ss-submit').on('click', function(){
 					$('.'+errorMsgId).show();
 					element.addClass('errorField');
 					status=false;
-					event.preventDefault();
+					evt.preventDefault();
+					alert("Error");
 				}
 				else{
 					$('.'+errorMsgId).hide();

@@ -50,8 +50,9 @@ $(function(){
 window.Parsley.addValidator('uppercase', {
   requirementType: 'number',
   validateString: function(value, requirement) {
-    var uppercases = value.match(/[A-Z]/g) || [];
-    return uppercases.length >= requirement;
+    //var uppercases = value.match(/[A-Z]/g) || [];
+    //return uppercases.length >= requirement;
+    return /[A-Z]/.test(value);
   },
   messages: {
     en: 'Your password must contain at least (%s) uppercase letter.'
@@ -62,8 +63,9 @@ window.Parsley.addValidator('uppercase', {
 window.Parsley.addValidator('lowercase', {
   requirementType: 'number',
   validateString: function(value, requirement) {
-    var lowecases = value.match(/[a-z]/g) || [];
-    return lowecases.length >= requirement;
+    //var lowecases = value.match(/[a-z]/g) || [];
+    //return lowecases.length >= requirement;
+    return /[a-z]/.test(value);
   },
   messages: {
     en: 'Your password must contain at least (%s) lowercase letter.'
@@ -74,8 +76,9 @@ window.Parsley.addValidator('lowercase', {
 window.Parsley.addValidator('number', {
   requirementType: 'number',
   validateString: function(value, requirement) {
-    var numbers = value.match(/[0-9]/g) || [];
-    return numbers.length >= requirement;
+    //var numbers = value.match(/[0-9]/g) || [];
+    //return numbers.length >= requirement;
+    return /[0-9]/.test(value);
   },
   messages: {
     en: 'Your password must contain at least (%s) number.'
@@ -86,13 +89,16 @@ window.Parsley.addValidator('number', {
 window.Parsley.addValidator('special', {
   requirementType: 'number',
   validateString: function(value, requirement) {
-    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
-    return specials.length >= requirement;
+    //var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+    //return specials.length >= requirement;
+    return /[!£$%^&*()]/.test(value);
   },
   messages: {
     en: 'Your password must contain at least (%s) special characters.'
   }
 });
+
+window.Parsley.on('form:error', function () { alert("Error"); });
 
 });//]]> 
 
@@ -102,15 +108,15 @@ window.Parsley.addValidator('special', {
 </head>
 
 <body>
-  <form name="Form" id="signupform" data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled], :hidden" data-parsley-trigger="keyup" data-parsley-validate="" action="about:blank">
+  <form name="Form" id="signupform" data-parsley-excluded="input[type=button], input[type=submit], input[type=reset], input[type=hidden], [disabled], :hidden" data-parsley-trigger="change" data-parsley-validate="" action="about:blank">
   
   <label for="password1">New Password *</label>
-  <input id="password1" name="password" type="text" class="password" data-parsley-minlength="8" data-parsley-errors-container=".errorspannewpassinput" data-parsley-required-message="Please enter your new password." data-parsley-uppercase="1" data-parsley-lowercase="1" data-parsley-number="1" data-parsley-special="1" data-parsley-required="">
+  <input id="password1" name="password" type="text" class="password" data-parsley-minlength="8" data-parsley-errors-container=".errorspannewpassinput" data-parsley-required-message="Please enter your new password." data-parsley-uppercase="1" data-parsley-lowercase="1" data-parsley-number="1" data-parsley-special="1" data-parsley-validate-if-empty="">
   <span class="errorspannewpassinput"></span>
   
   
   <label for="confirm_password1">Confirm Password *</label>
-  <input name="Password_2" id="password2" type="text" class="password" data-parsley-minlength="8" data-parsley-errors-container=".errorspanconfirmnewpassinput" data-parsley-required-message="Please re-enter your new password." data-parsley-equalto="#password1" data-parsley-required="">
+  <input name="Password_2" id="password2" type="text" class="password" data-parsley-minlength="8" data-parsley-errors-container=".errorspanconfirmnewpassinput" data-parsley-required-message="Please re-enter your new password." data-parsley-equalto="#password1" data-parsley-validate-if-empty>
   <span class="errorspanconfirmnewpassinput"></span>
   
   <input type="submit" name="submitinfo" id="submitsignup" alt="Sign Up Now" value="Submit Account Request">

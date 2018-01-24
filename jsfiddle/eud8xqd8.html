@@ -28,7 +28,8 @@
 
   
     
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+      <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>-->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.js"></script>
     
   
     
@@ -121,21 +122,22 @@ $('.ui.form')
   .form({
     onInvalid: function() {
       console.log('onInvalid', $(this));
+      alert("Error");
     },
     onFailure: function(formErrors, fields) {
-      if (!$('.ui.form').form('is valid', 'email')) {
-        var emails = $('.ui.form').form('get value', 'email');
-        console.log(emails);
-        $.each(emails.split(','), function(i, v) {
-          console.log(i, v, $.fn.form.settings.regExp.email.test(v));
-        });
-      }
+//      if (!$('.ui.form').form('is valid', 'email')) {
+//        var emails = $('.ui.form').form('get value', 'email');
+//        console.log(emails);
+//        $.each(emails.split(','), function(i, v) {
+//          console.log(i, v, $.fn.form.settings.regExp.email.test(v));
+//        });
+//      }
     },
     onSuccess: function() {
         window.location = "about:blank";
     },
     fields: {
-      email: {
+      /*email: {
         identifier: 'email',
         rules: [{
           type: 'empty',
@@ -144,13 +146,13 @@ $('.ui.form')
           type: 'email',
           prompt: 'One or more emails are bad {badValue}. Please enter a valid e-mail '
         }]
-      },
+      },*/
       other: {
         identifier: 'other',
         rules: [{
-          type: 'empty',
-          prompt: 'An other email is required'
-        }, {
+//          type: 'empty',
+//          prompt: 'An other email is required'
+//        }, {
           type: 'email',
           prompt: 'Please enter a valid other e-mail '
         }]

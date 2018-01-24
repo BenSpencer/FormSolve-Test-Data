@@ -71,7 +71,8 @@ Vue.use(VueForm, {
       return value === attrValue;
     },
     'password-strength': function (value) {
-    	return /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value);
+    	//return /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value);
+        return /([a-z].*[A-Z])|([A-Z].*[a-z])/.test(value);
     }
   }
 });
@@ -103,6 +104,8 @@ new Vue({
       console.log(this.formstate.$valid);
       if (this.formstate.$valid) {
         window.location = "about:blank";
+      } else {
+        alert("Error");
       }
     }
   }
@@ -123,7 +126,7 @@ new Vue({
 
       <validate auto-label="" class="form-group required-field" :class="fieldClassName(formstate.name)">
         <label>Name</label>
-        <input type="text" name="name" class="form-control" required v-model.lazy="model.name">
+        <input type="text" name="name" class="form-control" required v-model.lazy="model.name" id="name">
 
         <field-messages name="name" show="$touched || $submitted" class="form-control-feedback">
           <div>Success!</div>
@@ -134,7 +137,7 @@ new Vue({
 
       <validate auto-label="" class="form-group required-field" :class="fieldClassName(formstate.password)">
         <label>Password</label>
-        <input type="text" password-strength="" name="password" class="form-control" required v-model.lazy="model.password">
+        <input type="text" password-strength="" name="password" class="form-control" required v-model.lazy="model.password" id="password">
 
         <field-messages auto-label="" name="password" show="$touched || $submitted" class="form-control-feedback">
           <div>Success!</div>
@@ -146,7 +149,7 @@ new Vue({
 
       <validate auto-label="" class="form-group required-field" :class="fieldClassName(formstate.confirmPassword)">
         <label>Confirm Password</label>
-        <input type="text" :matches="model.password" name="confirmPassword" class="form-control" required v-model.lazy="model.confirmPassword">
+        <input type="text" :matches="model.password" name="confirmPassword" class="form-control" required v-model.lazy="model.confirmPassword" id="confirmPassword">
 
         <field-messages auto-label="" name="confirmPassword" show="$touched || $submitted" class="form-control-feedback">
           <div>Success!</div>

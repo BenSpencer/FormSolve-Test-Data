@@ -50,7 +50,7 @@ function validateFormOnSubmit(contact) {
 
     console.log(reason);
     if (reason.length > 0) {
-
+        alert("Error");
         return false;
     } else {
         return true;
@@ -81,7 +81,8 @@ function trim(s) {
 function validateEmail(email) {
     var error = "";
     var temail = trim(email.value); // value of field with whitespace trimmed off
-    var emailFilter = /^[^@]+@[^@.]+\.[^@]*\w\w$/;
+//    var emailFilter = /^[^@]+@[^@.]+\.[^@]*\w\w$/;
+    var emailFilter = /^\w+@(\w+\.)+\w*\w\w$/;
     var illegalChars = /[\(\)\<\>\,\;\:\\\"\[\]]/;
 
     if (email.value == "") {
@@ -112,9 +113,9 @@ function validatePhone(phone) {
         document.getElementById('test').innerHTML = "Please enter a phone number";
         phone.style.background = 'Yellow';
         var error = '6';
-    } else if (isNaN(parseInt(stripped))) {
-        var error = "5";
-        document.getElementById('test').innerHTML = "The phone number contains illegal characters.";
+//    } else if (isNaN(parseInt(stripped))) {
+//        var error = "5";
+//        document.getElementById('test').innerHTML = "The phone number contains illegal characters.";
         phone.style.background = 'Yellow';
     } else if (stripped.length < 10) {
         var error = "6";
@@ -145,7 +146,7 @@ function validatePhone(phone) {
     </div>
     <div>
         <label>Email</label>
-        <input placeholder="Email" type="email" name="email" id="email" tabindex="3" autofocus>
+        <input placeholder="Email" type="text" name="email" id="email" tabindex="3" autofocus>
         <div id="email-error"></div>
     </div>
     <div>

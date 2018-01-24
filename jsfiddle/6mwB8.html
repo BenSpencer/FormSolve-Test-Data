@@ -52,7 +52,7 @@
 <script type="text/javascript">//<![CDATA[
 $(window).load(function(){
 jQuery('document').ready(function($) {
-    $('.required').keyup(function() {
+    $('.required').change(function() {
 
         var empty = false;
         $('.required').each(function() {
@@ -62,14 +62,24 @@ jQuery('document').ready(function($) {
         });
 
         if (empty) {
-            $('.send').prop('disabled', true);
+            $(".send").addClass("disabled");
+            //$('.send').prop('disabled', true);
             $('.send').css('background-color', '#ccc');
         } else {
-            $('.send').prop('disabled', false);
+            $(".send").removeClass("disabled");
+            //$('.send').prop('disabled', false);
             $('.send').css({
                 'background-color': '#21759b',
                 'color': '#fff'
             });
+        }
+    });
+    
+    // Added to have an abort on an unsuccessful filling.
+    $(".send").click(function(evt) {
+        if ($(this).hasClass("disabled")) {
+            alert("Error");
+            evt.preventDefault();
         }
     });
 });
@@ -90,7 +100,7 @@ jQuery('document').ready(function($) {
  
     <input type="text" placeholder="Phone"><br>  
     
-    <input type="submit" class="send" value="Send Me Info" disabled="disabled">
+    <input type="submit" class="send disabled" value="Send Me Info" >
 </form>
 
 

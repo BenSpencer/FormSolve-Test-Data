@@ -86,14 +86,15 @@ $.fn.simpleValidate = function() {
             }
         });
 
-        if (!radioBtnGroup.length) { // checking radio btns
-            $('.radioBtnGroup label').css("color", "red");
-            errors++;
-        } else {
-            $('.radioBtnGroup label').css("color", "black");
-        }
+//        if (!radioBtnGroup.length) { // checking radio btns
+//            $('.radioBtnGroup label').css("color", "red");
+//            errors++;
+//        } else {
+//            $('.radioBtnGroup label').css("color", "black");
+//        }
 
         // don't submit form if errors; no errors submit
+        if (errors) { alert("Error"); }
         return errors ? false : true;
     });
 };
@@ -189,7 +190,7 @@ $("form").simpleValidate();
     </div>
     <p>
         <label for="comments">Comments/Questions:</label>
-        <textarea id="comments" rows="10" cols="50" name="comments"></textarea>
+<!--        <textarea id="comments" rows="10" cols="50" name="comments"></textarea>-->
         <br>
         <input type="submit" name="submit_btn" value="Submit">
     </p>
