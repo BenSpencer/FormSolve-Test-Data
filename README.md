@@ -15,3 +15,12 @@ Subdirectories contain the following:
 * [jsfiddle](jsfiddle/): 18 example forms from
   [JSFiddle](https://jsfiddle.net/)
 * [airlines](airlines/): 4 real-world frozen forms from airline websites
+
+
+## Running FormSolve
+
+To test the tool itself, follow the [ArtForm Readme](https://github.com/cs-au-dk/Artemis/blob/master/ArtForm.md) and use ``--major-mode concolic-reordering`` for the new FormSolve algorithm.
+There is a small [set of test cases](https://github.com/cs-au-dk/Artemis/tree/master/artemis-code/tests/system/fixtures/concolic-reordering), runnable once ArtForm is set up via [concolic_reordering.py](https://github.com/cs-au-dk/Artemis/blob/master/artemis-code/tests/system/concolic_reordering.py).
+
+FormSolve is tested on Ubuntu 14.04.
+
